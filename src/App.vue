@@ -3,6 +3,7 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
     <router-link to="/pagecontact">Contact</router-link>
+    <router-link to="/loginpage">Connexion</router-link>
     
   </nav>
   <FooterPage/> 

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import FooterPage from '../components/FooterPage.vue'
 import PageContact from '../views/PageContact.vue'
+import LoginPage from '@/views/LoginPage'
 
 const routes = [
   {
@@ -18,7 +19,12 @@ const routes = [
     path: '/',
     name: 'footer', 
     component: FooterPage
-  } 
+  },
+  {
+    path: '/loginpage',
+    name: 'connexion',
+    component: LoginPage
+  }
 ]
 
 const router = createRouter({
