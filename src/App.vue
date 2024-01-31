@@ -6,7 +6,6 @@
     <router-link to="/loginpage">Connexion</router-link>
     
   </nav>
-  <FooterPage/> 
   <router-view/>
 </template>
 
