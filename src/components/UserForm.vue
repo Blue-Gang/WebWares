@@ -27,6 +27,7 @@
     width: 400px;
     height: 400px;
     margin: 0 auto;
+    margin-top: 200px ;
   }
   
   .formulaire{
