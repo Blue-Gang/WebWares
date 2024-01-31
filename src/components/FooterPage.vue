@@ -4,7 +4,7 @@
       <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
             <div class="col1">
                 <ul class="list-inline">
-                    <li class="list"><a href="#">Home</a></li>
+                    <li class="list"><a href="#">Accueil</a></li>
                     <li class="list"><a href="#">Services</a></li>
                     <li class="list"><a href="#">About</a></li>
                 </ul>
@@ -27,7 +27,7 @@
                 <ul>
                     <li class="list"><a href="#">Terms</a></li>
                     <li class="list"><a href="#">Privacy Policy</a></li>
-                    <li class="list"><a href="#">@@@</a></li>                   
+                    <li class="list"><a href="#">Contact</a></li>                   
                 </ul>
             </div>
             <div class="col4">
