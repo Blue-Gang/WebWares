@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import PageContact from '../views/PageContact.vue'
 import LoginPage from '@/views/LoginPage'
 
+
 const routes = [
   {
     path: '/',
@@ -19,6 +20,7 @@ const routes = [
     name: 'connexion',
     component: LoginPage
   }
+ 
 ]
 
 const router = createRouter({
