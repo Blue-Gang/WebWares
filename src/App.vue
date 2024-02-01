@@ -43,7 +43,7 @@
       <div class="none">
             <div class="horsConnect">
               <router-link to="/Loginpage">Connection</router-link> 
-              <router-link to="/register">Inscription </router-link>
+              <router-link to="/SignUp">Inscription </router-link>
             </div>
             <div class="connect">
               <router-link to="/admin">Admin</router-link> 

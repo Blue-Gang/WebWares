@@ -4,6 +4,7 @@
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <FooterPage/>
     <LoginPage/>
+    <SignUp/>
   </div>
 </template>
 
@@ -11,6 +12,7 @@
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue';
 import FooterPage from '@/components/FooterPage.vue';
+
 
 export default {
   
