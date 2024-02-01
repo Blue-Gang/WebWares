@@ -137,7 +137,7 @@ export default{
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
-  color: #2c3e50;
+  /* color: #2c3e50; */
 }
 
 .principal { 
@@ -153,15 +153,15 @@ export default{
 
 .principal a {
   display: inline-block;
-  margin-top:10px ;
+  margin-top: 10px ;
   margin-left: 30px;
-  font-size: 25px;
+  font-size: 18px;
   font-weight: bold;
   color: #ffffff;
 }
 
 .principal a.router-link-exact-active {
-  color: #08bf6d;
+  color: #5e3c1a;
 }
 
 .secondary{
@@ -188,7 +188,7 @@ export default{
 .BarNav{
  display: flex;
   justify-content: center;
-  margin-right: 50px ;
+  margin-right: 120px ;
   margin-top: 30px ;
 }
 
@@ -202,6 +202,8 @@ export default{
   font-size: 25px;
   font-weight: bold;
   color: #ffffff;
+  
+  
 }
 
 .barSearch input{
@@ -212,7 +214,7 @@ export default{
     border: none;
     outline: none;
     padding: 5px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .listBarSearch{
@@ -248,6 +250,8 @@ export default{
 .textContact{
   text-decoration: none;
   color: #ffffff;
+  font-size: 15px;
+  text-align: center;
 }
 
 .buttonContact{ 
@@ -281,11 +285,6 @@ export default{
   top: 0 ; 
   margin-left: 30px;
 
-}
-
-
-body{
-  background-color: #2c3e50;
 }
 
 </style>

@@ -88,7 +88,7 @@ export default {
   /* background-color: red; */
   width: 400px;
   height: 800px;
-  margin: 0 auto;
+  margin: 170px auto;
 }
 
 .formulaire{
