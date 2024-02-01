@@ -61,29 +61,21 @@ export default {
     },
   },
 
-
     props: {
         title: {
             type: String,
             default: 'Ravis de vous revoir !'
         },
-
         paragraphe: {
             type: String,
             default: 'Identifiez-vous pour profiter de tous nos produits.'
         },
-
         formInscription: Object,
-
-
     },
-
-
 }
 </script>
 
 <style scoped>
-
 .container{
   /* background-color: red; */
   width: 400px;
@@ -104,7 +96,6 @@ export default {
               0 10px 10px rgba(0, 0, 0, 0.2);
 
 }
-
 
 .formulaire input{
   margin: 5px;
@@ -140,11 +131,10 @@ label{
   font-weight: bold;
   font-size: 14px;
 }
-
 .cp input{
   width: 90px;
 }
 
-
-
-</style>
+ 
+  
+  </style>

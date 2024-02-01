@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import PageContact from '../views/PageContact.vue'
 import LoginPage from '@/views/LoginPage.vue'
 import SignUp from '@/views/SignUp.vue'
+import AdminVue from '@/views/AdminVue'
+
 
 
 const routes = [
@@ -25,6 +27,11 @@ const routes = [
     path: '/signup',
     name: 'inscription',
     component: SignUp
+  },
+  {
+    path: '/adminvue',
+    name: 'admin',
+    component: AdminVue
   }
  
 ]
