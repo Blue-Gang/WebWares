@@ -2,6 +2,8 @@
     <div>
       <div class="bcg">
       <h1>Nous contacter</h1>
+
+      <!-- Partie 1 -->
       <div class="txtform">
         
           <div class="box1">
@@ -16,7 +18,7 @@
           <img id="img1" class="box2" src="@/assets/imgcontact.jpg" alt="">
       </div>
     </div>
-
+      <!-- Partie 2 -->
       <div class="formulairecontact">
         <div>
           <img id="img2" src="@/assets/imgcontact2.jpg" alt="">
