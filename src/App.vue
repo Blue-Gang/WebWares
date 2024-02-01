@@ -41,15 +41,19 @@
       </section>
     </div>
       <div class="none">
-            <div class="horsConnect">
+            <div class="connect">
               <router-link to="/Loginpage">Connection</router-link> 
               <router-link to="/register">Inscription </router-link>
             </div>
-            <div class="connect">
-              <router-link to="/admin">Admin</router-link> 
-              <router-link to="/logout">Déconnection</router-link>
+            <div class="Horsconnect">
+              <select @change="navigate" class="dropdown" >
+                <option>Menu</option>
+                <option value="bag">Panier {{ 0 }}</option>
+                <option value="vos achat"><router-link to="/achat">vos achats</router-link></option>
+                <option value="@/view/AdminVue">Admin</option>
+                <option value="logout">Déconnection</option>
+              </select>
             </div>
-        
       </div>
   </nav>
   <footer>
@@ -91,38 +95,37 @@
             <div class="col">
                 <ul>
                     <p>Suivez nous</p>
-                    
                       <img class="footerImg" href="www.facebook.fr" src="@/assets/FB.svg" alt="Logo FaceBook"/>
                       <img class="footerImg" href="www.linkedin.fr" src="@/assets/LKD.svg" alt="Logo Linkedin" />
                       <img class="footerImg" href="www.twitter.com" src="@/assets/TWT.svg" alt="Logo Twiter" />
-        
                 </ul>
             </div>   
-                    
       </div>
-          
   </footer>
   <router-view />
 </template>
 
 <script>
-
-
 export default{ 
 
+  menuDropdown:'Menu',
   lang: "fr",
   name: 'searchBar',
-  data(){
-    
 
-    return{
+  data(){
+      return{
       querry: "",
-      lang: "fr"
+      lang: "fr",
+      menuDropdown:'Menu',
     }
-    
   },
 
   methods:{
+
+    navigate(event){
+      this.$router.push(event.target.value);
+    },
+
     listFilter(){
       for(let i = 0; i < this.filteredProducts.length; i++){
         if(this.filteredProducts[i].titre.toLowerCase().includes(this.querry.toLowerCase())){
@@ -136,7 +139,6 @@ export default{
 }
 
 </script>
-
 
 <style>
 
@@ -180,7 +182,6 @@ export default{
   left : 0 ; 
   background-color: white;
   color: black;
-  
 }
 
 .secondaryTopPage{
@@ -200,7 +201,7 @@ export default{
 
 .logoWW {
   float: left;
-  }
+}
 
 .navLink {
   float: right;
@@ -357,7 +358,24 @@ a, p{
   align-items: center;
 }
 
+.dropdown{
+  display: block;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 30px ;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #b98d68;
+  border-radius: 5px;
+  border: solid 2px white;
+  outline: none;
+  padding: 5px;
+}
 
+.dropdown a {
+  font-size: 20px;
+}
 
 body{
   background-color: #2c3e50;

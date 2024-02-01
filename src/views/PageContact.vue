@@ -33,6 +33,7 @@
   
   <script>
   import FormulaireContact from '@/components/FormulaireContact.vue'
+
   export default {
     components:{
       FormulaireContact,
@@ -83,6 +84,7 @@
   .box2{
     margin-right: 100px;
   }
+
   #formulaire{
     background-color: #dec5b1;
     padding-left: 100px;

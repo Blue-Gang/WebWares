@@ -12,7 +12,7 @@
       <button>Me connecter</button>
       </form>
     </div>
-  </template>
+</template>
   
   <script>
   export default {
@@ -39,10 +39,8 @@
     border-radius: 10px;
     color: #5e3c1a;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2),
-                0 10px 10px rgba(0, 0, 0, 0.2);
-  
+                0 10px 10px rgba(0, 0, 0, 0.2);  
   }
-  
   
   .formulaire input{
     margin: 15px;

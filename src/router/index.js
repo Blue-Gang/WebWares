@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PageContact from '../views/PageContact.vue'
 import LoginPage from '@/views/LoginPage'
+import AdminVue from '@/views/AdminVue'
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: '/loginpage',
     name: 'connexion',
     component: LoginPage
+  },
+  {
+    path: '/adminvue',
+    name: 'admin',
+    component: AdminVue
   }
 ]
 
