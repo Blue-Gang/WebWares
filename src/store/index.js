@@ -26,7 +26,8 @@ export default createStore({
         description: 'Table à manger en bois massif avec finition élégante.',
         prix: 299.99,
         moq: 5,
-        categorieId: 1
+        stock: 10,
+        categorieId: 1,
       },
   
       {
@@ -129,7 +130,82 @@ export default createStore({
           categorieId: 3
       }
   
-    ]
+    ],
+    //créé un tableau de panier
+    panier: [],
+
+    //créé un tableau de commandes
+    commandes: [],
+
+    //créé un tableau de clients de 10 clients
+    clients: [
+      {
+        id: 1,
+        user: 2,
+        nom: 'Dupont',
+        prenom: 'Jean',       
+        adresse: '1 rue de la Paix',
+        codePostal: '75001',
+        ville: 'Paris',
+        email: 'user@webwares.com',
+        raisonSociale: 'Web Wares',
+        siret: '15854569585852',     
+        role: 'user',        
+      },  
+      {
+        id: 2,
+        user: 1,
+        nom: 'Martin',
+        prenom: 'Paul',       
+        adresse: '2 rue de la Paix',
+        codePostal: '75001',
+        ville: 'Paris',
+        email: 'user@webwares.com',
+        raisonSociale: 'Web Wares',
+        siret: '15854569585852',     
+        role: 'user',        
+      },
+      {
+        id: 3,
+        user: 1,
+        nom: 'Marte',
+        prenom: 'Jean',       
+        adresse: '2 rue du Github',
+        codePostal: '75000',
+        ville: 'La Merte',
+        email: 'user@webwares.com',
+        raisonSociale: 'Web Wares',
+        siret: '15858569585852',     
+        role: 'user',        
+      },
+      {
+        id: 4,
+        user: 1,
+        nom: 'Chouffe',
+        prenom: 'Franck',       
+        adresse: '1664 rue de la Biére',
+        codePostal: '75001',
+        ville: 'Paris',
+        email: 'user@webwares.com',
+        raisonSociale: 'Web Wares',
+        siret: '15558584135852',     
+        role: 'user',        
+      },
+      {
+        id: 5,
+        user: 1,
+        nom: 'Morel',
+        prenom: 'Jason',       
+        adresse: '15 rue Wartender',
+        codePostal: '56895',
+        ville: 'NoMANSLands',
+        email: 'char@decombat.com',
+        raisonSociale: 'Amiral',
+        siret: '585959565658585',     
+        role: 'user',        
+      },
+
+    ],
 
 
   },

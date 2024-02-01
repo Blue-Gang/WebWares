@@ -25,7 +25,7 @@
         <router-link to="/">Acceuil</router-link> 
         <router-link to="/about">Catégories</router-link> 
         <router-link to="/products">Produits</router-link>
-        <router-link to="/tablepage">Table</router-link>
+        
       </div>
       <!-- barre de recherche -->
       <section>
@@ -98,6 +98,12 @@ export default{
 
 
 <style>
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
