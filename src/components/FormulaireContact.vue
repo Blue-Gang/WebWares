@@ -10,7 +10,7 @@
         <form action="">
             <div class="txtform">
                 <div class="box1">
-                    <div class="form-group">
+                    <div class="form-responsive form-group">
                         <input type="text" id="nomentreprise" placeholder="Nom de l'entreprise*" class="form-control">
                     </div>
 
@@ -110,5 +110,17 @@ export default {
         font-weight: bold;
     }
 
+    /* responsive */
+    @media (max-width: 576px) {
+    .txtform {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .box1, .box2 {
+      width: 100%;
+    }
+  }
 
 </style>
