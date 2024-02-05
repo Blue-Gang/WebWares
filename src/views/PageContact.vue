@@ -13,7 +13,8 @@
               <br>
               <p>Nous nous engageons à fournir un service personnalisé et à répondre à vos besoins spécifiques. Contactez-nous dès aujourd'hui pour discuter de vos projets et découvrir comment nous pouvons vous aider à les réaliser.</p>
               
-              <button>En Savoir plus</button>
+              <a href="@/views/PartenairePage.vue
+              "><button>En Savoir plus</button></a>
           </div>
           <img id="img1" class="img-responsive box2" src="@/assets/imgcontact.jpg" alt="">
       </div>

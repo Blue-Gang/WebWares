@@ -26,6 +26,7 @@
         <router-link to="/about">Catégories</router-link> 
         <router-link to="/products">Produits</router-link>
         
+        
       </div>
       <!-- barre de recherche -->
       <section>
@@ -88,19 +89,19 @@
             </div> 
             <div class="col">
                 <ul>
-                    <li class="list CGV "><a class="footA" href="#">Conditions générales de ventes</a></li>
-                    <li class="list CGV1"><a class="footA" href="#">CGV</a></li>
-                    <li class="list CGU"><a class="footA" href="#">Conditions générales d'utilisations</a></li>
-                    <li class="list CGU1"><a class="footA" href="#">CGU</a></li>
-                    <li class="list PDC"><a class="footA" href="#">Politique de confidencialité</a></li>                   
-                    <li class="list PDC1"><a class="footA" href="#">PDC</a></li>                   
+                    <li class="list CGV "><a class="footA" href="/PageCgv">Conditions générales de ventes</a></li>
+                    <li class="list CGV1"><a class="footA" href="/PageCgv">CGV</a></li>
+                    <li class="list CGU"><a class="footA" href="/PageCgu">Conditions générales d'utilisations</a></li>
+                    <li class="list CGU1"><a class="footA" href="/PageCgu">CGU</a></li>
+                    <li class="list PDC"><a class="footA" href="/PolitiqueConf">Politique de confidencialité</a></li>                   
+                    <li class="list PDC1"><a class="footA" href="/PolitiqueConf">PDC</a></li>                   
                 </ul>
             </div>
             <div class="col">
                 <ul>
                     <p class="Follow">Suivez nous</p>
 
-                    <img class="logoR" href="www.facebook.fr" src="@/assets/FB.svg" alt="Logo FaceBook"/>                                      
+                    <img class="logoR" href="https://www.facebook.fr" src="@/assets/FB.svg" alt="Logo FaceBook"/>                                      
                     <img class="logoR" href="www.linkedin.fr" src="@/assets/LKD.svg" alt="Logo Linkedin" />               
                     <img class="logoR" href="www.twitter.com" src="@/assets/TWT.svg" alt="Logo Twiter" /> 
                                 
@@ -500,6 +501,7 @@ footer {
   width: 30px;
   height: 30px;
   margin: 0 10px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 430px){
