@@ -25,6 +25,9 @@
         <router-link to="/">Acceuil</router-link> 
         <router-link to="/about">Catégories</router-link> 
         <router-link to="/products">Produits</router-link>
+        <router-link to="/aboutview">A Propos</router-link>
+        
+        
       </div>
       <!-- barre de recherche -->
       <section>
@@ -41,15 +44,19 @@
       </section>
     </div>
       <div class="none">
-            <div class="horsConnect">
-              <router-link to="/Loginpage">Connection</router-link> 
-              <router-link to="/register">Inscription </router-link>
-            </div>
             <div class="connect">
-              <router-link to="/admin">Admin</router-link> 
-              <router-link to="/logout">Déconnection</router-link>
+              <router-link to="/Loginpage">Connection</router-link> 
+              <router-link to="/SignUp">Inscription </router-link>
             </div>
-        
+            <div class="Horsconnect">
+              <select @change="navigate" class="dropdown" >
+                <option>Menu</option>
+                <option value="bag">Panier {{ 0 }}</option>
+                <option value="vos achat"><router-link to="/achat">vos achats</router-link></option>
+                <option value="@/view/AdminVue">Admin</option>
+                <option value="logout">Déconnection</option>
+              </select>
+            </div>
       </div>
   </nav>
   <footer>
@@ -61,9 +68,9 @@
             </div>           
             <div class="col">
                 <ul class="list-inline">
-                    <li class="list"><a class="footA" href="/HomeView">Accueil</a></li>
-                    <li class="list"><a class="footA" href="/AboutView">A propos</a></li>
-                    <li class="list"><a class="footA" href="/PageContact">Contact</a></li>
+                    <li class="list"><a class="footA" href="/">Accueil</a></li>
+                    <li class="list"><a class="footA" href="/aboutview">A propos</a></li>
+                    <li class="list"><a class="footA" href="/pagecontact">Contact</a></li>
                 </ul>
             </div>                
             <div class="col">
@@ -77,7 +84,7 @@
                 <ul class="list-inline">
                     <li class="list"><a class="footA" href="#">Connexion</a></li>
                     <li class="list"><a class="footA" href="#">S'inscrire</a></li>
-                    <li class="list"><a class="footA" href="#">Carrières</a></li>
+                    <li class="list"><a class="footA" href="/PageCarriere">Carrières</a></li>
                     
                 </ul>
             </div> 
@@ -111,66 +118,29 @@
 
 <script>
 
-const produits = [
-    
-    {
-      id: 1,
-      image: 'mobilier-5.jpg',
-      titre: 'Table à manger en bois',
-      description: 'Table à manger en bois massif avec finition élégante.',
-      prix: 299.99,
-      moq: 5,
-      categorieId: 1
-    },
-
-    {
-      id: 2,
-      image: 'luminaire-1.jpg',
-      titre: 'Lampe moderne',
-      description: 'Lampe avec un design moderne et éclairage ajustable.',
-      prix: 129.99,
-      moq: 10,
-      categorieId: 2
-    },
-
-    {
-      id: 3,
-      image: 'tapis-2.jpg',
-      titre: 'Tapis en laine',
-      description: 'Tapis doux en laine avec motif géométrique.',
-      prix: 89.99,
-      moq: 20,
-      categorieId: 3
-    },
-
-    {
-      id: 4,
-      image: 'deco-3.jpg',
-      titre: 'Vase éthnique en argile',
-      description: 'Vase éthnique en argile avec motifs gravés à la main.',
-      prix: 49.99,
-      moq: 20,
-      categorieId: 4
-    },
-
-  ];
-
 export default{ 
 
+  menuDropdown:'Menu',
   lang: "fr",
   name: 'searchBar',
-  data(){
-    
 
-    return{
+  data(){
+      return{
       querry: "",
-      filteredProducts: produits ,
-      lang: "fr"
+
+
+      lang: "fr",
+      menuDropdown:'Menu',
+
     }
-    
   },
 
   methods:{
+
+    navigate(event){
+      this.$router.push(event.target.value);
+    },
+
     listFilter(){
       for(let i = 0; i < this.filteredProducts.length; i++){
         if(this.filteredProducts[i].titre.toLowerCase().includes(this.querry.toLowerCase())){
@@ -180,18 +150,30 @@ export default{
         }
       }
     }
-  }
+  },
+
+  computed: {
+    filteredProducts(){
+      return this.$store.state.products
+    
+    }
+  },
 }
 
 </script>
 
-
 <style>
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
-  color: #2c3e50;
+  /* color: #2c3e50; */
 }
 
 .principal { 
@@ -207,15 +189,15 @@ export default{
 
 .principal a {
   display: inline-block;
-  margin-top:10px ;
+  margin-top: 10px ;
   margin-left: 30px;
-  font-size: 25px;
+  font-size: 18px;
   font-weight: bold;
   color: #ffffff;
 }
 
 .principal a.router-link-exact-active {
-  color: #08bf6d;
+  color: #5e3c1a;
 }
 
 .secondary{
@@ -228,7 +210,6 @@ export default{
   left : 0 ; 
   background-color: white;
   color: black;
-  
 }
 
 .secondaryTopPage{
@@ -242,13 +223,13 @@ export default{
 .BarNav{
  display: flex;
   justify-content: center;
-  margin-right: 50px ;
+  margin-right: 120px ;
   margin-top: 30px ;
 }
 
 .logoWW {
   float: left;
-  }
+}
 
 .navLink {
   float: right;
@@ -256,6 +237,8 @@ export default{
   font-size: 25px;
   font-weight: bold;
   color: #ffffff;
+  
+  
 }
 
 .barSearch input{
@@ -266,7 +249,7 @@ export default{
     border: none;
     outline: none;
     padding: 5px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .listBarSearch{
@@ -302,6 +285,8 @@ export default{
 .textContact{
   text-decoration: none;
   color: #ffffff;
+  font-size: 15px;
+  text-align: center;
 }
 
 .buttonContact{ 
@@ -326,7 +311,8 @@ export default{
 }
 
 .connect{
-  display: none;
+display:none;
+  
 }
 
 .lang{
@@ -338,8 +324,294 @@ export default{
 }
 
 
-body{
-  background-color: #2c3e50;
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: #b98d68 ;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+  padding-bottom: 20px;
+  
 }
+
+@media screen and (min-width: 430px) and (max-width: 820px){
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: #b98d68 ;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 110px;
+  padding-bottom: 20px;
+  
+}}
+
+
+@media screen and (max-width: 430px){
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: #b98d68 ; 
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 100px;
+  padding-bottom: 20px;
+  
+}}
+  
+.col{
+  display: flex;
+  align-items: center;
+}
+
+
+.foot{
+  margin-top: auto;
+  gap: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 70px;
+  margin-left: -104px;
+}
+
+@media screen and (max-width: 430px){
+.foot{
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-left: 0px;
+}
+}
+@media screen and (min-width: 431px) and (max-width: 820px){
+.foot{
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  gap: 45px;
+  margin-left: -25px;
+}
+}
+
+.list{
+  display: flex;
+  justify-content:center ;
+  margin-bottom: 20px;
+  flex-direction:column;
+  margin: 0 10px;
+  color: white;
+  font-style: italic;
+  padding: 2px;
+   
+}
+
+
+@media screen and (max-width: 430px ){
+.list{
+  font-size: 9px;
+  display: flex;
+  justify-content:center ;
+  margin-bottom: 5px; 
+  margin: 0 10px;
+  font-style: italic;
+  padding: 2px;
+   
+}
+}
+@media screen and (min-width: 431px) and (max-width: 820px){
+.list{
+  font-size: 10px;
+  display: flex;
+  justify-content:center ;
+  margin-bottom: 5px;
+  margin: 0 5px;
+  font-style: italic;
+  padding: 2px;
+   
+}
+}
+
+
+.footA, .copyright{
+  font-weight: 450;
+  color: #5E3C1A;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 430px){
+
+  .footA, .copyright{
+  font-weight: 300;
+  color: #5E3C1A;
+  text-decoration: none;
+}
+}
+@media screen and (min-width: 431px) and (max-width: 820px){
+
+  .footA, .copyright{
+  font-weight: 450;
+  color: #5E3C1A;
+  text-decoration: none;
+}
+}
+
+
+
+
+.copyright{
+  color: #5E3C1A;
+  font-style: italic;
+  font-size: 15px;
+  
+}
+
+@media screen and (max-width: 430px){
+.copyright{
+  color: #5E3C1A;
+  font-style: italic;
+  font-size: 8px;
+  
+}
+}
+@media screen and (min-width: 431px) and (max-width: 820px){
+.copyright{
+  color: #5E3C1A;
+  font-style: italic;
+  font-size: 8px;
+  
+}
+}
+
+
+.logoR{
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 430px){
+.logoR{
+  width: 15px;
+  height: 15px;
+  margin: 0 4px;
+}
+}
+@media screen and (min-width: 431px) and (max-width: 820px){
+.logoR{
+  width: 25px;
+  height: 25px;
+  margin: 0 5px;
+}
+}
+
+.logo{
+  width: 100px;
+  height: 100px;
+  margin: 0 10px;
+}
+
+
+@media screen and (max-width: 430px){
+.logo{
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
+}
+}
+@media screen and (min-width: 430px) and (max-width: 820px){
+.logo{
+  width: 60px;
+  height: 60px;
+  margin: 0 10px;
+}
+}
+
+
+.Follow{
+  color: #5E3C1A;
+  padding-bottom: 5px;
+}
+
+@media screen and (min-width: 430px) and (max-width: 820px){
+.Follow{
+  color: #5E3C1A;
+  font-size: 10px;
+}
+}
+
+@media screen and (max-width: 430px){
+.Follow{
+  display: none;
+}
+}
+
+@media screen and (max-width: 430px){
+.CGV{
+  display:none;
+}}
+@media screen and (min-width: 430px){
+.CGV1{
+  display:none;
+}}
+
+
+@media screen and (max-width: 430px){
+.CGU{
+  display:none;
+}}
+@media screen and (min-width: 430px){
+.CGU1{
+  display:none;
+}}
+
+
+@media screen and (max-width: 430px){
+.PDC{
+  display:none;
+}}
+@media screen and (min-width: 430px){
+.PDC1{
+  display:none;
+}}
+
+.dropdown{
+  display: block;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 30px ;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #b98d68;
+  border-radius: 5px;
+  border: solid 2px white;
+  outline: none;
+  padding: 5px;
+}
+
+.dropdown a {
+  font-size: 20px;
+}
+
+body{
+  background-color: white;
+}
+
 
 </style>

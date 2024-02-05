@@ -13,7 +13,8 @@
               <br>
               <p>Nous nous engageons à fournir un service personnalisé et à répondre à vos besoins spécifiques. Contactez-nous dès aujourd'hui pour discuter de vos projets et découvrir comment nous pouvons vous aider à les réaliser.</p>
               
-              <button>En Savoir plus</button>
+              <a href="@/views/PartenairePage.vue
+              "><button>En Savoir plus</button></a>
           </div>
           <img id="img1" class="img-responsive box2" src="@/assets/imgcontact.jpg" alt="">
       </div>
@@ -36,6 +37,7 @@
   
   <script>
   import FormulaireContact from '@/components/FormulaireContact.vue'
+
   export default {
     components:{
       FormulaireContact,
@@ -46,11 +48,13 @@
   <style scoped>
 
   .container {
-    margin-top: 170px;
+    margin-top: 180px;
   }
 
   h1{
     color: #472e16;
+    font-size: 50px;
+    margin-bottom: 40px;
   }
 
   #img1 {
@@ -76,8 +80,21 @@
     display: flex;
     justify-content: center;
     flex-grow: 1;
-    
-    
+
+  }
+
+  h2  {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 30px;
+  }
+  h3  {
+    margin-bottom: 30px;
+    font-size: 20px;
+  }
+  p {
+    margin-left: 100px;
+    margin-right: 100px;
   }
   .box1 {
     background-color: rgba(255, 255, 255, 0.331);
@@ -93,6 +110,7 @@
   .box2{
     margin-right: 100px;
   }
+
   #formulaire{
     display: flex;
     background-color: #dec5b1;
@@ -127,7 +145,6 @@
         border: none;
         border-radius: 5px;
         margin-top: 20px;
-        margin-bottom: 15px;
         padding: 5px;
         margin-top: 30px;
         width: 150px;
