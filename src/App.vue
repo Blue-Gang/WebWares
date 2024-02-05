@@ -52,6 +52,60 @@
         
       </div>
   </nav>
+  <footer>
+    <div class="foot">
+      <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+            <div>             
+              <img class="logo" href="www.twitter.com" src="@/assets/LogoWW.webp" alt="Logo Twiter" />            
+              <p class="copyright" >Gang Blue © 2024</p>
+            </div>           
+            <div class="col">
+                <ul class="list-inline">
+                    <li class="list"><a class="footA" href="/HomeView">Accueil</a></li>
+                    <li class="list"><a class="footA" href="/AboutView">A propos</a></li>
+                    <li class="list"><a class="footA" href="/PageContact">Contact</a></li>
+                </ul>
+            </div>                
+            <div class="col">
+                <ul>
+                    <li class="list"><a class="footA" href="#">Catégories</a></li>
+                    <li class="list"><a class="footA" href="#">Produits</a></li>
+                    <li class="list"><a class="footA" href="#">Marques</a></li>
+                </ul>
+            </div>                                 
+            <div class="col">
+                <ul class="list-inline">
+                    <li class="list"><a class="footA" href="#">Connexion</a></li>
+                    <li class="list"><a class="footA" href="#">S'inscrire</a></li>
+                    <li class="list"><a class="footA" href="#">Carrières</a></li>
+                    
+                </ul>
+            </div> 
+            <div class="col">
+                <ul>
+                    <li class="list CGV "><a class="footA" href="/PageCgv">Conditions générales de ventes</a></li>
+                    <li class="list CGV1"><a class="footA" href="/PageCgv">CGV</a></li>
+                    <li class="list CGU"><a class="footA" href="/PageCgu">Conditions générales d'utilisations</a></li>
+                    <li class="list CGU1"><a class="footA" href="/PageCgu">CGU</a></li>
+                    <li class="list PDC"><a class="footA" href="/PolitiqueConf">Politique de confidencialité</a></li>                   
+                    <li class="list PDC1"><a class="footA" href="/PolitiqueConf">PDC</a></li>                   
+                </ul>
+            </div>
+            <div class="col">
+                <ul>
+                    <p class="Follow">Suivez nous</p>
+
+                    <img class="logoR" href="https://www.facebook.fr" src="@/assets/FB.svg" alt="Logo FaceBook"/>                                      
+                    <img class="logoR" href="www.linkedin.fr" src="@/assets/LKD.svg" alt="Logo Linkedin" />               
+                    <img class="logoR" href="www.twitter.com" src="@/assets/TWT.svg" alt="Logo Twiter" /> 
+                                
+                </ul>
+            </div>   
+                    
+      </div>
+          
+  </footer>
+    
   <router-view />
 </template>
 
