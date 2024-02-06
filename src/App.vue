@@ -24,7 +24,10 @@
       <div class="navLink">
         <router-link to="/">Acceuil</router-link> 
         <router-link to="/about">Catégories</router-link> 
-        <router-link to="/products">Produits</router-link>
+        <router-link to="/produitsview">Produits</router-link>
+        <router-link to="/panierview">Panier ({{ produitPanier.length }})</router-link>
+        <router-link to="/commresume">Commande </router-link>
+        
         
       </div>
       <!-- barre de recherche -->
@@ -46,19 +49,77 @@
               <router-link to="/Loginpage">Connection</router-link> 
               <router-link to="/register">Inscription </router-link>
             </div>
-            <div class="connect">
-              <router-link to="/admin">Admin</router-link> 
-              <router-link to="/logout">Déconnection</router-link>
+            <div class="Horsconnect">
+              <select @change="navigate" class="dropdown" >
+                <option>Menu</option>
+                <option value="panierview"> Panier ({{ produitPanier.length }})</option>
+                <option value="vos achat"><router-link to="/commresume">vos achats</router-link></option>
+                <option value="@/view/AdminVue">Admin</option>
+                <option value="logout">Déconnection</option>
+              </select>
             </div>
         
       </div>
   </nav>
+  <footer>
+    <div class="foot">
+      <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+            <div>             
+              <img class="logo" href="www.twitter.com" src="@/assets/LogoWW.webp" alt="Logo Twiter" />            
+              <p class="copyright" >Gang Blue © 2024</p>
+            </div>           
+            <div class="col">
+                <ul class="list-inline">
+                    <li class="list"><a class="footA" href="homeview">Accueil</a></li>
+                    <li class="list"><a class="footA" href="#">A propos</a></li>
+                    <li class="list"><a class="footA" href="/pagecontact">Contact</a></li>
+                </ul>
+            </div>                
+            <div class="col">
+                <ul>
+                    <li class="list"><a class="footA" href="#">Catégories</a></li>
+                    <li class="list"><a class="footA" href="/produitsview">Produits</a></li>
+                    <li class="list"><a class="footA" href="#">Marques</a></li>
+                </ul>
+            </div>                                 
+            <div class="col">
+                <ul class="list-inline">
+                    <li class="list"><a class="footA" href="#">Connexion</a></li>
+                    <li class="list"><a class="footA" href="/signup">S'inscrire</a></li>
+                    <li class="list"><a class="footA" href="#">Carrières</a></li>
+                    
+                </ul>
+            </div> 
+            <div class="col">
+                <ul>
+                    <li class="list CGV "><a class="footA" href="#">Conditions générales de ventes</a></li>
+                    <li class="list CGV1"><a class="footA" href="#">CGV</a></li>
+                    <li class="list CGU"><a class="footA" href="#">Conditions générales d'utilisations</a></li>
+                    <li class="list CGU1"><a class="footA" href="#">CGU</a></li>
+                    <li class="list PDC"><a class="footA" href="#">Politique de confidencialité</a></li>                   
+                    <li class="list PDC1"><a class="footA" href="#">PDC</a></li>                   
+                </ul>
+            </div>
+            <div class="col">
+                <ul>
+                    <p class="Follow">Suivez nous</p>
+
+                    <img class="logoR" href="www.facebook.fr" src="@/assets/FB.svg" alt="Logo FaceBook"/>                                      
+                    <img class="logoR" href="www.linkedin.fr" src="@/assets/LKD.svg" alt="Logo Linkedin" />               
+                    <img class="logoR" href="www.twitter.com" src="@/assets/TWT.svg" alt="Logo Twiter" /> 
+                                
+                </ul>
+            </div>   
+                    
+      </div>
+          
+  </footer>
+    
   <router-view />
 </template>
 
 <script>
-
-
+import { mapState } from 'vuex';
 
 export default{ 
 
@@ -69,9 +130,9 @@ export default{
 
     return{
       querry: "",
-      lang: "fr"
+      lang: "fr",
+      menuDropdown:'Menu',
     }
-    
   },
 
   methods:{
@@ -88,9 +149,11 @@ export default{
 
   computed: {
     filteredProducts(){
-      return this.$store.state.products
+      return this.$store.state.products    
+    },
     
-    }
+    ...mapState(['produitPanier']),
+  
   },
 }
 

@@ -1,0 +1,173 @@
+<template>
+    <div class="produitview">
+        <h1 class="titreproduit">Produits</h1>
+        <div class="tableproduits" >
+            <div class="cardproduit" v-for="(prod,index) in produits" v-bind:key="index">
+                <tr class="cardinte">
+                    <h2 class="titleprod">{{ prod.titre }}</h2>
+                    
+                    <img class="imgproduit" v-bind:src="prod.image">
+                    <br>
+                   
+                    <td class="description">{{ prod.description }}</td>
+                    <br>
+                    <td>MOQ: {{ prod.moq }}</td>       
+                    <td class="prix">Prix: {{ prod.prix }} € HT</td>
+                    
+                    <Gbtn  @click="add(prod)" label="Ajouter au panier"/>
+                    
+                              
+                </tr>
+            </div>
+        </div>   
+    </div>
+</template>
+
+<script>
+import { mapState } from 'vuex'
+import Gbtn from '@/components/ButtonGen.vue'
+
+export default {
+        //impoter les données de la base de données (store)
+        data(){
+            return {                
+            }           
+        },
+
+        components: {
+            Gbtn
+        },
+
+        methods: {
+           
+            
+
+            add(prod) {
+                const produitExistant = this.produitPanier.find(item => item.id === prod.id);
+                if (produitExistant) {  
+                this.$store.commit('incrementQuantite', produitExistant.quantites ++);
+                
+                } else {
+        
+                prod.quantites = prod.moq;
+                    this.$store.commit('addProduit', prod);
+                }
+                this.saveCartToLocal();               
+            },
+
+            saveCartToLocal() {
+                    localStorage.setItem('panier', JSON.stringify(this.produitPanier));
+            }, 
+            saveCommandeToLocal() {
+                    localStorage.setItem('commande', JSON.stringify(this.commande));
+            },
+
+        },
+            
+    
+        computed: {
+            ...mapState(['produits', 'produitPanier']),
+
+            
+        },
+
+        
+
+        created() {
+            const savedCart = localStorage.getItem('panier');
+            if (savedCart) {
+            this.$store.commit('setProduitPanier', JSON.parse(savedCart));
+            }
+        },
+}
+</script>
+
+<style>
+/* style card produits */
+
+template {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #472e16;
+    transition-duration: 0.5s;
+}
+
+.tableproduits {
+    display: flex; 
+    display: grid;
+    grid-template-columns: 400px 400px 400px 400px; 
+    margin-bottom: 200px;
+    margin-top:200px;
+    justify-content: center;
+    margin-right: 8%;
+    
+}
+
+/* media queries */
+@media (max-width: 768px) {
+    .tableproduits {
+        grid-template-columns: 300px 300px;
+        justify-content: center;
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tableproduits {
+        grid-template-columns: 250px;
+        justify-content: center;
+        
+    }
+}
+
+.cardinte{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardproduit {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 10px;  
+    background-color: #cca88c;
+    opacity: 0.9;
+    z-index: 0;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px 0 rgba(11, 11, 11, 0.625);
+    transition: 0.3s;
+    margin-left: 25%;  
+    width: 330px;
+    height: 480px;
+    overflow: hidden;
+
+}
+
+.cardproduit:hover {
+    box-shadow: 0 12px 24px 0 rgba(11, 11, 11, 0.625);
+    opacity: 1;
+    z-index: 0;
+    transform: scale(1.1);
+}
+
+.imgproduit {
+    width: 250px;
+    height: 200px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+
+
+.titleprod {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #472e16;
+}
+
+
+</style>

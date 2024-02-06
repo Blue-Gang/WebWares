@@ -1,8 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PageContact from '../views/PageContact.vue'
-import LoginPage from '@/views/LoginPage'
-
+import LoginPage from '@/views/LoginPage.vue'
+import SignUp from '@/views/SignUp.vue'
+import AdminVue from '@/views/AdminVue'
+import ProduitsView from '../views/ProduitsView.vue'
+import PanierView from '../views/PanierView.vue'
+import CommResume from '../views/CommResume.vue'
 
 const routes = [
   {
@@ -19,8 +23,32 @@ const routes = [
     path: '/loginpage',
     name: 'connexion',
     component: LoginPage
-  }
- 
+  },
+  {
+    path: '/signup',
+    name: 'inscription',
+    component: SignUp
+  },
+  {
+    path: '/adminvue',
+    name: 'admin',
+    component: AdminVue
+  },
+  {
+    path: '/produitsview',
+    name: 'produits',
+    component: ProduitsView
+  },
+  {
+    path: '/panierview',
+    name: 'panier',
+    component: PanierView
+  },
+  {
+    path: '/commresume',
+    name: 'commresume',
+    component: CommResume
+   }
 ]
 
 const router = createRouter({
