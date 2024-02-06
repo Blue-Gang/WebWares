@@ -114,8 +114,8 @@
                     <img class="logoR" href="www.facebook.fr" src="@/assets/FB.svg" alt="Logo FaceBook"/>                                      
                     <img class="logoR" href="www.linkedin.fr" src="@/assets/LKD.svg" alt="Logo Linkedin" />               
                     <img class="logoR" href="www.twitter.com" src="@/assets/TWT.svg" alt="Logo Twiter" /> 
-                                
-                </ul>
+
+                  </ul>
             </div>   
                     
       </div>
