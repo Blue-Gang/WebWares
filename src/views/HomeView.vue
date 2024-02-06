@@ -4,6 +4,7 @@
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <FooterPage/>
     <LoginPage/>
+    <SignUp/>
   </div>
 </template>
 
@@ -12,12 +13,11 @@
 import HelloWorld from '@/components/HelloWorld.vue';
 
 
+
 export default {
   
   components:{
     HelloWorld,
-
-
   }
 }
 </script>

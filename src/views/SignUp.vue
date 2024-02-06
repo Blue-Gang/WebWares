@@ -1,10 +1,9 @@
 <template>
-
-  <div>
-    <UserForm/>
-  </div>
-  
-  
+    <div>
+      <UserForm title="Débutez votre shopping !"
+      paragraphe="Nos produits, vos envies."
+      :formInscription="{}"/>
+    </div>
   
   </template>
   
@@ -20,9 +19,5 @@
   </script>
   
   <style scoped>
-  .formulaire{
-    width: 600px;
-  }
-  
   
   </style>
