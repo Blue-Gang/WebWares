@@ -4,12 +4,19 @@ import AboutView from '../views/AboutView.vue'
 import PageContact from '../views/PageContact.vue'
 import LoginPage from '@/views/LoginPage.vue'
 import SignUp from '@/views/SignUp.vue'
-import PageCgv from '@/views/PageCgv.vue'
-import AdminVue from '@/views/AdminVue'
 import PagePartenaire from '@/views/PagePartenaire.vue'
+                        // Footer
+import PageCgv from '@/views/PageCgv.vue'
 import PageCgu from '@/views/PageCgu.vue'
 import PolitiqueConf from '@/views/PolitiqueConf.vue'
 import PageCarriere from '@/views/PageCarriere.vue'
+                        // DashBoard User & Admin
+import AdminPage from '@/views/DashBoard/AdminPage.vue'
+import AdminParametre from '@/views/DashBoard/AdminParametre.vue'
+import AdminProfile from '@/views/DashBoard/AdminProfile.vue'
+import UserPage from '@/views/DashBoard/UserPage.vue'
+import UserProfile from '@/views/DashBoard/UserProfile.vue'
+import UserParametre from '@/views/DashBoard/UserParametre.vue'
 
 const routes = [
   {
@@ -38,11 +45,6 @@ const routes = [
     component: SignUp
   },
   {
-    path: '/adminvue',
-    name: 'admin',
-    component: AdminVue
-  },
-  {
     path: '/pagecgv',
     name: 'cgv',
     component: PageCgv
@@ -60,13 +62,50 @@ const routes = [
 {
   path: '/politiqueconf',
   name: 'politiqueconf',
-  component: PolitiqueConf
+  component: PolitiqueConf,
 },
 {
   path: '/pagecarriere',
   name: 'carriere',
-  component: PageCarriere
+  component: PageCarriere,
 },
+// DASHBOARD ADMIN
+{
+  path: '/adminpage',
+  name: 'DashBoard',
+  component: AdminPage,
+  children: [
+    {
+      path: '/adminparametre',
+      name: 'parametre',
+      component: AdminParametre,
+    },
+    {
+      path: '/adminprofile',
+      name: 'tableaudebord',
+      component: AdminProfile,
+    },
+  ],
+},
+// DASHBOARD USER
+{
+  path: '/userpage',
+  name: 'userboard',
+  component: UserPage,
+  children: [
+    {
+      path: '/userprofile',
+      name: 'profile',
+      component: UserProfile,
+    },
+    {
+      path: '/userparametre',
+      name: 'parametre',
+      component: UserParametre,
+    },
+  ],
+},
+
  
 ]
 

@@ -1,11 +1,12 @@
 <template>
-    <h1>Admin</h1>
+    <div>
+        Paramètres
+    </div>
 </template>
 
 <script>
 export default {
 
-    
 }
 </script>
 

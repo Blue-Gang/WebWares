@@ -53,7 +53,7 @@
                 <option>Menu</option>
                 <option value="bag">Panier {{ 0 }}</option>
                 <option value="vos achat"><router-link to="/achat">vos achats</router-link></option>
-                <option value="@/view/AdminVue">Admin</option>
+                <option value="/AdminPage">Admin</option>
                 <option value="logout">Déconnection</option>
               </select>
             </div>
@@ -62,8 +62,8 @@
   <footer>
     <div class="foot">
       <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
-            <div>             
-              <img class="logo" href="www.twitter.com" src="@/assets/LogoWW.webp" alt="Logo Twiter" />            
+            <div>
+              <a href="/"><img class="logo" src="@/assets/LogoWW.webp" alt="Logo Twiter" /></a>             
               <p class="copyright" >Gang Blue © 2024</p>
             </div>           
             <div class="col">
@@ -102,9 +102,9 @@
                 <ul>
                     <p class="Follow">Suivez nous</p>
 
-                    <img class="logoR" href="https://www.facebook.fr" src="@/assets/FB.svg" alt="Logo FaceBook"/>                                      
-                    <img class="logoR" href="www.linkedin.fr" src="@/assets/LKD.svg" alt="Logo Linkedin" />               
-                    <img class="logoR" href="www.twitter.com" src="@/assets/TWT.svg" alt="Logo Twiter" /> 
+                    <a href="https://www.facebook.com/"><img class="logoR" src="@/assets/FB.svg" alt="Logo FaceBook"/></a>                                      
+                    <a href="https://www.linkedin.com/"><img class="logoR" src="@/assets/LKD.svg" alt="Logo Linkedin" /></a>               
+                    <a href="https://twitter.com/"><img class="logoR" src="@/assets/TWT.svg" alt="Logo Twiter" /></a> 
                                 
                 </ul>
             </div>   
@@ -177,7 +177,7 @@ export default{
 }
 
 .principal { 
-  position: fixed;
+  /* position: fixed; */
   margin-top: 50px ; 
   top: 0;
   left: 0; 
