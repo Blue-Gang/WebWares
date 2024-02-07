@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PageContact from '../views/PageContact.vue'
 import LoginPage from '@/views/LoginPage.vue'
+
 import SignUp from '@/views/SignUp.vue'
 import PageCgv from '@/views/PageCgv.vue'
 import AdminVue from '@/views/AdminVue'
@@ -9,6 +10,10 @@ import PagePartenaire from '@/views/PagePartenaire.vue'
 import PageCgu from '@/views/PageCgu.vue'
 import PolitiqueConf from '@/views/PolitiqueConf.vue'
 
+
+import ProduitsView from '../views/ProduitsView.vue'
+import PanierView from '../views/PanierView.vue'
+import CommResume from '../views/CommResume.vue'
 
 const routes = [
   {
@@ -26,6 +31,24 @@ const routes = [
     name: 'connexion',
     component: LoginPage
   },
+
+  
+  {
+    path: '/produitsview',
+    name: 'produits',
+    component: ProduitsView
+  },
+  {
+    path: '/panierview',
+    name: 'panier',
+    component: PanierView
+  },
+  {
+    path: '/commresume',
+    name: 'commresume',
+    component: CommResume
+   }
+
   {
     path: '/signup',
     name: 'inscription',
@@ -57,6 +80,7 @@ const routes = [
   component: PolitiqueConf
 },
  
+
 ]
 
 const router = createRouter({

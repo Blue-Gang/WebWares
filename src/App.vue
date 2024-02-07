@@ -24,12 +24,15 @@
       <div class="navLink">
         <router-link to="/">Acceuil</router-link> 
         <router-link to="/about">Catégories</router-link> 
-        <router-link to="/products">Produits</router-link>
+        <router-link to="/produitsview">Produits</router-link>
+        <router-link to="/panierview">Panier ({{ produitPanier.length }})</router-link>
+        <router-link to="/commresume">Commande </router-link>
+        
         
         
       </div>
       <!-- barre de recherche -->
-      <section>
+      <!-- <section>
         <span class="barSearch">
           <div>
             <input type="text" v-model="querry" @input="listFilter" placeholder="Rechercher un produit">
@@ -40,7 +43,7 @@
             </ul>
           </div>
         </span>
-      </section>
+      </section> -->
     </div>
       <div class="none">
             <div class="connect">
@@ -50,8 +53,10 @@
             <div class="Horsconnect">
               <select @change="navigate" class="dropdown" >
                 <option>Menu</option>
-                <option value="bag">Panier {{ 0 }}</option>
-                <option value="vos achat"><router-link to="/achat">vos achats</router-link></option>
+
+                <option value="panierview"> Panier ({{ produitPanier.length }})</option>
+                <option value="vos achat"><router-link to="/commresume">vos achats</router-link></option>
+
                 <option value="@/view/AdminVue">Admin</option>
                 <option value="logout">Déconnection</option>
               </select>
@@ -67,41 +72,55 @@
             </div>           
             <div class="col">
                 <ul class="list-inline">
-                    <li class="list"><a class="footA" href="#">Accueil</a></li>
+
+                    <li class="list"><a class="footA" href="homeview">Accueil</a></li>
                     <li class="list"><a class="footA" href="#">A propos</a></li>
-                    <li class="list"><a class="footA" href="#">Contact</a></li>
+                    <li class="list"><a class="footA" href="/pagecontact">Contact</a></li>
+
                 </ul>
             </div>                
             <div class="col">
                 <ul>
                     <li class="list"><a class="footA" href="#">Catégories</a></li>
-                    <li class="list"><a class="footA" href="#">Produits</a></li>
+
+                    <li class="list"><a class="footA" href="/produitsview">Produits</a></li>
+
+
+
                     <li class="list"><a class="footA" href="#">Marques</a></li>
                 </ul>
             </div>                                 
             <div class="col">
                 <ul class="list-inline">
                     <li class="list"><a class="footA" href="#">Connexion</a></li>
-                    <li class="list"><a class="footA" href="#">S'inscrire</a></li>
+
+                    <li class="list"><a class="footA" href="/signup">S'inscrire</a></li>
+
+                   
+
                     <li class="list"><a class="footA" href="#">Carrières</a></li>
                     
                 </ul>
             </div> 
             <div class="col">
                 <ul>
-                    <li class="list CGV "><a class="footA" href="/PageCgv">Conditions générales de ventes</a></li>
-                    <li class="list CGV1"><a class="footA" href="/PageCgv">CGV</a></li>
-                    <li class="list CGU"><a class="footA" href="/PageCgu">Conditions générales d'utilisations</a></li>
-                    <li class="list CGU1"><a class="footA" href="/PageCgu">CGU</a></li>
-                    <li class="list PDC"><a class="footA" href="/PolitiqueConf">Politique de confidencialité</a></li>                   
-                    <li class="list PDC1"><a class="footA" href="/PolitiqueConf">PDC</a></li>                   
+
+                    <li class="list CGV "><a class="footA" href="#">Conditions générales de ventes</a></li>
+                    <li class="list CGV1"><a class="footA" href="#">CGV</a></li>
+                    <li class="list CGU"><a class="footA" href="#">Conditions générales d'utilisations</a></li>
+                    <li class="list CGU1"><a class="footA" href="#">CGU</a></li>
+                    <li class="list PDC"><a class="footA" href="#">Politique de confidencialité</a></li>                   
+                    <li class="list PDC1"><a class="footA" href="#">PDC</a></li>                   
+
                 </ul>
             </div>
             <div class="col">
                 <ul>
                     <p class="Follow">Suivez nous</p>
 
-                    <img class="logoR" href="https://www.facebook.fr" src="@/assets/FB.svg" alt="Logo FaceBook"/>                                      
+
+                    <img class="logoR" href="www.facebook.fr" src="@/assets/FB.svg" alt="Logo FaceBook"/>                                      
+
                     <img class="logoR" href="www.linkedin.fr" src="@/assets/LKD.svg" alt="Logo Linkedin" />               
                     <img class="logoR" href="www.twitter.com" src="@/assets/TWT.svg" alt="Logo Twiter" /> 
                                 
@@ -117,6 +136,9 @@
 
 <script>
 
+import { mapState } from 'vuex';
+
+
 export default{ 
 
   menuDropdown:'Menu',
@@ -126,7 +148,6 @@ export default{
   data(){
       return{
       querry: "",
-
 
       lang: "fr",
       menuDropdown:'Menu',
@@ -153,15 +174,18 @@ export default{
 
   computed: {
     filteredProducts(){
-      return this.$store.state.products
+      return this.$store.state.products    
+    },
     
-    }
+    ...mapState(['produitPanier']),
+  
   },
 }
 
 </script>
 
 <style>
+
 
 *{
   margin: 0;
@@ -175,8 +199,10 @@ export default{
   /* color: #2c3e50; */
 }
 
+/* Header Jason */
+
 .principal { 
-  position: fixed;
+  position: absolute;
   margin-top: 50px ; 
   top: 0;
   left: 0; 
@@ -190,9 +216,11 @@ export default{
   display: inline-block;
   margin-top: 10px ;
   margin-left: 30px;
-  font-size: 18px;
-  font-weight: bold;
+
+  font-size: 20px;
+
   color: #ffffff;
+  text-decoration: none;
 }
 
 .principal a.router-link-exact-active {
@@ -201,7 +229,7 @@ export default{
 
 .secondary{
   display: inline-block;
-  position: fixed;
+  position: absolute;
   z-index: 1;
   max-height: 50px;
   width: 100vw;
@@ -234,7 +262,7 @@ export default{
   float: right;
   margin-right: 250px;
   font-size: 25px;
-  font-weight: bold;
+  
   color: #ffffff;
   
   
@@ -278,7 +306,6 @@ export default{
   border: none;
   outline: none;
   padding: 5px;
-
 } 
 
 .textContact{
@@ -322,12 +349,50 @@ display:none;
 
 }
 
+.dropdown{
+  display: block;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 30px ;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #b98d68;
+  border-radius: 5px;
+  border: solid 2px white;
+  outline: none;
+  padding: 5px;
+}
+
+
+.dropdown a {
+  font-size: 20px;
+}
+
+.dropCategorie{
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #b98d68;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding: 5px;
+}
+
+/* Header Jason */
+
+
+/* Footer David */
 
 footer {
+  z-index: 1;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  background-color: #b98d68 ;
+  
+  background-color: #b98c68dc ;
+
   color: white;
   padding: 10px;
   text-align: center;
@@ -336,6 +401,9 @@ footer {
   width: 100%;
   height: 150px;
   padding-bottom: 20px;
+
+  margin-top: 50px;
+
   
 }
 
@@ -386,6 +454,7 @@ footer {
   justify-content: center;
   gap: 70px;
   margin-left: -104px;
+
 }
 
 @media screen and (max-width: 430px){
@@ -397,6 +466,7 @@ footer {
   margin-left: 0px;
 }
 }
+
 @media screen and (min-width: 431px) and (max-width: 820px){
 .foot{
   margin-top: auto;
@@ -432,6 +502,7 @@ footer {
    
 }
 }
+
 @media screen and (min-width: 431px) and (max-width: 820px){
 .list{
   font-size: 10px;
@@ -469,9 +540,6 @@ footer {
 }
 }
 
-
-
-
 .copyright{
   color: #5E3C1A;
   font-style: italic;
@@ -501,7 +569,6 @@ footer {
   width: 30px;
   height: 30px;
   margin: 0 10px;
-  cursor: pointer;
 }
 
 @media screen and (max-width: 430px){
@@ -511,6 +578,7 @@ footer {
   margin: 0 4px;
 }
 }
+
 @media screen and (min-width: 431px) and (max-width: 820px){
 .logoR{
   width: 25px;
@@ -533,6 +601,7 @@ footer {
   margin: 0 10px;
 }
 }
+
 @media screen and (min-width: 430px) and (max-width: 820px){
 .logo{
   width: 60px;
@@ -589,28 +658,13 @@ footer {
   display:none;
 }}
 
-.dropdown{
-  display: block;
-  float: left;
-  margin-right: 10px;
-  margin-bottom: 30px ;
-  font-size: 20px;
-  font-weight: bold;
-  color: #ffffff;
-  background-color: #b98d68;
-  border-radius: 5px;
-  border: solid 2px white;
-  outline: none;
-  padding: 5px;
-}
 
-.dropdown a {
-  font-size: 20px;
-}
+/* Footer David */
+
 
 body{
-  background-color: white;
+    background-color: white;
 }
 
-
 </style>
+```
