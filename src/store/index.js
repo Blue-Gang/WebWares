@@ -103,7 +103,7 @@ export default createStore({
         {
           id: 9,
           image: 'images/mobilier-2.jpg',
-          titre: 'Table à manger en bois',
+          titre: 'Console murale en bois',
           description: 'Table à manger en bois massif avec finition élégante.',
           prix: 299.99,
           moq: 5,
@@ -145,7 +145,7 @@ export default createStore({
         {
           id: 13,
           image: 'images/mobilier-3.jpg',
-          titre: 'Chaise en bois',
+          titre: 'Canapé en cuir',
           description: 'Chaise en bois massif avec finition élégante.',
           prix: 99.99,
           moq: 5,
@@ -189,7 +189,7 @@ export default createStore({
         {
           id: 17,
           image: 'images/mobilier-4.jpg',
-          titre: 'Table à manger en bois',
+          titre: 'Canapé tissus',
           description: 'Table à manger en bois massif avec finition élégante.',
           prix: 299.99,
           moq: 5,

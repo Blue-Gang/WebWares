@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-            <Gbtn label="Confirmer la commande"  @click="validerCom"/>
+            <Gbtn label="Confirmer votre commande"  @click="validerCom"/>
         </div>
     
 </template> 
@@ -79,7 +79,8 @@ export default {
         validerCom() {
             this.$store.commit('validerCommande');
             this.$router.push('/commande');
-            this.saveCartToLocal();
+            this.saveCommandeToLocal
+        
         },
         saveCommandeToLocal() {
         localStorage.setItem('commande', JSON.stringify(this.commande));

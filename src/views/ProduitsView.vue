@@ -1,4 +1,17 @@
 <template>
+
+<section>
+        <span class="barSearch">
+          <div>
+            <input type="text" v-model="querry" @input="listFilter" placeholder="Rechercher un produit">
+          </div>
+          <div class="listBarSearch">
+            <ul>
+                <li v-for="(produits, i) in filteredProducts" :key="i">{{ produits.titre }}</li>
+            </ul>
+          </div>
+        </span>
+      </section>
     <div class="produitview">
         <h1 class="titreproduit">Produits</h1>
         <div class="tableproduits" >
@@ -83,6 +96,33 @@ export default {
 </script>
 
 <style>
+
+.barSearch input{
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    margin-right: 10px;
+    background-color: #cca88c81;
+    margin-top: 200px;
+}
+
+
+.barSearch {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 0 auto;
+   
+    
+    
+}
+
+
 /* style card produits */
 
 template {
@@ -97,7 +137,7 @@ template {
     display: grid;
     grid-template-columns: 400px 400px 400px 400px; 
     margin-bottom: 200px;
-    margin-top:200px;
+    margin-top:50px;
     justify-content: center;
     margin-right: 8%;
     
@@ -108,7 +148,8 @@ template {
     .tableproduits {
         grid-template-columns: 300px 300px;
         justify-content: center;
-        margin-left: 0px;
+        margin-left: 5px;
+        padding: 25px;
     }
 }
 
@@ -133,7 +174,7 @@ template {
     align-items: center;
     margin-bottom: 40px;
     padding: 10px;  
-    background-color: #cca88c;
+    background-color: #cca88c81 ;
     opacity: 0.9;
     z-index: 0;
     border-radius: 10px;
@@ -166,8 +207,15 @@ template {
 .titleprod {
     font-size: 20px;
     margin-bottom: 10px;
-    color: #472e16;
+    color: #472e16c6;
 }
 
+.titreproduit{
+    
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-size: 40px;
+    color: #472e16;
+}
 
 </style>
