@@ -1,5 +1,6 @@
 <template>
 
+
 <section>
         <span class="barSearch">
           <div>
@@ -14,10 +15,12 @@
       </section>
     <div class="produitview">
         <h1 class="titreproduit">Produits</h1>
+
         <div class="tableproduits" >
             <div class="cardproduit" v-for="(prod,index) in produits" v-bind:key="index">
                 <tr class="cardinte">
                     <h2 class="titleprod">{{ prod.titre }}</h2>
+
                     
                     <img class="imgproduit" v-bind:src="prod.image">
                     <br>
@@ -29,7 +32,7 @@
                     
                     <Gbtn  @click="add(prod)" label="Ajouter au panier"/>
                     
-                              
+                             
                 </tr>
             </div>
         </div>   
@@ -38,6 +41,7 @@
 
 <script>
 import { mapState } from 'vuex'
+
 import Gbtn from '@/components/ButtonGen.vue'
 
 export default {
@@ -91,11 +95,13 @@ export default {
             if (savedCart) {
             this.$store.commit('setProduitPanier', JSON.parse(savedCart));
             }
+
         },
 }
 </script>
 
 <style>
+
 
 .barSearch input{
     width: 300px;
@@ -161,6 +167,7 @@ template {
     }
 }
 
+
 .cardinte{
     display: flex;
     flex-direction: column;
@@ -203,7 +210,6 @@ template {
 }
 
 
-
 .titleprod {
     font-size: 20px;
     margin-bottom: 10px;
@@ -217,5 +223,6 @@ template {
     font-size: 40px;
     color: #472e16;
 }
+
 
 </style>

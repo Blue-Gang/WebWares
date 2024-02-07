@@ -23,6 +23,19 @@
     <div class="BarNav">
       <div class="navLink">
         <router-link to="/">Acceuil</router-link> 
+
+        <router-link to="/">
+          <select @change="navigate" class="dropCategorie">
+              <option>Catégories</option>
+              <option value="/vasevue">Vase</option>
+              <option value="/tapisview">Tapis</option>
+              <option value="/lampeview">Luminaire</option>
+              <option value="/tableview">Table</option>
+              <option value="/chaiseview">Chaise</option>
+            </select>
+        </router-link> 
+        
+
         <router-link to="/about">Catégories</router-link>  
         <router-link to="/aboutview">A Propos</router-link>
         <router-link to="/produitsview">Produits</router-link>
@@ -30,9 +43,11 @@
         <router-link to="/commresume">Commande </router-link>
         
 
+
         
         
       </div>
+
       <!-- barre de recherche -->
       <!-- <section>
         <span class="barSearch">
@@ -57,8 +72,10 @@
                 <option>Menu</option>
 
 
+
                 <option value="panierview"> Panier ({{ produitPanier.length }})</option>
                 <option value="vos achat"><router-link to="/commresume">vos achats</router-link></option>
+
 
                 <option value="@/view/AdminVue">Admin</option>
 
@@ -79,22 +96,27 @@
             <div class="col">
                 <ul class="list-inline">
 
+
                     <li class="list"><a class="footA" href="/">Accueil</a></li>
                     <li class="list"><a class="footA" href="/aboutview">A propos</a></li>
                     <li class="list"><a class="footA" href="/pagecontact">Contact</a></li>
+
 
                 </ul>
             </div>                
             <div class="col">
                 <ul>
                     <li class="list"><a class="footA" href="#">Catégories</a></li>
+
                     <li class="list"><a class="footA" href="/produitsview">Produits</a></li>
+
                     <li class="list"><a class="footA" href="#">Marques</a></li>
                 </ul>
             </div>                                 
             <div class="col">
                 <ul class="list-inline">
                     <li class="list"><a class="footA" href="#">Connexion</a></li>
+
 
                     
                     <li class="list"><a class="footA" href="/PageCarriere">Carrières</a></li>
@@ -105,11 +127,13 @@
                    
                     <li class="list"><a class="footA" href="#">Carrières</a></li>
 
+
                     
                 </ul>
             </div> 
             <div class="col">
                 <ul>
+
 
                     <li class="list CGV "><a class="footA" href="/PageCgv">Conditions générales de ventes</a></li>
                     <li class="list CGV1"><a class="footA" href="/PageCgv">CGV</a></li>
@@ -117,6 +141,7 @@
                     <li class="list CGU1"><a class="footA" href="/PageCgu">CGU</a></li>
                     <li class="list PDC"><a class="footA" href="/PolitiqueConf">Politique de confidencialité</a></li>                   
                     <li class="list PDC1"><a class="footA" href="/PolitiqueConf">PDC</a></li>                   
+
 
                 </ul>
             </div>
@@ -127,11 +152,13 @@
 
 
 
+
                     <a href="https://www.facebook.com/"><img class="logoR" src="@/assets/FB.svg" alt="Logo FaceBook"/></a>                                      
                     <a href="https://www.linkedin.com/"><img class="logoR" src="@/assets/LKD.svg" alt="Logo Linkedin" /></a>               
                     <a href="https://twitter.com/"><img class="logoR" src="@/assets/TWT.svg" alt="Logo Twiter" /></a> 
                                 
                 </ul>
+
             </div>   
                     
       </div>
@@ -143,9 +170,8 @@
 
 <script>
 
+
 import { mapState } from 'vuex';
-
-
 
 export default{ 
 
@@ -166,6 +192,9 @@ export default{
 
   methods:{
 
+
+  
+
     navigate(event){
       this.$router.push(event.target.value);
     },
@@ -182,13 +211,15 @@ export default{
   },
 
   computed: {
+
     filteredProducts(){
 
       return this.$store.state.products    
     },
     
-    ...mapState(['produitPanier']),
+    ...mapState(['produitPanier'], ['produits']),
   
+
 
   },
 }
@@ -213,9 +244,7 @@ export default{
 /* Header Jason */
 
 .principal { 
-
   position: absolute;
-
   margin-top: 50px ; 
   top: 0;
   left: 0; 
@@ -229,11 +258,7 @@ export default{
   display: inline-block;
   margin-top: 10px ;
   margin-left: 30px;
-
-
   font-size: 20px;
-
-
   color: #ffffff;
   text-decoration: none;
 }
@@ -405,9 +430,7 @@ footer {
   z-index: 1;
   display: flex;
   justify-content: center;
-  
   background-color: #b98c68dc ;
-
   color: white;
   padding: 10px;
   text-align: center;
@@ -416,7 +439,6 @@ footer {
   width: 100%;
   height: 150px;
   padding-bottom: 20px;
-
   margin-top: 50px;
 
   
@@ -436,6 +458,7 @@ footer {
   width: 100%;
   height: 110px;
   padding-bottom: 20px;
+
   
 }}
 
@@ -456,6 +479,7 @@ footer {
   
 }}
   
+
 .col{
   display: flex;
   align-items: center;
@@ -516,6 +540,7 @@ footer {
   padding: 2px;
    
 }
+
 }
 
 @media screen and (min-width: 431px) and (max-width: 820px){
@@ -560,7 +585,11 @@ footer {
   font-style: italic;
   font-size: 15px;
   
+
 }
+}
+
+
 
 @media screen and (max-width: 430px){
 .copyright{
@@ -578,7 +607,6 @@ footer {
   
 }
 }
-
 
 .logoR{
   width: 30px;
@@ -615,7 +643,9 @@ footer {
   height: 40px;
   margin: 0 10px;
 }
+
 }
+
 
 @media screen and (min-width: 430px) and (max-width: 820px){
 .logo{
@@ -823,9 +853,6 @@ footer {
 }
 }
 
-
-
-
 .copyright{
   color: #5E3C1A;
   font-style: italic;
@@ -887,12 +914,14 @@ footer {
   margin: 0 10px;
 }
 }
+
 @media screen and (min-width: 430px) and (max-width: 820px){
 .logo{
   width: 60px;
   height: 60px;
   margin: 0 10px;
 }
+
 }
 
 
@@ -943,24 +972,9 @@ footer {
   display:none;
 }}
 
-.dropdown{
-  display: block;
-  float: left;
-  margin-right: 10px;
-  margin-bottom: 30px ;
-  font-size: 20px;
-  font-weight: bold;
-  color: #ffffff;
-  background-color: #b98d68;
-  border-radius: 5px;
-  border: solid 2px white;
-  outline: none;
-  padding: 5px;
-}
 
-.dropdown a {
-  font-size: 20px;
-}
+/* Footer David */
+
 
 body{
 

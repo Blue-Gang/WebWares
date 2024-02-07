@@ -17,8 +17,14 @@ export default createStore({
     ],
 
     //création d'un tableau de produits
+   produits :[
+
+     
+
+    //création d'un tableau de produits
 
    produits : [
+
     
       {
         id: 1,
@@ -28,44 +34,45 @@ export default createStore({
         prix: 299.99,
         moq: 5,
         stock: 10,
-        categorieId: 1,
+        categorieId: 5,
+
       },
   
       {
         id: 2,
-
         image: 'images/luminaire-1.jpg',
-
         titre: 'Lampe moderne',
         description: 'Lampe avec un design moderne et éclairage ajustable.',
         prix: 129.99,
         moq: 10,
+        stock: 100,
         categorieId: 2
       },
   
       {
         id: 3,
-
         image: 'images/tapis-2.jpg',
         titre: 'Tapis en laine',
         description: 'Tapis doux en laine avec motif géométrique.',
         prix: 89.99,
         moq: 20,
+        stock: 50,
         categorieId: 3
       },
   
       {
         id: 4,
-
-        image: 'deco-3.jpg',
         image: 'images/deco-3.jpg',
         titre: 'Vase éthnique en argile',
         description: 'Vase éthnique en argile avec motifs gravés à la main.',
         prix: 49.99,
         moq: 20,
+        stock: 30,
         categorieId: 4
       },
         
+    
+       
         {
           id: 5,
           image: 'images/mobilier-1.jpg',
@@ -73,9 +80,10 @@ export default createStore({
           description: 'Chaise en bois massif avec finition élégante.',
           prix: 99.99,
           moq: 5,
+          stock: 30,         
           categorieId: 1
-        },
-    
+      },
+
         {
           id: 6,
           image: 'images/luminaire-2.jpg',
@@ -83,8 +91,9 @@ export default createStore({
           description: 'Lampe de table avec un design moderne et éclairage ajustable.',
           prix: 79.99,
           moq: 10,
+          stock: 100,
           categorieId: 2
-        },
+      },
     
         {
           id: 7,
@@ -93,36 +102,42 @@ export default createStore({
           description: 'Tapis doux en laine avec motif géométrique.',
           prix: 89.99,
           moq: 20,
+          stock: 50,
           categorieId: 3
         },
     
         {
           id: 8,
+          image: 'deco-1.jpg',
           image: 'images/deco-1.jpg',
           titre: 'Vase éthnique en argile',
           description: 'Vase éthnique en argile avec motifs gravés à la main.',
           prix: 49.99,
           moq: 20,
+          stock: 30,
           categorieId: 4
         },
     
         {
           id: 9,
           image: 'images/mobilier-2.jpg',
-          titre: 'Console murale en bois',
+          titre: 'Table à manger en bois',
           description: 'Table à manger en bois massif avec finition élégante.',
           prix: 299.99,
           moq: 5,
+          stock: 10,
           categorieId: 1
         },
     
         {
           id: 10,
+
           image: 'images/luminaire-3.jpg',
           titre: 'Lampe moderne',
           description: 'Lampe avec un design moderne et éclairage ajustable.',
           prix: 129.99,
           moq: 10,
+          stock: 100,
           categorieId: 2
         },
     
@@ -136,7 +151,7 @@ export default createStore({
           stock: 50,
           categorieId: 3
       },
-        
+       
         {
           id: 12,
           image: 'images/deco-2.jpg',
@@ -150,6 +165,7 @@ export default createStore({
       
         {
           id: 13,
+
           image: 'images/mobilier-3.jpg',
           titre: 'Canapé en cuir',
           description: 'Chaise en bois massif avec finition élégante.',
@@ -194,24 +210,26 @@ export default createStore({
       
         {
           id: 17,
+
           image: 'images/mobilier-4.jpg',
           titre: 'Canapé tissus',
           description: 'Table à manger en bois massif avec finition élégante.',
           prix: 299.99,
           moq: 5,
           stock: 10,
-          categorieId: 1
+          categorieId: 5
         },
       
         {
           id: 18,
+
           image: 'images/luminaire-5.jpg',
           titre: 'Lampe moderne',
           description: 'Lampe avec un design moderne et éclairage ajustable.',
           prix: 129,
           moq: 5,
           stock: 10,
-          categorieId: 1
+          categorieId: 2
         },
         
           {
@@ -240,10 +258,12 @@ export default createStore({
           
     ],
     //créé un tableau de panier
+
     produitPanier: [],
 
     //créé un tableau de commandes
     commande: [],
+
 
 
     //créé un tableau de clients de 10 clients
@@ -322,11 +342,12 @@ export default createStore({
   },
   mutations: {
 
+
     // ajouter un produit au pannier
     addProduit(state, prod) {
-      
+     
+    state.produitPanier.push(prod); 
 
-      state.produitPanier.push(prod); 
   },
 
 

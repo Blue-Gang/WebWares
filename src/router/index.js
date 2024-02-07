@@ -5,6 +5,16 @@ import PageContact from '../views/PageContact.vue'
 import LoginPage from '@/views/LoginPage.vue'
 
 import SignUp from '@/views/SignUp.vue'
+import AdminVue from '@/views/AdminVue'
+import ProduitsView from '../views/ProduitsView.vue'
+import TapisView from '../views/TapisView.vue'
+import LampeView from '../views/LampeView.vue'
+import ChaiseView from '../views/ChaiseView.vue'
+import VaseVue from '../views/VaseVue.vue'
+import TableView from '../views/TableView.vue'
+
+
+
 import PagePartenaire from '@/views/PagePartenaire.vue'
 import ProduitsView from '../views/ProduitsView.vue'
 import PanierView from '../views/PanierView.vue'
@@ -26,9 +36,6 @@ import ParametreProduit from '@/views/DashBoard/ParametreProduit.vue'
 import ParametreCat from '@/views/DashBoard/ParametreCat.vue'
 import AdminMsg from '@/views/DashBoard/AdminMsg.vue'
 import AdminCommande from '@/views/DashBoard/AdminCommande.vue'
-
-
-
 
 
 
@@ -61,6 +68,47 @@ const routes = [
     component: ProduitsView
   },
   {
+
+    path: '/signup',
+    name: 'inscription',
+    component: SignUp
+  },
+  {
+    path: '/adminvue',
+    name: 'admin',
+    component: AdminVue
+  },
+  {
+    path: '/produitsview',
+    name: 'produits',
+    component: ProduitsView
+  },
+  {
+    path: '/tapisview',
+    name: 'tapis',
+    component: TapisView
+  },
+  {
+    path:'/lampeview',
+    name:'lampe',
+    component: LampeView,
+  },
+  {
+    path:'/chaiseview',
+    name:'chaise',
+    component: ChaiseView,
+  },
+  {
+    path:'/vasevue',
+    name:'vase',
+    component: VaseVue,
+  },
+  {
+    path: '/tableview',
+    name: 'table',
+    component: TableView
+  }
+=======
     path: '/panierview',
     name: 'panier',
     component: PanierView
@@ -163,6 +211,7 @@ const routes = [
     },
   ],
 },
+
 
 ]
 
