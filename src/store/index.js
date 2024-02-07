@@ -17,15 +17,9 @@ export default createStore({
     ],
 
     //création d'un tableau de produits
-   produits :[
-
-     
-
-    //création d'un tableau de produits
 
    produits : [
 
-    
       {
         id: 1,
         image: 'images/mobilier-5.jpg',
@@ -35,7 +29,6 @@ export default createStore({
         moq: 5,
         stock: 10,
         categorieId: 5,
-
       },
   
       {
@@ -51,6 +44,7 @@ export default createStore({
   
       {
         id: 3,
+
         image: 'images/tapis-2.jpg',
         titre: 'Tapis en laine',
         description: 'Tapis doux en laine avec motif géométrique.',
@@ -67,12 +61,9 @@ export default createStore({
         description: 'Vase éthnique en argile avec motifs gravés à la main.',
         prix: 49.99,
         moq: 20,
-        stock: 30,
         categorieId: 4
       },
-        
-    
-       
+              
         {
           id: 5,
           image: 'images/mobilier-1.jpg',
@@ -91,10 +82,9 @@ export default createStore({
           description: 'Lampe de table avec un design moderne et éclairage ajustable.',
           prix: 79.99,
           moq: 10,
-          stock: 100,
           categorieId: 2
-      },
-    
+        },
+     
         {
           id: 7,
           image: 'images/tapis-3.jpg',
@@ -131,7 +121,6 @@ export default createStore({
     
         {
           id: 10,
-
           image: 'images/luminaire-3.jpg',
           titre: 'Lampe moderne',
           description: 'Lampe avec un design moderne et éclairage ajustable.',
@@ -150,8 +139,8 @@ export default createStore({
           moq: 20,
           stock: 50,
           categorieId: 3
-      },
-       
+          
+        }, 
         {
           id: 12,
           image: 'images/deco-2.jpg',
@@ -265,7 +254,6 @@ export default createStore({
     commande: [],
 
 
-
     //créé un tableau de clients de 10 clients
     clients: [
       {
@@ -336,17 +324,25 @@ export default createStore({
 
     ],
 
+    online: false,
+
 
   },
   getters: {
+    userCo: state => state.online,
   },
   mutations: {
+
+    mettreEnLigne(state, enLigne) {
+      state.online = enLigne;
+    },
 
 
     // ajouter un produit au pannier
     addProduit(state, prod) {
      
     state.produitPanier.push(prod); 
+
 
   },
 
@@ -380,7 +376,9 @@ export default createStore({
 
   actions: {
 
-    
+    clientEnLigne(context, enLigne) {
+      context.commit('mettreEnLigne', enLigne);
+    }
 
 
   },

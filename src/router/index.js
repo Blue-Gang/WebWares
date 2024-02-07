@@ -5,6 +5,9 @@ import PageContact from '../views/PageContact.vue'
 import LoginPage from '@/views/LoginPage.vue'
 
 import SignUp from '@/views/SignUp.vue'
+import ModifUtilisateur from '@/views/ModifUtilisateur.vue'
+import ListeClients from '@/views/ListeClients.vue'
+
 import AdminVue from '@/views/AdminVue'
 import ProduitsView from '../views/ProduitsView.vue'
 import TapisView from '../views/TapisView.vue'
@@ -12,8 +15,6 @@ import LampeView from '../views/LampeView.vue'
 import ChaiseView from '../views/ChaiseView.vue'
 import VaseVue from '../views/VaseVue.vue'
 import TableView from '../views/TableView.vue'
-
-
 
 import PagePartenaire from '@/views/PagePartenaire.vue'
 import ProduitsView from '../views/ProduitsView.vue'
@@ -36,6 +37,7 @@ import ParametreProduit from '@/views/DashBoard/ParametreProduit.vue'
 import ParametreCat from '@/views/DashBoard/ParametreCat.vue'
 import AdminMsg from '@/views/DashBoard/AdminMsg.vue'
 import AdminCommande from '@/views/DashBoard/AdminCommande.vue'
+
 
 
 
@@ -73,16 +75,7 @@ const routes = [
     name: 'inscription',
     component: SignUp
   },
-  {
-    path: '/adminvue',
-    name: 'admin',
-    component: AdminVue
-  },
-  {
-    path: '/produitsview',
-    name: 'produits',
-    component: ProduitsView
-  },
+  
   {
     path: '/tapisview',
     name: 'tapis',
@@ -108,7 +101,7 @@ const routes = [
     name: 'table',
     component: TableView
   }
-=======
+
     path: '/panierview',
     name: 'panier',
     component: PanierView
@@ -125,6 +118,7 @@ const routes = [
     component: SignUp
   },
   {
+
 
     path: '/pagecgv',
     name: 'cgv',
@@ -143,7 +137,17 @@ const routes = [
 {
   path: '/politiqueconf',
   name: 'politiqueconf',
-  component: PolitiqueConf,
+  component: PolitiqueConf
+},
+{
+  path: '/modifutilisateur',
+  name: 'modifutilisateur',
+  component: ModifUtilisateur
+},
+{
+  path: '/listeclients',
+  name: 'listeclients',
+  component: ListeClients
 },
 {
   path: '/pagecarriere',
@@ -211,6 +215,7 @@ const routes = [
     },
   ],
 },
+
 
 
 ]
