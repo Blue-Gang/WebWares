@@ -7,13 +7,24 @@ export default createStore({
       { categories: 1, name: 'Canapé' },
       { categories: 2, name: 'Vase' },
       { categories: 3, name: 'Tapis' },
-      { categories: 4, name: 'Luminaire' },
-      { categories: 5, name: 'Table' },
-      { categories: 6, name: 'Chaises' },      
+      { categories: 4, name: 'Console murale' },
+      { categories: 5, name: 'Lampe' },
+      { categories: 6, name: 'Applique murale' },
+      { categories: 7, name: 'Lustre' },
+      { categories: 8, name: 'Table' },
+      { categories: 9, name: 'Table de chevet' },
+      { categories: 10, name:'Chaises' },      
     ],
 
     //création d'un tableau de produits
    produits :[
+
+     
+
+    //création d'un tableau de produits
+
+   produits : [
+
     
       {
         id: 1,
@@ -24,6 +35,7 @@ export default createStore({
         moq: 5,
         stock: 10,
         categorieId: 5,
+
       },
   
       {
@@ -39,7 +51,7 @@ export default createStore({
   
       {
         id: 3,
-        image: 'tapis-2.jpg',
+        image: 'images/tapis-2.jpg',
         titre: 'Tapis en laine',
         description: 'Tapis doux en laine avec motif géométrique.',
         prix: 89.99,
@@ -50,7 +62,7 @@ export default createStore({
   
       {
         id: 4,
-        image: 'deco-3.jpg',
+        image: 'images/deco-3.jpg',
         titre: 'Vase éthnique en argile',
         description: 'Vase éthnique en argile avec motifs gravés à la main.',
         prix: 49.99,
@@ -59,9 +71,11 @@ export default createStore({
         categorieId: 4
       },
         
-      {
+    
+       
+        {
           id: 5,
-          image: 'mobilier-1.jpg',
+          image: 'images/mobilier-1.jpg',
           titre: 'Chaise en bois',
           description: 'Chaise en bois massif avec finition élégante.',
           prix: 99.99,
@@ -69,10 +83,10 @@ export default createStore({
           stock: 30,         
           categorieId: 1
       },
-    
-      {
+
+        {
           id: 6,
-          image: 'luminaire-2.jpg',
+          image: 'images/luminaire-2.jpg',
           titre: 'Lampe de table',
           description: 'Lampe de table avec un design moderne et éclairage ajustable.',
           prix: 79.99,
@@ -81,9 +95,9 @@ export default createStore({
           categorieId: 2
       },
     
-      {
+        {
           id: 7,
-          image: 'tapis-3.jpg',
+          image: 'images/tapis-3.jpg',
           titre: 'Tapis en laine',
           description: 'Tapis doux en laine avec motif géométrique.',
           prix: 89.99,
@@ -95,6 +109,7 @@ export default createStore({
         {
           id: 8,
           image: 'deco-1.jpg',
+          image: 'images/deco-1.jpg',
           titre: 'Vase éthnique en argile',
           description: 'Vase éthnique en argile avec motifs gravés à la main.',
           prix: 49.99,
@@ -105,18 +120,19 @@ export default createStore({
     
         {
           id: 9,
-          image: 'mobilier-2.jpg',
+          image: 'images/mobilier-2.jpg',
           titre: 'Table à manger en bois',
           description: 'Table à manger en bois massif avec finition élégante.',
           prix: 299.99,
           moq: 5,
           stock: 10,
-          categorieId: 5
+          categorieId: 1
         },
     
         {
           id: 10,
-          image: 'luminaire-3.jpg',
+
+          image: 'images/luminaire-3.jpg',
           titre: 'Lampe moderne',
           description: 'Lampe avec un design moderne et éclairage ajustable.',
           prix: 129.99,
@@ -127,7 +143,7 @@ export default createStore({
     
         {
           id: 11,
-          image: 'tapis-1.jpg',
+          image: 'images/tapis-1.jpg',
           titre: 'Tapis en laine',
           description: 'Tapis doux en laine avec motif géométrique.',
           prix: 89.99,
@@ -135,10 +151,10 @@ export default createStore({
           stock: 50,
           categorieId: 3
       },
-      
+       
         {
           id: 12,
-          image: 'deco-2.jpg',
+          image: 'images/deco-2.jpg',
           titre: 'Vase éthnique en argile',
           description: 'Vase éthnique en argile avec motifs gravés à la main.',
           prix: 49.99,
@@ -149,8 +165,9 @@ export default createStore({
       
         {
           id: 13,
-          image: 'mobilier-3.jpg',
-          titre: 'Chaise en bois',
+
+          image: 'images/mobilier-3.jpg',
+          titre: 'Canapé en cuir',
           description: 'Chaise en bois massif avec finition élégante.',
           prix: 99.99,
           moq: 5,
@@ -160,7 +177,7 @@ export default createStore({
       
         {
           id: 14,
-          image: 'luminaire-4.jpg',
+          image: 'images/luminaire-4.jpg',
           titre: 'Lampe de table',
           description: 'Lampe de table avec un design moderne et éclairage ajustable.',
           prix: 79.99,
@@ -171,7 +188,7 @@ export default createStore({
       
         {
           id: 15,
-          image: 'tapis-4.jpg',
+          image: 'images/tapis-4.jpg',
           titre: 'Tapis en laine',
           description: 'Tapis doux en laine avec motif géométrique.',
           prix: 89.99,
@@ -182,7 +199,7 @@ export default createStore({
       
         {
           id: 16,
-          image: 'deco-4.jpg',
+          image: 'images/deco-4.jpg',
           titre: 'Vase éthnique en argile',
           description: 'Vase éthnique en argile avec motifs gravés à la main.',
           prix: 49.99,
@@ -193,8 +210,9 @@ export default createStore({
       
         {
           id: 17,
-          image: 'mobilier-4.jpg',
-          titre: 'Table à manger en bois',
+
+          image: 'images/mobilier-4.jpg',
+          titre: 'Canapé tissus',
           description: 'Table à manger en bois massif avec finition élégante.',
           prix: 299.99,
           moq: 5,
@@ -204,7 +222,8 @@ export default createStore({
       
         {
           id: 18,
-          image: 'luminaire-5.jpg',
+
+          image: 'images/luminaire-5.jpg',
           titre: 'Lampe moderne',
           description: 'Lampe avec un design moderne et éclairage ajustable.',
           prix: 129,
@@ -215,7 +234,7 @@ export default createStore({
         
           {
             id: 19,
-            image: 'tapis-5.jpg',
+            image: 'images/tapis-5.jpg',
             titre: 'Tapis en laine',
             description: 'Tapis doux en laine avec motif géométrique.',
             prix: 89.99,
@@ -239,10 +258,13 @@ export default createStore({
           
     ],
     //créé un tableau de panier
-    panier: [],
+
+    produitPanier: [],
 
     //créé un tableau de commandes
-    commandes: [],
+    commande: [],
+
+
 
     //créé un tableau de clients de 10 clients
     clients: [
@@ -306,7 +328,7 @@ export default createStore({
         adresse: '15 rue Warthunder',
         codePostal: '56895',
         ville: 'NoMANSLands',
-        email: 'char@decombat.com',
+        email: 'chars@decombat.com',
         raisonSociale: 'Amiral',
         siret: '585959565658585',     
         role: 'user',        
@@ -321,8 +343,46 @@ export default createStore({
   mutations: {
 
 
+    // ajouter un produit au pannier
+    addProduit(state, prod) {
+     
+    state.produitPanier.push(prod); 
+
   },
+
+
+   removeProduit(state,produit){
+      state.produitPanier = state.produitPanier.filter(prod=>
+        produit.id !== prod.id
+        )
+      
+    },
+
+    setProduitPanier(state, panier) {
+      state.produitPanier = panier;
+    }, 
+
+    clearProduitPanier(state) {
+      state.produitPanier = [];
+    },
+
+    transfertCommande(state) {
+      state.commande = [...state.produitPanier];
+      state.produitPanier = []; 
+      
+    },
+
+   
+    
+  },
+
+
+
   actions: {
+
+    
+
+
   },
   modules: {
   }

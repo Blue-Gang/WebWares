@@ -1,7 +1,9 @@
 <template>
-    <div>
+    <div class="container">
       <div class="bcg">
       <h1>Nous contacter</h1>
+
+      <!-- Partie 1 -->
       <div class="txtform">
         
           <div class="box1">
@@ -11,18 +13,20 @@
               <br>
               <p>Nous nous engageons à fournir un service personnalisé et à répondre à vos besoins spécifiques. Contactez-nous dès aujourd'hui pour discuter de vos projets et découvrir comment nous pouvons vous aider à les réaliser.</p>
               
-              <button>En Savoir plus</button>
+              <a href="@/views/PartenairePage.vue
+              "><button>En Savoir plus</button></a>
           </div>
-          <img id="img1" class="box2" src="@/assets/imgcontact.jpg" alt="">
+          <img id="img1" class="img-responsive box2" src="@/assets/imgcontact.jpg" alt="">
       </div>
     </div>
 
+          <!-- Partie 2 -->
       <div class="formulairecontact">
         <div>
-          <img id="img2" src="@/assets/imgcontact2.jpg" alt="">
+          <img id="img2" class="img-responsive" src="@/assets/imgcontact2.jpg" alt="">
         </div>
 
-        <div id="formulaire">
+        <div class="form-responsive" id="formulaire">
           <FormulaireContact/>
         </div>
 
@@ -42,20 +46,27 @@
   </script>
   
   <style scoped>
+
+  .container {
+    margin-top: 180px;
+  }
+
   h1{
     color: #472e16;
+    font-size: 50px;
+    margin-bottom: 40px;
   }
 
   #img1 {
     width: 250px;
-    height: 420px;
+    height: auto;
     border-radius: 10px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2),
               0 10px 10px rgba(0, 0, 0, 0.2);
   }
 
   #img2 {
-    width: 250px;
+    width: auto;
     height: 450px;
     border-radius: 10px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2),
@@ -68,7 +79,22 @@
     padding-bottom: 30px;
     display: flex;
     justify-content: center;
-    
+    flex-grow: 1;
+
+  }
+
+  h2  {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 30px;
+  }
+  h3  {
+    margin-bottom: 30px;
+    font-size: 20px;
+  }
+  p {
+    margin-left: 100px;
+    margin-right: 100px;
   }
   .box1 {
     background-color: rgba(255, 255, 255, 0.331);
@@ -86,13 +112,14 @@
   }
 
   #formulaire{
+    display: flex;
     background-color: #dec5b1;
     padding-left: 100px;
     padding-right: 100px;
-    margin-left: 30px;
     border-radius: 10px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2),
               0 10px 10px rgba(0, 0, 0, 0.2);
+    flex-grow: 1;
   }
 
   .formulairecontact{
@@ -100,12 +127,14 @@
     margin-top: 80px;
     margin-bottom: 80px;
     margin-left: -50px;
-    padding-left: 80px;
-    padding-right: 80px;
+    padding-left: 100px;
+    padding-right: 100px;
+    flex-grow: 1;
+    width: 50%;
   }
 
   .formulairecontact img{
-    margin-left: 50px;
+    margin-left: 0px;
     margin-right: 50px;
 
   }
@@ -116,7 +145,6 @@
         border: none;
         border-radius: 5px;
         margin-top: 20px;
-        margin-bottom: 15px;
         padding: 5px;
         margin-top: 30px;
         width: 150px;
@@ -131,5 +159,13 @@
         background-color: #5e3c1a;
         color: #cca88c;
     }
+
+    /* Responsive */
+
+    @media screen and (max-width: 768px) {
+  .container img {
+    display: none;
+  }
+}
   
   </style>
