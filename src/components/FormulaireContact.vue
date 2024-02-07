@@ -62,6 +62,8 @@ export default {
 
     .formulaire h1 {
         color: white;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
     .formulaire span {

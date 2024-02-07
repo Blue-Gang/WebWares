@@ -17,6 +17,7 @@ export default createStore({
     ],
 
     //création d'un tableau de produits
+
    produits : [
     
       {
@@ -32,7 +33,9 @@ export default createStore({
   
       {
         id: 2,
+
         image: 'images/luminaire-1.jpg',
+
         titre: 'Lampe moderne',
         description: 'Lampe avec un design moderne et éclairage ajustable.',
         prix: 129.99,
@@ -42,6 +45,7 @@ export default createStore({
   
       {
         id: 3,
+
         image: 'images/tapis-2.jpg',
         titre: 'Tapis en laine',
         description: 'Tapis doux en laine avec motif géométrique.',
@@ -52,6 +56,8 @@ export default createStore({
   
       {
         id: 4,
+
+        image: 'deco-3.jpg',
         image: 'images/deco-3.jpg',
         titre: 'Vase éthnique en argile',
         description: 'Vase éthnique en argile avec motifs gravés à la main.',
@@ -130,7 +136,7 @@ export default createStore({
           stock: 50,
           categorieId: 3
       },
-      
+        
         {
           id: 12,
           image: 'images/deco-2.jpg',
@@ -238,6 +244,7 @@ export default createStore({
 
     //créé un tableau de commandes
     commande: [],
+
 
     //créé un tableau de clients de 10 clients
     clients: [

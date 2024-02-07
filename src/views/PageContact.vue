@@ -48,11 +48,13 @@
   <style scoped>
 
   .container {
-    margin-top: 170px;
+    margin-top: 180px;
   }
 
   h1{
     color: #472e16;
+    font-size: 50px;
+    margin-bottom: 40px;
   }
 
   #img1 {
@@ -78,8 +80,21 @@
     display: flex;
     justify-content: center;
     flex-grow: 1;
-    
-    
+
+  }
+
+  h2  {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 30px;
+  }
+  h3  {
+    margin-bottom: 30px;
+    font-size: 20px;
+  }
+  p {
+    margin-left: 100px;
+    margin-right: 100px;
   }
   .box1 {
     background-color: rgba(255, 255, 255, 0.331);
@@ -130,7 +145,6 @@
         border: none;
         border-radius: 5px;
         margin-top: 20px;
-        margin-bottom: 15px;
         padding: 5px;
         margin-top: 30px;
         width: 150px;
