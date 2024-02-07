@@ -29,6 +29,7 @@
         <router-link to="/commresume">Commande </router-link>
         
         
+        
       </div>
       <!-- barre de recherche -->
       <!-- <section>
@@ -45,20 +46,21 @@
       </section> -->
     </div>
       <div class="none">
-            <div class="horsConnect">
+            <div class="connect">
               <router-link to="/Loginpage">Connection</router-link> 
-              <router-link to="/register">Inscription </router-link>
+              <router-link to="/SignUp">Inscription </router-link>
             </div>
             <div class="Horsconnect">
               <select @change="navigate" class="dropdown" >
                 <option>Menu</option>
+
                 <option value="panierview"> Panier ({{ produitPanier.length }})</option>
                 <option value="vos achat"><router-link to="/commresume">vos achats</router-link></option>
+
                 <option value="@/view/AdminVue">Admin</option>
                 <option value="logout">Déconnection</option>
               </select>
             </div>
-        
       </div>
   </nav>
   <footer>
@@ -70,41 +72,55 @@
             </div>           
             <div class="col">
                 <ul class="list-inline">
+
                     <li class="list"><a class="footA" href="homeview">Accueil</a></li>
                     <li class="list"><a class="footA" href="#">A propos</a></li>
                     <li class="list"><a class="footA" href="/pagecontact">Contact</a></li>
+
                 </ul>
             </div>                
             <div class="col">
                 <ul>
                     <li class="list"><a class="footA" href="#">Catégories</a></li>
+
                     <li class="list"><a class="footA" href="/produitsview">Produits</a></li>
+
+
+
                     <li class="list"><a class="footA" href="#">Marques</a></li>
                 </ul>
             </div>                                 
             <div class="col">
                 <ul class="list-inline">
                     <li class="list"><a class="footA" href="#">Connexion</a></li>
+
                     <li class="list"><a class="footA" href="/signup">S'inscrire</a></li>
+
+                   
+
                     <li class="list"><a class="footA" href="#">Carrières</a></li>
                     
                 </ul>
             </div> 
             <div class="col">
                 <ul>
+
                     <li class="list CGV "><a class="footA" href="#">Conditions générales de ventes</a></li>
                     <li class="list CGV1"><a class="footA" href="#">CGV</a></li>
                     <li class="list CGU"><a class="footA" href="#">Conditions générales d'utilisations</a></li>
                     <li class="list CGU1"><a class="footA" href="#">CGU</a></li>
                     <li class="list PDC"><a class="footA" href="#">Politique de confidencialité</a></li>                   
                     <li class="list PDC1"><a class="footA" href="#">PDC</a></li>                   
+
                 </ul>
             </div>
             <div class="col">
                 <ul>
                     <p class="Follow">Suivez nous</p>
 
+
                     <img class="logoR" href="www.facebook.fr" src="@/assets/FB.svg" alt="Logo FaceBook"/>                                      
+
                     <img class="logoR" href="www.linkedin.fr" src="@/assets/LKD.svg" alt="Logo Linkedin" />               
                     <img class="logoR" href="www.twitter.com" src="@/assets/TWT.svg" alt="Logo Twiter" /> 
                                 
@@ -119,23 +135,32 @@
 </template>
 
 <script>
+
 import { mapState } from 'vuex';
+
 
 export default{ 
 
+  menuDropdown:'Menu',
   lang: "fr",
   name: 'searchBar',
-  data(){
-    
 
-    return{
+  data(){
+      return{
       querry: "",
+
       lang: "fr",
       menuDropdown:'Menu',
+
     }
   },
 
   methods:{
+
+    navigate(event){
+      this.$router.push(event.target.value);
+    },
+
     listFilter(){
       for(let i = 0; i < this.filteredProducts.length; i++){
         if(this.filteredProducts[i].titre.toLowerCase().includes(this.querry.toLowerCase())){
@@ -158,7 +183,6 @@ export default{
 }
 
 </script>
-
 
 <style>
 
@@ -192,7 +216,9 @@ export default{
   display: inline-block;
   margin-top: 10px ;
   margin-left: 30px;
+
   font-size: 20px;
+
   color: #ffffff;
   text-decoration: none;
 }
@@ -238,6 +264,8 @@ export default{
   font-size: 25px;
   
   color: #ffffff;
+  
+  
 }
 
 .barSearch input{
@@ -336,6 +364,7 @@ display:none;
   padding: 5px;
 }
 
+
 .dropdown a {
   font-size: 20px;
 }
@@ -363,6 +392,7 @@ footer {
   justify-content: center;
   
   background-color: #b98c68dc ;
+
   color: white;
   padding: 10px;
   text-align: center;
@@ -371,7 +401,9 @@ footer {
   width: 100%;
   height: 150px;
   padding-bottom: 20px;
+
   margin-top: 50px;
+
   
 }
 
@@ -422,6 +454,7 @@ footer {
   justify-content: center;
   gap: 70px;
   margin-left: -104px;
+
 }
 
 @media screen and (max-width: 430px){
@@ -632,5 +665,6 @@ footer {
 body{
     background-color: white;
 }
+
 </style>
 ```
