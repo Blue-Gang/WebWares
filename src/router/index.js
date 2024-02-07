@@ -3,8 +3,12 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import PageContact from '../views/PageContact.vue'
 import LoginPage from '@/views/LoginPage.vue'
+
 import SignUp from '@/views/SignUp.vue'
 import PagePartenaire from '@/views/PagePartenaire.vue'
+import ProduitsView from '../views/ProduitsView.vue'
+import PanierView from '../views/PanierView.vue'
+import CommResume from '../views/CommResume.vue'
                         // Footer
 import PageCgv from '@/views/PageCgv.vue'
 import PageCgu from '@/views/PageCgu.vue'
@@ -22,6 +26,10 @@ import ParametreProduit from '@/views/DashBoard/ParametreProduit.vue'
 import ParametreCat from '@/views/DashBoard/ParametreCat.vue'
 import AdminMsg from '@/views/DashBoard/AdminMsg.vue'
 import AdminCommande from '@/views/DashBoard/AdminCommande.vue'
+
+
+
+
 
 
 const routes = [
@@ -45,12 +53,31 @@ const routes = [
     name: 'connexion',
     component: LoginPage
   },
+
+  
+  {
+    path: '/produitsview',
+    name: 'produits',
+    component: ProduitsView
+  },
+  {
+    path: '/panierview',
+    name: 'panier',
+    component: PanierView
+  },
+  {
+    path: '/commresume',
+    name: 'commresume',
+    component: CommResume
+   }
+
   {
     path: '/signup',
     name: 'inscription',
     component: SignUp
   },
   {
+
     path: '/pagecgv',
     name: 'cgv',
     component: PageCgv
@@ -137,7 +164,6 @@ const routes = [
   ],
 },
 
- 
 ]
 
 const router = createRouter({
