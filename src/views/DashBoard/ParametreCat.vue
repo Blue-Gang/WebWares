@@ -1,9 +1,7 @@
 <template>
-    <div>
-        <h2>
-            Gestion des paramètres
-        </h2>
-    </div>
+  <div>
+    <h2> Gestion des categories</h2>
+  </div>
 </template>
 
 <script>

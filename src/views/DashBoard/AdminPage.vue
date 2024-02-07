@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="box">
-                    <router-link to="/" class="cat"  >
+                    <router-link to="/AdminMsg" class="cat"  >
                         <img src="images/email.png" alt="">
                         <p>Messagerie</p>
                     </router-link>
@@ -28,28 +28,28 @@
                 </div>
 
                 <div class="box">
-                    <router-link to="/" class="cat"  >
+                    <router-link to="/ParametreUser" class="cat"  >
                         <img src="images/utilisateurs.png" alt="">
                         <p>Utilisateurs</p>
                     </router-link>
                 </div>
 
                 <div class="box">
-                    <router-link to="/" class="cat"  >
+                    <router-link to="/ParametreProduit" class="cat"  >
                         <img src="images/colis.png" alt="">
                         <p>Produits</p>
                     </router-link>
                 </div>
 
                 <div class="box">
-                    <router-link to="/" class="cat"  >
+                    <router-link to="/ParametreCat" class="cat"  >
                         <img src="images/colis.png" alt="">
                         <p>Catégories</p>
                     </router-link>
                 </div>
 
                 <div class="box">
-                    <router-link to="/" class="cat"  >
+                    <router-link to="/AdminCommande" class="cat"  >
                         <img src="images/commandes.png" alt="">
                         <p>Commandes</p>
                     </router-link>
@@ -93,9 +93,9 @@
                 <div v-show="showDropDown">
                     <div class="menuser">
                         <ul>
-                            <li><a href="/userpage"></a>Profil</li>
-                            <li><a href="/adminprofile"></a>Dashboard</li>
-                            <li><a href="/AdminParametre"></a>Paramètres</li>
+                            <a href="/UserPage"><li>Profil</li></a>
+                            <a href="/adminprofile"><li>Dashboard</li></a>
+                            <a href="/AdminParametre"><li>Paramètres</li></a>
                         </ul>
                         <form method="POST" action="#" role="none">
                             <button type="submit" >Déconnection</button>
