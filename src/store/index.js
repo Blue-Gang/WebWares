@@ -98,8 +98,7 @@ export default createStore({
     
         {
           id: 8,
-          image: 'deco-1.jpg',
-          image: 'images/deco-1.jpg',
+          image: 'img/deco-1.jpg',
           titre: 'Vase éthnique en argile',
           description: 'Vase éthnique en argile avec motifs gravés à la main.',
           prix: 49.99,
@@ -368,8 +367,25 @@ export default createStore({
       
     },
 
-   
-    
+    modifCatetgorie(state, categorie) {
+      if(categorie.id) {
+        const index = state.categories.findIndex(cat => cat.id === categorie.id);
+        state.categories[index] = categorie;
+      }
+    }, 
+
+    addCategorie(state, categorie) {
+      state.categories.push(categorie);
+      categorie.id = state.categories.length + 1;
+    },
+
+    deleteCategorie(states, categories) {
+      if(confirm('Voulez-vous supprimer cette catégorie ?')){
+        states.categories.splice(categories, 1);
+        
+      }
+      // state.categories = state.categories.filter(cat => cat.id !== categorie.id);
+    },
   },
 
 

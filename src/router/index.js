@@ -8,7 +8,7 @@ import SignUp from '@/views/SignUp.vue'
 import ModifUtilisateur from '@/views/ModifUtilisateur.vue'
 import ListeClients from '@/views/ListeClients.vue'
 
-import AdminVue from '@/views/AdminVue'
+                          // Catalogue
 import ProduitsView from '../views/ProduitsView.vue'
 import TapisView from '../views/TapisView.vue'
 import LampeView from '../views/LampeView.vue'
@@ -17,7 +17,6 @@ import VaseVue from '../views/VaseVue.vue'
 import TableView from '../views/TableView.vue'
 
 import PagePartenaire from '@/views/PagePartenaire.vue'
-import ProduitsView from '../views/ProduitsView.vue'
 import PanierView from '../views/PanierView.vue'
 import CommResume from '../views/CommResume.vue'
                         // Footer
@@ -26,17 +25,17 @@ import PageCgu from '@/views/PageCgu.vue'
 import PolitiqueConf from '@/views/PolitiqueConf.vue'
 import PageCarriere from '@/views/PageCarriere.vue'
                         // DashBoard User & Admin
-import AdminPage from '@/views/DashBoard/AdminPage.vue'
-import AdminParametre from '@/views/DashBoard/AdminParametre.vue'
-import AdminProfile from '@/views/DashBoard/AdminProfile.vue'
-import UserPage from '@/views/DashBoard/UserPage.vue'
-import UserProfile from '@/views/DashBoard/UserProfile.vue'
-import UserParametre from '@/views/DashBoard/UserParametre.vue'
-import ParametreUser from '@/views/DashBoard/ParametreUser.vue'
-import ParametreProduit from '@/views/DashBoard/ParametreProduit.vue'
-import ParametreCat from '@/views/DashBoard/ParametreCat.vue'
-import AdminMsg from '@/views/DashBoard/AdminMsg.vue'
-import AdminCommande from '@/views/DashBoard/AdminCommande.vue'
+import AdminPage from '../views/DashBoard/AdminPage.vue'
+import AdminParametre from '../views/DashBoard/AdminParametre.vue'
+import AdminProfile from '../views/DashBoard/AdminProfile.vue'
+import UserPage from '../views/DashBoard/UserPage.vue'
+import UserProfile from '../views/DashBoard/UserProfile.vue'
+import UserParametre from '../views/DashBoard/UserParametre.vue'
+import ParametreUser from '../views/DashBoard/ParametreUser.vue'
+import ParametreProduit from '../views/DashBoard/ParametreProduit.vue'
+import ParametreCat from '../views/DashBoard/ParametreCat.vue'
+import AdminMsg from '../views/DashBoard/AdminMsg.vue'
+import AdminCommande from '../views/DashBoard/AdminCommande.vue'
 
 
 
@@ -100,8 +99,9 @@ const routes = [
     path: '/tableview',
     name: 'table',
     component: TableView
-  }
+  },
 
+{
     path: '/panierview',
     name: 'panier',
     component: PanierView
@@ -110,7 +110,7 @@ const routes = [
     path: '/commresume',
     name: 'commresume',
     component: CommResume
-   }
+   },
 
   {
     path: '/signup',
