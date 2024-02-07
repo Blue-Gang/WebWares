@@ -114,18 +114,17 @@ export default {
     },
   },
 
-
     props: {
         title: {
             type: String,
             default: 'Ravis de vous revoir !'
         },
 
-
         paragraphe: {
             type: String,
             default: 'Identifiez-vous pour profiter de tous nos produits.'
         },
+
 
         formInscription: {
           type: Boolean,
@@ -220,12 +219,12 @@ export default {
   },
 
   }
+
 }
 
 </script>
 
 <style scoped>
-
 .container{
   /* background-color: red; */
   width: 400px;
@@ -247,9 +246,11 @@ export default {
 
 }
 
+
 .title{
   margin-bottom: 20px;
 }
+
 
 .formulaire input{
   margin: 5px;
@@ -301,10 +302,10 @@ label{
   font-weight: bold;
   font-size: 14px;
 }
-
 .cp input{
   width: 90px;
 }
+
 
 .btnInscription{
   text-decoration: none;
@@ -316,3 +317,4 @@ label{
 }
 
 </style>
+

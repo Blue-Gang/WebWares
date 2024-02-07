@@ -2,6 +2,7 @@
   <div class="home">
 
 
+
     <!-- Bannière Cécile -->
 
     <div>
@@ -252,6 +253,7 @@
       </div>
     </div>
   </section>
+
 
 
   </div>
@@ -810,6 +812,7 @@ section.promo{
 
 
 /* Contact Priscy */
+
 .container {
   display: flex;
   justify-content: space-between;
@@ -824,6 +827,7 @@ section.promo{
   margin-right: 8px;
  margin-bottom: 10px;
  cursor: pointer;
+
 }
 .container p {
   color: #472e16;
@@ -835,6 +839,7 @@ section.promo{
 .cont1 {
   margin-left: 150px;
   color: #472e16
+
 }
 .cont2 {
   display: flex;
@@ -854,6 +859,7 @@ section.promo{
   background-color: #cca88c;
   height: 200px;
 }
+
 
 button {
     background-color: #b98d68;
@@ -875,8 +881,5 @@ button:hover {
   background-color: #5e3c1a;
   color: #cca88c;
 }
-
-
-
 
 </style>
