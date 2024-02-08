@@ -328,7 +328,7 @@ export default createStore({
     //creer une nouvelle catégorie
     newValue: {},
     newValueCategory: {},
-
+    newCategoryName : {},
 
   },
   getters: {
@@ -369,9 +369,9 @@ export default createStore({
     },
 
     modifCategorie(state) {
-      if(this.newValueCategories) {
-        state.categories.push(this.newValueCategories);
-        this.newValueCategories = {};
+      if(this.newValueCategory.name) {
+        state.categories.push(this.newValueCategory);
+        this.newValueCategory = {};
         this.CloseModalCategory();
       }
       else {
@@ -380,9 +380,9 @@ export default createStore({
     }, 
 
     addCategorie(state) {
-      if(state.newValueCategory.name) {
-        state.categories.push(state.newValueCategory);
-        state.newValueCategory = {};
+      if(state.newCategoryName.name) {
+        state.categories.push(state.newCategoryName);
+        state.newCategoryName = {};
         state.closeModalAddCategorie();
       }
       else {
@@ -421,9 +421,6 @@ export default createStore({
       state.newValue = {};
 
     },
-
-
-    
   },
 
 

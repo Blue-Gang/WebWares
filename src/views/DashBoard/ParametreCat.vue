@@ -1,9 +1,10 @@
 <template>
       <div>
+        
         <section class="gestCategory">
           <h2> Gestion des categories</h2>
           <button type="button" @click="openModalAddCategorie">Ajouter</button>
-
+          <!-- modal ajout -->
           <section>
             <div id="addModalCategory" class="modalAddCategory" v-if="modalAddCategory" v-cloak>
               <div class="Addmodal-contentCategory">
@@ -13,14 +14,15 @@
                   <div>
                     <label for="name">Nom de la categorie</label>
                     <input type="text" id="name" v-model="categories.name">
+
                   </div>
                   <button type="submit" class="btnModalModifCategory" @click="addCategorie">Ajouter</button>
                 </form>
               </div>
             </div>
           </section>
-          <div>
 
+          <div>
             <h3> Liste des categories</h3>
             <div class="cardModifcategory">
               <div v-for="(categories, index) in categories" :key="categories.id">
@@ -83,6 +85,7 @@ export default {
     closeModalAddCategorie(){
       this.$store.commit('closeModalAddCategorie');
       this.modalAddCategory = false;
+      this.newCategoryName = '';
     },
 
     deleteCategorie(index){
@@ -102,7 +105,10 @@ export default {
     openModalCategory(index){
       this.modal = true;
       this.index = index;
-    },
+    }, 
+    newCategoryName(){
+      this.newCategoryName = '';
+    }
 
 
 
