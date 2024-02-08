@@ -325,6 +325,10 @@ export default createStore({
 
     online: false,
 
+    //creer une nouvelle catégorie
+    newValue: {},
+    newValueCategory: {},
+
 
   },
   getters: {
@@ -339,10 +343,7 @@ export default createStore({
 
     // ajouter un produit au pannier
     addProduit(state, prod) {
-     
     state.produitPanier.push(prod); 
-
-
   },
 
 
@@ -367,25 +368,62 @@ export default createStore({
       
     },
 
-    modifCatetgorie(state, categorie) {
-      if(categorie.id) {
-        const index = state.categories.findIndex(cat => cat.id === categorie.id);
-        state.categories[index] = categorie;
+    modifCategorie(state) {
+      if(this.newValueCategories) {
+        state.categories.push(this.newValueCategories);
+        this.newValueCategories = {};
+        this.CloseModalCategory();
+      }
+      else {
+        alert('veuillez remplir tous les champs');
       }
     }, 
 
-    addCategorie(state, categorie) {
-      state.categories.push(categorie);
-      categorie.id = state.categories.length + 1;
+    addCategorie(state) {
+      if(state.newValueCategory.name) {
+        state.categories.push(state.newValueCategory);
+        state.newValueCategory = {};
+        state.closeModalAddCategorie();
+      }
+      else {
+        alert('veuillez remplir tous les champs');
+      }
+
+    },
+
+    openModalAddCategorie(state, categorie) {
+      state.modalAddCategorie = true;
+      state.editIndex = categorie;
+      state.newValueCategory = { ...state.categories[categorie] };
+    },
+
+    closeModalAddCategorie(state) {
+      state.modalAddCategorie = false;
+      state.editIndex = 0;
+      state.newValueCategory = {};
     },
 
     deleteCategorie(states, categories) {
       if(confirm('Voulez-vous supprimer cette catégorie ?')){
         states.categories.splice(categories, 1);
-        
       }
-      // state.categories = state.categories.filter(cat => cat.id !== categorie.id);
+
     },
+    openModalCategory(state, categorie) {
+      state.modal = true;
+      state.editIndex = categorie;
+      state.newValue = { ...state.categories[categorie] };
+      
+    },
+    closeModalCategory(state) {
+      state.modal = false;
+      state.editIndex = 0;
+      state.newValue = {};
+
+    },
+
+
+    
   },
 
 
