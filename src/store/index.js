@@ -328,7 +328,8 @@ export default createStore({
     //creer une nouvelle catégorie
     newValue: {},
     newValueCategory: {},
-    newCategoryName : {},
+    newCategoryName : '',
+
 
   },
   getters: {
@@ -351,7 +352,6 @@ export default createStore({
       state.produitPanier = state.produitPanier.filter(prod=>
         produit.id !== prod.id
         )
-      
     },
 
     setProduitPanier(state, panier) {
@@ -364,25 +364,15 @@ export default createStore({
 
     transfertCommande(state) {
       state.commande = [...state.produitPanier];
-      state.produitPanier = []; 
-      
+      state.produitPanier = [];  
     },
 
-    modifCategorie(state) {
-      if(this.newValueCategory.name) {
-        state.categories.push(this.newValueCategory);
-        this.newValueCategory = {};
-        this.CloseModalCategory();
-      }
-      else {
-        alert('veuillez remplir tous les champs');
-      }
-    }, 
+    // ajouter une catégorie
 
     addCategorie(state) {
-      if(state.newCategoryName.name) {
-        state.categories.push(state.newCategoryName);
-        state.newCategoryName = {};
+      if(state.newCategoryName.trim() !== '') {
+        state.categories.push({name: state.newCategoryName.trim()});
+        state.newCategoryName = '';
         state.closeModalAddCategorie();
       }
       else {
@@ -403,12 +393,28 @@ export default createStore({
       state.newValueCategory = {};
     },
 
+    // supprimer Catégorie
+
     deleteCategorie(states, categories) {
       if(confirm('Voulez-vous supprimer cette catégorie ?')){
         states.categories.splice(categories, 1);
       }
 
     },
+
+    // modification Catégorie
+
+    modifCategorie(state) {
+      if(this.newValueCategory.name) {
+        state.categories.push(this.newValueCategory);
+        this.newValueCategory = {};
+        this.CloseModalCategory();
+      }
+      else {
+        alert('veuillez remplir tous les champs');
+      }
+    }, 
+
     openModalCategory(state, categorie) {
       state.modal = true;
       state.editIndex = categorie;
@@ -419,7 +425,6 @@ export default createStore({
       state.modal = false;
       state.editIndex = 0;
       state.newValue = {};
-
     },
   },
 

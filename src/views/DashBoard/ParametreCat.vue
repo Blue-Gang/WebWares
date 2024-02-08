@@ -13,8 +13,7 @@
                 <form @submit.prevent="addCategorie">
                   <div>
                     <label for="name">Nom de la categorie</label>
-                    <input type="text" id="name" v-model="categories.name">
-
+                    <input type="text" id="name" v-model="newCategoryName">
                   </div>
                   <button type="submit" class="btnModalModifCategory" @click="addCategorie">Ajouter</button>
                 </form>
@@ -22,10 +21,10 @@
             </div>
           </section>
 
-          <div>
+          <div class="cardAddCategory">
             <h3> Liste des categories</h3>
-            <div class="cardModifcategory">
-              <div v-for="(categories, index) in categories" :key="categories.id">
+            <div class="TableauCard">
+              <div class="cardModifcategory" v-for="(categories, index) in categories" :key="categories.id">
                 <p>{{ categories.name }}</p>
                 <button class="removeCategory" type="button"  @click="deleteCategorie(index)">Supprimer</button>
                 <button class="modifCategory" type="button"  @click="openModalCategory(index)">Modifier</button>
@@ -68,13 +67,13 @@ export default {
       
     }
   },
+
   components: {
   },
+
   methods: {
     addCategorie(){
       this.$store.commit('addCategorie');
-      
-      
     },
 
     openModalAddCategorie(){
@@ -107,12 +106,15 @@ export default {
       this.index = index;
     }, 
     newCategoryName(){
+      this.$store.commit('newCategoryName');
       this.newCategoryName = '';
-    }
+    },
+    
 
 
 
   },
+
   computed: {
     ...mapState(['categories']),
 
@@ -127,9 +129,51 @@ export default {
 h2 {
   margin-top: 50px;
 }
+.cardModifcategory{
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  padding-top: 0px ;
+  border: solid 1px #5e3c1a;
+  border-radius: 10px;
+  background-color: #b98d68;
+  color: #5e3c1a;
+  justify-content: center;
+  align-items: center;
+  max-width: 100% ;
+  height: 200px;
+  width: 350px;
+  margin-top: 20px; ;
+  text-align: center;
+  margin-left : 20px ;
+}
 
+
+
+.TableauCard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  align-items: center;
+  justify-content: center;
+  padding:50px ;
+
+}
+
+
+.cardAddCategory {
+  display: block;
+  margin: 0 auto ;
+  padding: 20px;
+  border: solid 1px white;
+  border-radius: 10px;
+  background-color: #5e3c1a;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  width: 1200px;
+}
 .modalAddCategory {
-  display: flex; 
+  display:  flex; 
   position: fixed; 
   z-index: 1; 
   left: 0;
@@ -180,19 +224,6 @@ h2 {
     cursor: pointer;
 }
 
-.cardModifcategory{
-  display: flex;
-  padding: 20px;
-  border: solid 1px white;
-  border-radius: 10px;
-  background-color: #5e3c1a;
-  color: white;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 100% ;
-  grid-column: 15px 15px ;
- 
-}
 
 .closeCategory {
   color: #aaaaaa;
@@ -203,7 +234,6 @@ h2 {
 
 .gestCategory {
   margin-top: 20px;
-
 }
 
 .gestCategory button {
