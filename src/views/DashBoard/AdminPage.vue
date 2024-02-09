@@ -136,7 +136,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .dashboard {
     display: flex;
     width: 100%;
@@ -262,6 +262,11 @@ export default {
 }
 .menuser button:hover {
     background-color: #5e3c1a;
+} 
+
+.affichage {
+    margin-top: 30px ;
+    overflow: scroll;
 }
 
 

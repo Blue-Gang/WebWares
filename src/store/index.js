@@ -1,19 +1,20 @@
 import { createStore } from 'vuex'
 
+
 export default createStore({
   state: {
     //création d'un tableau de categorie produit
     categories: [
-      { categories: 1, name: 'Canapé' },
-      { categories: 2, name: 'Vase' },
-      { categories: 3, name: 'Tapis' },
-      { categories: 4, name: 'Console murale' },
-      { categories: 5, name: 'Lampe' },
-      { categories: 6, name: 'Applique murale' },
-      { categories: 7, name: 'Lustre' },
-      { categories: 8, name: 'Table' },
-      { categories: 9, name: 'Table de chevet' },
-      { categories: 10, name:'Chaises' },      
+      { id: 1, name: 'Canapé' },
+      { id: 2, name: 'Vase' },
+      { id: 3, name: 'Tapis' },
+      { id: 4, name: 'Console murale' },
+      { id: 5, name: 'Lampe' },
+      { id: 6, name: 'Applique murale' },
+      { id: 7, name: 'Lustre' },
+      { id: 8, name: 'Table' },
+      { id: 9, name: 'Table de chevet' },
+      { id: 10, name:'Chaises' },      
     ],
 
     //création d'un tableau de produits
@@ -328,9 +329,8 @@ export default createStore({
     //creer une nouvelle catégorie
     newValue: {},
     newValueCategory: {},
-    newCategoryName : '',
-
-
+   
+    
   },
   getters: {
     userCo: state => state.online,
@@ -369,22 +369,30 @@ export default createStore({
 
     // ajouter une catégorie
 
-    addCategorie(state) {
-      if(state.newCategoryName.trim() !== '') {
-        state.categories.push({name: state.newCategoryName.trim()});
-        state.newCategoryName = '';
-        state.closeModalAddCategorie();
+    addCategorie(state, newCategoryName) {
+      if(newCategoryName) {
+        let maxId = 0;
+        state.categories.forEach((category) => {
+            if (category.categories > maxId) {
+                maxId = category.categories;
+            }
+        });
+        state.categories.push({
+            id: maxId + 1,
+            name: newCategoryName
+        });
+
       }
+
       else {
         alert('veuillez remplir tous les champs');
       }
 
     },
 
-    openModalAddCategorie(state, categorie) {
+    openModalAddCategorie(state) {
       state.modalAddCategorie = true;
-      state.editIndex = categorie;
-      state.newValueCategory = { ...state.categories[categorie] };
+   
     },
 
     closeModalAddCategorie(state) {
@@ -398,8 +406,8 @@ export default createStore({
     deleteCategorie(states, categories) {
       if(confirm('Voulez-vous supprimer cette catégorie ?')){
         states.categories.splice(categories, 1);
+        localStorage.removeItem('categories', categories); 
       }
-
     },
 
     // modification Catégorie
@@ -428,16 +436,31 @@ export default createStore({
     },
   },
 
+  // local storage catégorie
 
+  saveToLocalStorage(state) {
+  localStorage.setItem('categories', JSON.stringify(state.categories));
+  },
 
   actions: {
 
     clientEnLigne(context, enLigne) {
       context.commit('mettreEnLigne', enLigne);
+    },
+
+    loadFromlocalStorage({commit}){
+      const savedCategories = localStorage.getItem('categories');
+      if(savedCategories){
+        commit('setCategories', JSON.parse(savedCategories));
+      }
     }
 
-
   },
+
   modules: {
-  }
+  },
+
+  created(){
+    
+  },
 })

@@ -2,7 +2,7 @@
 
 
 <section>
-        <span class="barSearch">
+        <div class="barSearch">
           <div>
             <input type="text" v-model="querry" @input="listFilter" placeholder="Rechercher un produit">
           </div>
@@ -11,7 +11,7 @@
                 <li v-for="(produits, i) in filteredProducts" :key="i">{{ produits.titre }}</li>
             </ul>
           </div>
-        </span>
+        </div>
       </section>
     <div class="produitview">
         <h1 class="titreproduit">Produits</h1>
@@ -47,7 +47,10 @@ import Gbtn from '@/components/ButtonGen.vue'
 export default {
         //impoter les données de la base de données (store)
         data(){
-            return {                
+            return {    
+                querry: '',
+                filteredProducts: mapState(['produits']),
+                      
             }           
         },
 
@@ -77,6 +80,18 @@ export default {
             }, 
             saveCommandeToLocal() {
                     localStorage.setItem('commande', JSON.stringify(this.commande));
+            }, 
+
+            listFilter() {
+                
+                if( this.querry.length > 0){
+                    this.filteredProducts = this.produits.filter(produits => {
+                        return produits.titre.toLowerCase().includes(this.querry.toLowerCase());
+                    });
+                } else { 
+                    this.filteredProducts = this.produits;
+                }
+
             },
 
         },
@@ -84,11 +99,8 @@ export default {
     
         computed: {
             ...mapState(['produits', 'produitPanier']),
-
             
         },
-
-        
 
         created() {
             const savedCart = localStorage.getItem('panier');
@@ -116,17 +128,16 @@ export default {
 
 
 .barSearch {
-    
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 50px;
     margin-bottom: 50px;
     margin-left: 0 auto;
-   
-    
-    
+
 }
+
+
 
 
 /* style card produits */
@@ -163,11 +174,15 @@ template {
     .tableproduits {
         grid-template-columns: 250px;
         justify-content: center;
-        
     }
 }
 
-
+li{
+    display: flex;
+    list-style: none;
+    margin: top 10px;
+    cursor: pointer;
+}
 .cardinte{
     display: flex;
     flex-direction: column;
@@ -217,7 +232,6 @@ template {
 }
 
 .titreproduit{
-    
     margin-top: 20px;
     margin-bottom: 50px;
     font-size: 40px;

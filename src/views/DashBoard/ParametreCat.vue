@@ -10,12 +10,12 @@
               <div class="Addmodal-contentCategory">
                 <span class="closeCategory" v-on::click="closeModalAddCategorie">&times;</span>
                 <h2>Ajouter une categorie</h2>
-                <form @submit.prevent="addCategorie">
+                <form>
                   <div>
                     <label for="name">Nom de la categorie</label>
-                    <input type="text" id="name" v-model="newCategoryName">
+                    <input type="text" id="name" v-model="this.newCategoryName">
                   </div>
-                  <button type="submit" class="btnModalModifCategory" @click="addCategorie">Ajouter</button>
+                  <button class="btnModalModifCategory" @click.prevent="addCategorie">Ajouter</button>
                 </form>
               </div>
             </div>
@@ -57,14 +57,15 @@
 
 <script>
 import { mapState } from 'vuex';
+
 export default {
   data(){
     return{
       modalAddCategory: false,
       modal: false,
       index: 1,
-      editCategory: -1
-      
+      editCategory: -1,
+      newCategoryName: {},
     }
   },
 
@@ -73,11 +74,15 @@ export default {
 
   methods: {
     addCategorie(){
-      this.$store.commit('addCategorie');
+      this.$store.commit('addCategorie', this.newCategoryName);  
+      this.newCategoryName = '';
+      this.modalAddCategory = false;
+     
     },
+  
 
     openModalAddCategorie(){
-      this.$store.commit('openModalAddCategorie');
+  
       this.modalAddCategory = true;
     },
 
@@ -96,6 +101,7 @@ export default {
     modifCategorie(index){
       this.$store.commit('ModifCate', index);
       this.modal = false;
+  
     },
     closeModalCategory(){
       this.$store.commit('closeModalCategory');
@@ -105,24 +111,48 @@ export default {
       this.modal = true;
       this.index = index;
     }, 
-    newCategoryName(){
-      this.$store.commit('newCategoryName');
-      this.newCategoryName = '';
-    },
-    
-
-
-
   },
 
   computed: {
     ...mapState(['categories']),
+ 
 
-  },
-  created() {
+      mutations: {
+        addCategorie(state, newCategoryName){
+          state.categories.push({name: newCategoryName});
+          this.$store.commit('saveToLocalStorage');
+        },
+        deleteCategorie(state, index){
+          state.categories.splice(index, 1);
+          this.$store.commit('saveToLocalStorage');
+        },
+        openModalCategory(state, index){
+          state.index = index;
+          state.modal = true;
+        },
+        ModifCate(state, index){
+          state.categories[state.index].name = state.categories[index].name;
+          this.$store.commit('saveToLocalStorage');
+        },
+        closeModalCategory(state){
+          state.modal = false;
+        },
+        closeModalAddCategorie(state){
+          state.modalAddCategory = false;
+        },
+        saveToLocalStorage(state){
+          localStorage.setItem('categories', JSON.stringify(state.categories));
+        },
+        }
+      },
+        created(){
+          this.$store.dispatch('loadFromlocalStorage');
+        },
   }
+ 
+  
 
-}
+
 </script>
 
 <style scoped>
