@@ -3,13 +3,9 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import PageContact from '../views/PageContact.vue'
 import LoginPage from '@/views/LoginPage.vue'
-
 import SignUp from '@/views/SignUp.vue'
-import ModifUtilisateur from '@/views/ModifUtilisateur.vue'
-import ListeClients from '@/views/ListeClients.vue'
 
-import AdminVue from '@/views/AdminVue'
-import ProduitsView from '../views/ProduitsView.vue'
+
 import TapisView from '../views/TapisView.vue'
 import LampeView from '../views/LampeView.vue'
 import ChaiseView from '../views/ChaiseView.vue'
@@ -37,6 +33,7 @@ import ParametreProduit from '@/views/DashBoard/ParametreProduit.vue'
 import ParametreCat from '@/views/DashBoard/ParametreCat.vue'
 import AdminMsg from '@/views/DashBoard/AdminMsg.vue'
 import AdminCommande from '@/views/DashBoard/AdminCommande.vue'
+import UserMsg from '@/views/DashBoard/UserMsg.vue'
 
 
 
@@ -69,12 +66,6 @@ const routes = [
     name: 'produits',
     component: ProduitsView
   },
-  {
-
-    path: '/signup',
-    name: 'inscription',
-    component: SignUp
-  },
   
   {
     path: '/tapisview',
@@ -100,7 +91,8 @@ const routes = [
     path: '/tableview',
     name: 'table',
     component: TableView
-  }
+  },
+  {
 
     path: '/panierview',
     name: 'panier',
@@ -110,7 +102,7 @@ const routes = [
     path: '/commresume',
     name: 'commresume',
     component: CommResume
-   }
+   },
 
   {
     path: '/signup',
@@ -138,16 +130,6 @@ const routes = [
   path: '/politiqueconf',
   name: 'politiqueconf',
   component: PolitiqueConf
-},
-{
-  path: '/modifutilisateur',
-  name: 'modifutilisateur',
-  component: ModifUtilisateur
-},
-{
-  path: '/listeclients',
-  name: 'listeclients',
-  component: ListeClients
 },
 {
   path: '/pagecarriere',
@@ -213,6 +195,12 @@ const routes = [
       name: 'parametre',
       component: UserParametre,
     },
+    {
+      path: '/usermsg',
+      name: 'usermessagerie',
+      component: UserMsg,
+    },
+
   ],
 },
 

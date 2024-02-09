@@ -2,7 +2,8 @@
   <div>
     <UserForm title="Débutez votre shopping !"
     paragraphe="Nos produits, vos envies."
-    :formInscription="true" @submit.prevent="enregistrerUtilisateur"/>
+    :formInscription="true" 
+    @submit.prevent="enregistrerUtilisateur"/>
   </div>
 
 </template>
@@ -16,11 +17,10 @@ export default {
   },
 
   methods: {
-    enregistrerUtilisateur() {
-      console.log('Utilisateur enregistré !')
-      return {
-        online: true,
-      }
+    enregistrerUtilisateur(utilisateur) {
+      localStorage.setItem('userData', JSON.stringify(utilisateur));
+      console.log('Utilisateur enregistré !', utilisateur)
+      this.$router.push('/');
     }
   }
 

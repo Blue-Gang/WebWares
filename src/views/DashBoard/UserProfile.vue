@@ -1,6 +1,6 @@
 <template>
   <div>
-    Mon profil
+    <h2>Mon profil</h2>
   </div>
 </template>
 
@@ -10,6 +10,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+h2{
+  margin-top: 20px;
+}
 
 </style>

@@ -2,7 +2,6 @@
   <div class="home">
 
 
-
     <!-- Bannière Cécile -->
 
     <div>
@@ -18,9 +17,8 @@
   <section class="banniere">
 
     <div v-if="online" class="txtB" >
-      <h3>Bonjour, ...</h3>
-      <p>Prêt à faire de nouvelles découvertes ?
-      </p>
+      <h3>, vos produits favoris ont été mis à jour.</h3>
+      <p>Jetez un coup d'œil pour découvrir les nouveautés !</p>
       <button>Voir les produits</button>
     </div>
 
@@ -64,7 +62,7 @@
 
         <div class="elements descriptionP">
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima, excepturi. <br><br>
-            <strong></strong>
+            <strong>49.99€</strong>
           </p>
         </div>
 
@@ -84,7 +82,7 @@
 
         <div class="elements descriptionP">
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima, excepturi. <br><br>
-            <strong>{prix}</strong>
+            <strong>129.99€</strong>
           </p>
         </div>
 
@@ -104,7 +102,7 @@
 
         <div class="elements descriptionP">
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima, excepturi. <br><br>
-            <strong>{prix}</strong>
+            <strong>299.99€</strong>
           </p>
         </div>
 
@@ -137,23 +135,20 @@
 
       <div class="cols">
         <div class="col">
-          <img src="{newProd1}">
+          <img src="@/assets/tapis-4.jpg">
           <div class="imgTNewP">
-            <h3>{newProd1}</h3>
           </div>
         </div>
 
         <div class="col">
-          <img src="{newProd2}">
+          <img src="@/assets/deco-2.jpg">
           <div class="imgTNewP">
-            <h3>{newProd2}</h3>
           </div>
         </div>
 
         <div class="col">
-          <img src="{newProd3}">
+          <img src="@/assets/luminaire-3.jpg">
           <div class="imgTNewP">
-            <h3>{newProd3}</h3>
           </div>
         </div>
       </div>
@@ -181,25 +176,31 @@
 
     <div class="containerMN">
       <div class="prodMN prodMN1">
-        <img src="">
+        <div class="content">
+        <!-- <img src=""> -->
         <h3>{Tapis2}</h3>
         <span>Embellisez vos sols !</span>
+        </div>
       </div>
     </div>
 
     <div class="containerMN">
       <div class="prodMN prodMN2">
-        <img src="">
+        <div class="content">
+        <!-- <img src=""> -->
         <h3>{Vase deco-3}</h3>
         <span>Donnez vie à vos fleurs.</span>
+        </div>
       </div>
     </div>
 
     <div class="containerMN">
       <div class="prodMN prodMN3">
-        <img src="">
+        <div class="content">
+        <!-- <img src=""> -->
         <h3>{Table basse 1}</h3>
         <span>Rangement malin pour un sommeil paisible.</span>
+        </div>
       </div>
     </div>
 
@@ -255,7 +256,6 @@
   </section>
 
 
-
   </div>
 </template>
 
@@ -281,8 +281,25 @@ export default {
           max: 25,
           speed: 400
         })
+          VanillaTilt.init(document.querySelector(".cardL"), {
+          max: 25,
+          speed: 400
+        }),
+          VanillaTilt.init(document.querySelector(".cardC"), {
+          max: 25,
+          speed: 400
+        }),
+          VanillaTilt.init(document.querySelector(".cardR"), {
+          max: 25,
+          speed: 400
+        })
     },
 
+    // created() {
+    //   app.config.globalProperties.$on('clientEnLigne', (enLigne) => {
+    //     this.online = enLigne;
+    //   })
+    // }
 
 }
 
@@ -394,6 +411,7 @@ video{
 @media (max-width: 768px) {
   .banniere video {
     display: none;
+
   }
 
   .banniere::after {
@@ -406,6 +424,10 @@ video{
     
   }
 }
+
+
+
+
 
 
 /* Promo Cécile */
@@ -458,6 +480,15 @@ section.promo{
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
   transform-style: preserve-3d;
 }
+
+.box:hover {
+  background-color: transparent;
+}
+
+.card:hover .elements {
+  backdrop-filter: blur(0px);
+}
+
 
 @media (max-width: 768px) {
   .box .card {
@@ -522,7 +553,6 @@ section.promo{
   border-top: 1px solid rgba(222, 197, 177, 0.9);
   border-left: 1px solid rgba(222, 197, 177, 0.9);
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
-  
   
 
 }
@@ -705,7 +735,7 @@ section.promo{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  height: 200px;
+  height: auto;
   margin: 20px auto;
 }
 
@@ -717,12 +747,8 @@ section.promo{
 
 .col img{
   width: 100%;
-  height: auto;
-}
-
-.imgTNewP{
-  margin-top: 180px;
-
+  height: 100%;
+  cursor: pointer;
 }
 
 
@@ -735,47 +761,87 @@ section.promo{
 
 .mieuxNotes{
   margin-top: 80px;
-  background-color: blue;
-
+  /* background-color: blue; */
+  display: flex;
 }
 
-.containerMN {  
-  width: 100%;
+.containerMN{
+  /* background-color: yellow; */
+  /* width: 100%; */
+  margin: 40px auto;
   display: flex;
   justify-content: center;
-  width: 100%;
-  height: 500px;
-  gap: 10px;
+  height: 400px;
+  /* gap: 10px; */
 }
 
 .containerMN .prodMN{
-  font-size: 1.5rem;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  padding: 14;
+  /* background-color: red; */
   flex: 0 0 120px;
   border-radius: 0.5rem;
-  transition: 0.5s ease-in-out;
   cursor: pointer;
-  box-shadow: 1px 5px 15px #1e0e3e;
+  transition: 0.5s ease-in-out;
+  box-shadow: 1px 5px 15px #472e16;
   position: relative;
   overflow: hidden;
+
+}
+ 
+.prodMN1 {
+  background: url(/public/images/tapis-2.jpg)
+  no-repeat 50% / cover;
 }
 
-.containerMN .prodMN1 {
-  background: url("@/assets/tapis-2.jpg") no-repeat 50% / cover;
+.prodMN2 {
+  background: url(/public/images/deco-3.jpg)
+  no-repeat 50% / cover;
 }
 
-.containerMN .prodMN2 {
-  background: url("@/assets/deco-3.jpg") no-repeat 50% / cover;
+.prodMN3 {
+  background: url(/public/images/mobilier-1.jpg)
+  no-repeat 50% / cover;
 }
 
-.containerMN .prodMN3 {
-  background: url("@/assets/mobilier-1.jpg") no-repeat 50% / cover;
+.containerMN .prodMN .content{
+  font-size: 1.rem;
+  color: #472e16;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-end;
+  background: rgb(222, 197, 177);
+
+  transform: translateY(100%);
+  transition: opacity 0.5s ease-in-out;
+  transform: 0.5s 0.2s;
+  visibility: hidden;
+  opacity: 0;
 }
 
+.prodMN .content span{
+  display: block;
+  margin-top: 5px;
+  font-size: 1.2rem;
+}
 
+.prodMN:hover{
+  flex: 0 0 250px;
+  box-shadow: 1px 3px 15px #472e16;
+}
+
+.prodMN .content:hover{
+  opacity: 1;
+  transform: translateY(0%);
+  visibility: visible;
+  z-index: 1;
+}
+
+.prodMN .content h3:hover{
+  opacity: 1;
+
+}
 
 
 
@@ -812,7 +878,6 @@ section.promo{
 
 
 /* Contact Priscy */
-
 .container {
   display: flex;
   justify-content: space-between;
@@ -827,7 +892,6 @@ section.promo{
   margin-right: 8px;
  margin-bottom: 10px;
  cursor: pointer;
-
 }
 .container p {
   color: #472e16;
@@ -839,7 +903,6 @@ section.promo{
 .cont1 {
   margin-left: 150px;
   color: #472e16
-
 }
 .cont2 {
   display: flex;
@@ -859,7 +922,6 @@ section.promo{
   background-color: #cca88c;
   height: 200px;
 }
-
 
 button {
     background-color: #b98d68;
@@ -881,5 +943,8 @@ button:hover {
   background-color: #5e3c1a;
   color: #cca88c;
 }
+
+
+
 
 </style>

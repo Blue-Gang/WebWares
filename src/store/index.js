@@ -98,7 +98,6 @@ export default createStore({
     
         {
           id: 8,
-          image: 'deco-1.jpg',
           image: 'images/deco-1.jpg',
           titre: 'Vase éthnique en argile',
           description: 'Vase éthnique en argile avec motifs gravés à la main.',
@@ -266,7 +265,7 @@ export default createStore({
         ville: 'Paris',
         email: 'user@webwares.com',
         raisonSociale: 'Web Wares',
-        siret: '15854569585852',     
+        siret: '15854569585852', 
         role: 'user',        
       },  
       {
@@ -318,19 +317,22 @@ export default createStore({
         ville: 'NoMANSLands',
         email: 'chars@decombat.com',
         raisonSociale: 'Amiral',
-        siret: '585959565658585',     
-        role: 'user',        
+        siret: '585959565658585',
+        role: 'user',
       },
 
     ],
 
     online: false,
+    // role: user,
 
 
   },
+
   getters: {
     userCo: state => state.online,
   },
+
   mutations: {
 
     mettreEnLigne(state, enLigne) {

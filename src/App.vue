@@ -1,6 +1,7 @@
 <template>
   <nav class="secondary">
     <div class="secondaryTopPage">
+      <!-- Partie langue & contact -->
       <div class="lang">
 
           <select class="langChoice" v-model="lang" >
@@ -17,7 +18,7 @@
       </div>
     </div>
   </nav >
-
+<!-- Partie Navbar -->
   <nav class="principal">
     <img class="logoWW" src="@/assets/5.png" alt="logo" width="200" height="100">
     <div class="BarNav">
@@ -36,15 +37,29 @@
         </router-link> 
         
 
-        <router-link to="/about">Catégories</router-link>  
+        <!-- <router-link to="/about">Catégories</router-link>   -->
         <router-link to="/aboutview">A Propos</router-link>
         <router-link to="/produitsview">Produits</router-link>
-        <router-link to="/panierview">Panier ({{ produitPanier.length }})</router-link>
-        <router-link to="/commresume">Commande </router-link>
+        <!-- <router-link to="/panierview">Panier ({{ produitPanier.length }})</router-link> -->
+        <!-- <router-link to="/commresume">Commande </router-link> -->
         
 
+    <div class="headerR">
+      <div v-if="!online" class="ifOnline">
+        <router-link to="/Loginpage">Connection</router-link> 
+        <router-link to="/SignUp">Inscription </router-link>
+      </div>
+      <div v-if="online" class="horsLine">
+        <div class="headerUser">
+          <img src="/images/user.png">
 
-        
+        </div>
+        <div class="headerPanier">
+          <img src="/images/panier.png">
+          <p>({{ produitPanier.lenght }})</p>
+        </div>
+      </div>
+    </div>
         
       </div>
 
@@ -62,29 +77,29 @@
         </span>
       </section> -->
     </div>
-      <div class="none">
-            <div class="connect">
+
+
+
+      <!-- <div class="none">
+            <div v-if="online" class="connect">
               <router-link to="/Loginpage">Connection</router-link> 
               <router-link to="/SignUp">Inscription </router-link>
             </div>
+
             <div class="Horsconnect">
               <select @change="navigate" class="dropdown" >
                 <option>Menu</option>
-
-
-
                 <option value="panierview"> Panier ({{ produitPanier.length }})</option>
                 <option value="vos achat"><router-link to="/commresume">vos achats</router-link></option>
-
-
-                <option value="@/view/AdminVue">Admin</option>
-
+                <option value="/AdminPage">Admin</option>
                 <option value="logout">Déconnection</option>
               </select>
+
             </div>
-      </div>
+        </div> -->
+
   </nav>
-  <footer>
+  <!-- <footer>
     <div class="foot">
       <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
 
@@ -95,13 +110,9 @@
             </div>           
             <div class="col">
                 <ul class="list-inline">
-
-
                     <li class="list"><a class="footA" href="/">Accueil</a></li>
                     <li class="list"><a class="footA" href="/aboutview">A propos</a></li>
                     <li class="list"><a class="footA" href="/pagecontact">Contact</a></li>
-
-
                 </ul>
             </div>                
             <div class="col">
@@ -115,62 +126,39 @@
             </div>                                 
             <div class="col">
                 <ul class="list-inline">
-                    <li class="list"><a class="footA" href="#">Connexion</a></li>
-
-
-                    
-                    <li class="list"><a class="footA" href="/PageCarriere">Carrières</a></li>
-
-
+                    <li class="list"><a class="footA" href="/loginpage">Connexion</a></li>
                     <li class="list"><a class="footA" href="/signup">S'inscrire</a></li>
-
-                   
-                    <li class="list"><a class="footA" href="#">Carrières</a></li>
-
-
-                    
+                    <li class="list"><a class="footA" href="/PageCarriere">Carrières</a></li>
                 </ul>
             </div> 
             <div class="col">
                 <ul>
-
-
                     <li class="list CGV "><a class="footA" href="/PageCgv">Conditions générales de ventes</a></li>
                     <li class="list CGV1"><a class="footA" href="/PageCgv">CGV</a></li>
                     <li class="list CGU"><a class="footA" href="/PageCgu">Conditions générales d'utilisations</a></li>
                     <li class="list CGU1"><a class="footA" href="/PageCgu">CGU</a></li>
-                    <li class="list PDC"><a class="footA" href="/PolitiqueConf">Politique de confidencialité</a></li>                   
-                    <li class="list PDC1"><a class="footA" href="/PolitiqueConf">PDC</a></li>                   
-
-
+                    <li class="list PDC"><a class="footA" href="/PolitiqueConf">Politique de confidencialité</a></li>
+                    <li class="list PDC1"><a class="footA" href="/PolitiqueConf">PDC</a></li>
                 </ul>
             </div>
             <div class="col">
                 <ul>
                     <p class="Follow">Suivez nous</p>
-
-
-
-
-
                     <a href="https://www.facebook.com/"><img class="logoR" src="@/assets/FB.svg" alt="Logo FaceBook"/></a>                                      
                     <a href="https://www.linkedin.com/"><img class="logoR" src="@/assets/LKD.svg" alt="Logo Linkedin" /></a>               
-                    <a href="https://twitter.com/"><img class="logoR" src="@/assets/TWT.svg" alt="Logo Twiter" /></a> 
-                                
+                    <a href="https://twitter.com/"><img class="logoR" src="@/assets/TWT.svg" alt="Logo Twiter" /></a>  
                 </ul>
 
             </div>   
                     
       </div>
           
-  </footer>
+  </footer> -->
     
   <router-view />
 </template>
 
 <script>
-
-
 import { mapState } from 'vuex';
 
 export default{ 
@@ -218,6 +206,15 @@ export default{
     },
     
     ...mapState(['produitPanier'], ['produits']),
+
+    computed: {
+      online() {
+        console.log(this.$store.state.online);
+        return this.$store.state.online;
+      }
+    },
+
+    ...mapState(['online']),
   
 
 
@@ -228,8 +225,7 @@ export default{
 
 <style>
 
-
-*{
+*, ::before, ::after{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -300,7 +296,7 @@ export default{
 
 .navLink {
   float: right;
-  margin-right: 250px;
+  margin-right: -300px;
   font-size: 25px;
   
   color: #ffffff;
@@ -327,6 +323,7 @@ export default{
 }
 
 .none{
+
   display: block;
   float: right;
   margin-right: 40px;
@@ -377,7 +374,7 @@ export default{
 }
 
 .connect{
-display:none;
+/* display:none; */
   
 }
 
@@ -422,6 +419,40 @@ display:none;
 }
 
 /* Header Jason */
+
+
+
+
+/* Header co et non co Cécile */
+
+.headerR{
+  float: right;
+  margin-left: 250px;
+  margin-top: 6px;
+  display: flex;
+}
+
+.headerR img{
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+
+}
+
+.horsLine{
+  margin-left: 40px;
+
+}
+
+.headerUser,
+.headerPanier{
+  display: inline-flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+
 
 
 /* Footer David */
@@ -587,8 +618,6 @@ footer {
   
 
 }
-}
-
 
 
 @media screen and (max-width: 430px){

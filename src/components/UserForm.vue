@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-
+    <!-- <p>{{ this.email }} {{ this.password }}</p> -->
     <form 
-    @submit.prevent="checkForm" 
+    @submit.prevent="submitForm" 
     class="formulaire">
 
     <h2 class="title">{{ title }}</h2>
@@ -57,23 +57,16 @@
         type="password" 
         placeholder="Mot de passe*">
         <input 
+        v-if="formInscription"
         v-model="password.confirmPassword" type="password" 
         placeholder="Confirmer le mot de passe*">
 
 
       <button v-if="!formInscription"
-      v-on:click.stop
-       @click="checkForm()"
-      type="submit">Se connecter</button>
+       @click="loadUser()">Se connecter</button>
 
-
-
-    <router-link 
-     to='/'>
-      <button v-if="formInscription" v-on:click.stop @click="checkForm()" 
-      type="submit">S'inscrire</button>
-    </router-link>
-
+      
+      <button v-if="formInscription" @click="checkForm()">S'inscrire</button>
 
 
     <div v-if="!formInscription">
@@ -89,30 +82,28 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 
 export default {
 
   data() {
     return {
-      siret: "",
-      cp: "",
-    };
-  },
-  methods: {
-    validate() {
-      if(this.siret.length !== 14 && isNaN(this.siret)) {
-        alert('Le numéro de SIRET doit contenir 14 chiffres.');
-        return;
-      }
-
-      if(this.cp.length !== 5 && isNaN(this.cp)) {
-        alert('Le code postal doit comporter 5 chiffres.');
-        return;
-      }
-
+      error: [],
+      raisonSociale: '',
+      siret: '',
+      adresse: '',
+      cp: '',
+      codePostal: '',
+      ville: '',
+      email: '',
+      password: {
+        password: '',
+        confirmPassword: '',
+      },
+      // role: user,
+    
+    }
     },
-  },
+
 
     props: {
         title: {
@@ -135,49 +126,21 @@ export default {
 
 
     },
-  computed:{
-    ...mapState(['clients']),
-  },
+  
 
-  data() {
-    return {
-      error: [],
-      raisonSociale: '',
-      siret: '',
-      adresse: '',
-      cp: '',
-      codePostal: '',
-      ville: '',
-      email: '',
-      password: {
-        password: '',
-        confirmPassword: '',
-      },
-      
 
-     
-      
-
-    }
-    },
 
   methods: {
     checkForm() {
 
-      this.$store.dispatch('clientEnLigne', true);
-
+      let usersInscrits = JSON.parse(localStorage.getItem('usersData')) || [];
       this.$emit('connexionUtilisateur', true);
 
       if(!this.formInscription){
-      if(!this.email || !this.password.password || !this.password.confirmPassword){
+      if(!this.email || !this.password.password){
         alert('Veuillez remplir tous les champs obligatoires.')
         return
       }}
-
-      if(this.password.password != this.password.confirmPassword) {
-        alert('Les mots de passes ne correspondent pas.')
-        return
-      }
 
 
       if(this.formInscription) {
@@ -195,28 +158,80 @@ export default {
         }
         if(!this.email || !this.password.password || !this.password.confirmPassword) {
           alert('Veuillez renseigner vos informations personnelles.');
-          return
+          return;
         }
 
-        const userData = {
+
+        usersInscrits.push({
           raisonSociale: this.raisonSociale,
           siret: this.siret,
           adresse: this.adresse,
           codePostal: this.codePostal,
           ville: this.ville,
           email: this.email,
-    
+          password: this.password,
+          inscrit: true,
+        });
 
-        };
 
-        localStorage.setItem('userData', JSON.stringify(userData))
+        localStorage.setItem('usersData', JSON.stringify(usersInscrits));
       }
 
-      if(this.email || this.password.password || this.password.confirmPassword) {
-        this.$router.push('/');
-      }
+      
 
   },
+
+  submitForm() {
+
+    console.log('submitForm', {email:this.email, password:this.password});
+
+    let formData = {
+      email: this.email,
+      password: this.password,
+
+    };
+
+    this.$emit('submitLogin', formData);
+
+    // if(!this.formInscription) {
+    //   if(!this.email || !this.password.password) {
+    //     alert('Veuillez remplir tous les champs obligatoires.')
+    //     return;
+    //   }
+    // } else {
+    //   if(!this.raisonSociale || !this.siret || !this.adresse || !this.codePostal || !this.ville) {
+    //     alert('Veuillez remplir tous les champs de l\'entreprise.');
+    //     return;
+    //   }
+    //   if(!this.email || !this.password.password || !this.password.confirmPassword) {
+    //     alert('Veuillez renseigner vos informations personnelles.');
+    //     return;
+    //   }
+    // }
+
+    // this.$router.push('/');
+
+  },
+
+  loadUser() {
+    console.log('ok');
+
+    let usersData = JSON.parse(localStorage.getItem('usersData')) || [];
+    let utilisateurExist = usersData.find(user => user.email === this.email && user.password.password === this.password.password);
+
+    if(utilisateurExist) {
+      localStorage.setItem('userData', JSON.stringify(utilisateurExist));
+
+      this.$store.dispatch('clientEnLigne', true);
+
+      this.$router.push('/');
+
+
+    } else{
+      alert('Veuillez vérifier vos informations de connexion ou inscrivez vous.');
+    }
+
+  }
 
   }
 
@@ -229,7 +244,7 @@ export default {
   /* background-color: red; */
   width: 400px;
   height: 800px;
-  margin: 0 auto;
+  margin: 200px auto;
 }
 
 .formulaire{
@@ -317,4 +332,3 @@ label{
 }
 
 </style>
-

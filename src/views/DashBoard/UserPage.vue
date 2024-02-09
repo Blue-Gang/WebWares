@@ -14,14 +14,14 @@
                 </div>
 
                 <div class="box">
-                    <router-link to="/" class="cat"  >
+                    <router-link to="/UserProfile" class="cat"  >
                         <img src="images/profil.png" alt="">
                         <p>Mon profil</p>
                     </router-link>
                 </div>
 
                 <div class="box">
-                    <router-link to="/" class="cat"  >
+                    <router-link to="/UserMsg" class="cat"  >
                         <img src="images/email.png" alt="">
                         <p>Ma messagerie</p>
                     </router-link>
@@ -124,6 +124,7 @@ export default {
 
 <style>
 .dashboard {
+    margin-top: 150px;
     display: flex;
     width: max-content;
    height: max-content;

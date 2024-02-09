@@ -137,7 +137,17 @@ export default {
 </script>
 
 <style>
+
+*, ::before, ::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
 .dashboard {
+    margin-top: 150px;
     display: flex;
     width: 100%;
    height: 100%;
@@ -262,6 +272,11 @@ export default {
 }
 .menuser button:hover {
     background-color: #5e3c1a;
+}
+
+.affichage{
+    background-color: yellow;
+    overflow: scroll;
 }
 
 

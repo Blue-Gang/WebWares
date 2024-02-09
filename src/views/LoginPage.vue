@@ -1,9 +1,8 @@
 <template>
 
   <div>
-    <UserForm/>
+    <UserForm />
   </div>
-  
   
   
   </template>
@@ -12,8 +11,21 @@
   import UserForm from '@/components/UserForm.vue';
   
   export default {
+
+    created() {
+      console.log('loginpage ok')
+    },
+
+
     components: {
       UserForm,
+    },
+
+    methods: {
+    
+
+
+
     }
   
   }
@@ -22,6 +34,7 @@
   <style scoped>
   .formulaire{
     width: 600px;
+
   }
   
   
