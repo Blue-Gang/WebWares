@@ -1,47 +1,35 @@
 <template>
-
-
-<section>
+     <section>
         <div class="barSearch">
-          <div>
-            <input type="text" v-model="querry" @input="listFilter" placeholder="Rechercher un produit">
-          </div>
-          <div class="listBarSearch">
-            <ul>
-                <li v-for="(produits, i) in filteredProducts" :key="i">{{ produits.titre }}</li>
-            </ul>
-          </div>
+            <div>
+                <input type="text" v-model="querry" @input="listFilter" placeholder="Rechercher un produit">
+            </div>
+            <div class="listBarSearch">
+            </div>
         </div>
-      </section>
+    </section>
+
     <div class="produitview">
         <h1 class="titreproduit">Produits</h1>
-
-        <div class="tableproduits" >
-            <div class="cardproduit" v-for="(prod,index) in produits" v-bind:key="index">
+        <div class="tableproduits">
+            <div class="cardproduit" v-for="(prod,index) in filteredProducts" :key="index">
                 <tr class="cardinte">
                     <h2 class="titleprod">{{ prod.titre }}</h2>
-
-                    
-                    <img class="imgproduit" v-bind:src="prod.image">
+                    <img class="imgproduit" :src="prod.image">
                     <br>
-                   
                     <td class="description">{{ prod.description }}</td>
                     <br>
-                    <td>MOQ: {{ prod.moq }}</td>       
+                    <td>MOQ: {{ prod.moq }}</td>
                     <td class="prix">Prix: {{ prod.prix }} € HT</td>
-                    
-                    <Gbtn  @click="add(prod)" label="Ajouter au panier"/>
-                    
-                             
+                    <Gbtn @click="add(prod)" label="Ajouter au panier"/>
                 </tr>
             </div>
-        </div>   
+        </div>
     </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-
 import Gbtn from '@/components/ButtonGen.vue'
 
 export default {
@@ -49,8 +37,7 @@ export default {
         data(){
             return {    
                 querry: '',
-                filteredProducts: mapState(['produits']),
-                      
+                filteredProducts: [],    
             }           
         },
 
@@ -59,18 +46,14 @@ export default {
         },
 
         methods: {
-           
-            
-
             add(prod) {
                 const produitExistant = this.produitPanier.find(item => item.id === prod.id);
-                if (produitExistant) {  
+                if (produitExistant){  
                 this.$store.commit('incrementQuantite', produitExistant.quantites ++);
-                
-                } else {
-        
+                } 
+                else {
                 prod.quantites = prod.moq;
-                    this.$store.commit('addProduit', prod);
+                this.$store.commit('addProduit', prod);
                 }
                 this.saveCartToLocal();               
             },
@@ -82,39 +65,39 @@ export default {
                     localStorage.setItem('commande', JSON.stringify(this.commande));
             }, 
 
-            listFilter() {
+
+                listFilter() {
                 
                 if( this.querry.length > 0){
-                    this.filteredProducts = this.produits.filter(produits => {
-                        return produits.titre.toLowerCase().includes(this.querry.toLowerCase());
+                    this.filteredProducts = this.produits.filter(prod => {
+                        return prod.titre.toLowerCase().includes(this.querry.toLowerCase());
                     });
-                } else { 
+                } 
+                else { 
                     this.filteredProducts = this.produits;
                 }
-
             },
-
         },
-            
-    
+
         computed: {
             ...mapState(['produits', 'produitPanier']),
-            
         },
 
-        created() {
-            const savedCart = localStorage.getItem('panier');
-            if (savedCart) {
+            created() {
+        const savedCart = localStorage.getItem('panier');
+        if (savedCart) {
             this.$store.commit('setProduitPanier', JSON.parse(savedCart));
-            }
+        }
 
-        },
+        const savedProducts = localStorage.getItem('produits');
+        if (savedProducts) {
+            this.$store.commit('setProduits', JSON.parse(savedProducts));
+        }
+},
 }
 </script>
 
 <style scoped>
-
-
 .barSearch input{
     width: 300px;
     height: 40px;
@@ -125,8 +108,6 @@ export default {
     background-color: #cca88c81;
     margin-top: 200px;
 }
-
-
 .barSearch {
     display: flex;
     justify-content: center;
@@ -134,11 +115,7 @@ export default {
     margin-top: 50px;
     margin-bottom: 50px;
     margin-left: 0 auto;
-
 }
-
-
-
 
 /* style card produits */
 
@@ -157,7 +134,6 @@ template {
     margin-top:50px;
     justify-content: center;
     margin-right: 8%;
-    
 }
 
 /* media queries */
@@ -177,18 +153,11 @@ template {
     }
 }
 
-li{
-    display: flex;
-    list-style: none;
-    margin: top 10px;
-    cursor: pointer;
-}
 .cardinte{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 .cardproduit {
     display: flex;
     flex-direction: column;
@@ -206,7 +175,6 @@ li{
     width: 330px;
     height: 480px;
     overflow: hidden;
-
 }
 
 .cardproduit:hover {
@@ -224,19 +192,16 @@ li{
     background-color: #fff;
 }
 
-
 .titleprod {
     font-size: 20px;
     margin-bottom: 10px;
     color: #472e16c6;
 }
-
 .titreproduit{
     margin-top: 20px;
     margin-bottom: 50px;
     font-size: 40px;
     color: #472e16;
 }
-
 
 </style>

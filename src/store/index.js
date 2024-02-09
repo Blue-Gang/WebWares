@@ -74,7 +74,7 @@ export default createStore({
           moq: 5,
           stock: 30,         
           categorieId: 1
-      },
+        },
 
         {
           id: 6,
@@ -325,13 +325,11 @@ export default createStore({
     ],
 
     online: false,
-
     //creer une nouvelle catégorie
     newValue: {},
     newValueCategory: {},
-   
-    
   },
+
   getters: {
     userCo: state => state.online,
   },
@@ -441,6 +439,10 @@ export default createStore({
   saveToLocalStorage(state) {
   localStorage.setItem('categories', JSON.stringify(state.categories));
   },
+
+  saveProduitsToLocal() {
+    localStorage.setItem('produits', JSON.stringify(this.produits));
+},
 
   actions: {
 

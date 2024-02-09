@@ -32,7 +32,7 @@
               <option value="/lampeview">Luminaire</option>
               <option value="/tableview">Table</option>
               <option value="/chaiseview">Chaise</option>
-            </select>
+          </select>
         </router-link> 
         <router-link to="/aboutview">A Propos</router-link>
         <router-link to="/produitsview">Produits</router-link>
@@ -173,18 +173,12 @@ export default{
   data(){
       return{
       querry: "",
-
-
       lang: "fr",
       menuDropdown:'Menu',
-
     }
   },
 
   methods:{
-
-
-  
 
     navigate(event){
       this.$router.push(event.target.value);
@@ -202,22 +196,16 @@ export default{
   },
 
   computed: {
-
     filteredProducts(){
-
       return this.$store.state.products    
     },
-    
     ...mapState(['produitPanier'], ['produits']),
-  
-
-
   },
 }
 
 </script>
 
-<style>
+<style scoped>
 
 
 
@@ -280,7 +268,7 @@ export default{
 }
 
 .BarNav{
- display: flex;
+  display: flex;
   justify-content: center;
   margin-right: 120px ;
   margin-top: 30px ;
@@ -884,6 +872,7 @@ footer {
   margin: 0 4px;
 }
 }
+
 @media screen and (min-width: 431px) and (max-width: 820px){
 .logoR{
   width: 25px;
@@ -913,7 +902,6 @@ footer {
   height: 60px;
   margin: 0 10px;
 }
-
 }
 
 
@@ -954,7 +942,6 @@ footer {
   display:none;
 }}
 
-
 @media screen and (max-width: 430px){
 .PDC{
   display:none;
@@ -976,4 +963,3 @@ body{
 
 
 </style>
-```

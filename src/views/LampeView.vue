@@ -121,7 +121,6 @@ template {
     .tableproduits {
         grid-template-columns: 250px;
         justify-content: center;
-        
     }
 }
 
@@ -176,7 +175,6 @@ template {
 }
 
 .titreproduit{
-    
     margin-top: 20px;
     margin-bottom: 50px;
     font-size: 40px;
