@@ -34,13 +34,10 @@
               <option value="/chaiseview">Chaise</option>
             </select>
         </router-link> 
-        
-
-        <router-link to="/about">Catégories</router-link>  
         <router-link to="/aboutview">A Propos</router-link>
         <router-link to="/produitsview">Produits</router-link>
-        <router-link to="/panierview">Panier ({{ produitPanier.length }})</router-link>
-        <router-link to="/commresume">Commande </router-link>
+        <router-link to="panierview">Panier ({{ produitPanier.length }})</router-link>
+        
         
 
 
@@ -69,16 +66,10 @@
             </div>
             <div class="Horsconnect">
               <select @change="navigate" class="dropdown" >
-                <option>Menu</option>
-
-
-
-                <option value="panierview"> Panier ({{ produitPanier.length }})</option>
-                <option value="vos achat"><router-link to="/commresume">vos achats</router-link></option>
-
-
-                <option value="@/view/AdminVue">Admin</option>
-
+                <option value="/HomeView">Menu</option>
+                <option value="/panierview"> Panier ({{ produitPanier.length }})</option>
+                <option value="/commresume">Commande</option>
+                <option value="/AdminPage">Admin</option>
                 <option value="logout">Déconnection</option>
               </select>
             </div>
@@ -226,7 +217,7 @@ export default{
 
 </script>
 
-<style>
+<style scoped >
 
 
 *{
@@ -587,7 +578,7 @@ footer {
   
 
 }
-}
+
 
 
 

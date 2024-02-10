@@ -171,39 +171,45 @@
 
 
 
-  <!-- Mieux notés Cécile -->
+<!-- Mieux notés Cécile -->
 
-  <section class="mieuxNotes">
+<section class="mieuxNotes">
 
-    <div>
-      <h2>Les mieux notés</h2>
+<div>
+  <h2>Les mieux notés</h2>
+</div>
+
+<div class="containerMN">
+  <div class="prodMN prodMN1">
+    <div class="content">
+    <!-- <img src=""> -->
+    <h3>{Tapis2}</h3>
+    <span>Embellisez vos sols !</span>
     </div>
+  </div>
+</div>
 
-    <div class="containerMN">
-      <div class="prodMN prodMN1">
-        <img src="">
-        <h3>{Tapis2}</h3>
-        <span>Embellisez vos sols !</span>
-      </div>
+<div class="containerMN">
+  <div class="prodMN prodMN2">
+    <div class="content">
+    <!-- <img src=""> -->
+    <h3>{Vase deco-3}</h3>
+    <span>Donnez vie à vos fleurs.</span>
     </div>
+  </div>
+</div>
 
-    <div class="containerMN">
-      <div class="prodMN prodMN2">
-        <img src="">
-        <h3>{Vase deco-3}</h3>
-        <span>Donnez vie à vos fleurs.</span>
-      </div>
+<div class="containerMN">
+  <div class="prodMN prodMN3">
+    <div class="content">
+    <!-- <img src=""> -->
+    <h3>{Table basse 1}</h3>
+    <span>Rangement malin pour un sommeil paisible.</span>
     </div>
+  </div>
+</div>
 
-    <div class="containerMN">
-      <div class="prodMN prodMN3">
-        <img src="">
-        <h3>{Table basse 1}</h3>
-        <span>Rangement malin pour un sommeil paisible.</span>
-      </div>
-    </div>
-
-  </section>
+</section>
 
 
 
@@ -283,6 +289,11 @@ export default {
         })
     },
 
+     // created() {
+    //   app.config.globalProperties.$on('clientEnLigne', (enLigne) => {
+    //     this.online = enLigne;
+    //   })
+    // }
 
 }
 
@@ -356,7 +367,6 @@ export default {
 }
 
 
-
 .banniere video{
   position: relative;
   height: 400px;
@@ -405,6 +415,10 @@ video{
     height: 200px;
     
   }
+}
+
+.box:hover {
+  background-color: #f1f1f1;
 }
 
 
@@ -764,15 +778,15 @@ section.promo{
 }
 
 .containerMN .prodMN1 {
-  background: url("@/assets/tapis-2.jpg") no-repeat 50% / cover;
+  background: url("/public/images/tapis-2.jpg") no-repeat 50% / cover;
 }
 
 .containerMN .prodMN2 {
-  background: url("@/assets/deco-3.jpg") no-repeat 50% / cover;
+  background: url("/public/images//deco-3.jpg") no-repeat 50% / cover;
 }
 
 .containerMN .prodMN3 {
-  background: url("@/assets/mobilier-1.jpg") no-repeat 50% / cover;
+  background: url("/public/images/mobilier-1.jpg") no-repeat 50% / cover;
 }
 
 

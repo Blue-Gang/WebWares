@@ -8,7 +8,7 @@ import SignUp from '@/views/SignUp.vue'
 import ModifUtilisateur from '@/views/ModifUtilisateur.vue'
 import ListeClients from '@/views/ListeClients.vue'
 
-import AdminVue from '@/views/AdminVue'
+
 import ProduitsView from '../views/ProduitsView.vue'
 import TapisView from '../views/TapisView.vue'
 import LampeView from '../views/LampeView.vue'
@@ -17,7 +17,6 @@ import VaseVue from '../views/VaseVue.vue'
 import TableView from '../views/TableView.vue'
 
 import PagePartenaire from '@/views/PagePartenaire.vue'
-import ProduitsView from '../views/ProduitsView.vue'
 import PanierView from '../views/PanierView.vue'
 import CommResume from '../views/CommResume.vue'
                         // Footer
@@ -100,23 +99,24 @@ const routes = [
     path: '/tableview',
     name: 'table',
     component: TableView
-  }
-
+  },
+{
     path: '/panierview',
     name: 'panier',
     component: PanierView
   },
+
   {
     path: '/commresume',
     name: 'commresume',
     component: CommResume
-   }
+   },
 
-  {
+    {
     path: '/signup',
     name: 'inscription',
     component: SignUp
-  },
+    },
   {
 
 
