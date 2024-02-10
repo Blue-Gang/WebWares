@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+
 import Gbtn from '@/components/ButtonGen.vue'
 
 export default {
@@ -37,7 +37,7 @@ export default {
         data(){
             return {    
                 querry: '',
-                filteredProducts: [],    
+                filteredProducts: [],
             }           
         },
 
@@ -67,11 +67,12 @@ export default {
 
 
                 listFilter() {
-                
                 if( this.querry.length > 0){
                     this.filteredProducts = this.produits.filter(prod => {
                         return prod.titre.toLowerCase().includes(this.querry.toLowerCase());
                     });
+                    
+                    
                 } 
                 else { 
                     this.filteredProducts = this.produits;
@@ -79,21 +80,31 @@ export default {
             },
         },
 
+
         computed: {
-            ...mapState(['produits', 'produitPanier']),
+            produits() {
+                return this.$store.getters.produits;
+            },
+            produitPanier() {
+                return this.$store.getters.produitPanier;
+            },
+            
         },
 
-            created() {
-        const savedCart = localStorage.getItem('panier');
+        created() {
+        let savedCart = localStorage.getItem('panier');
         if (savedCart) {
             this.$store.commit('setProduitPanier', JSON.parse(savedCart));
         }
 
-        const savedProducts = localStorage.getItem('produits');
+        let savedProducts = localStorage.getItem('produits');
         if (savedProducts) {
             this.$store.commit('setProduits', JSON.parse(savedProducts));
-        }
+           
+            this.filteredProducts = JSON.parse(savedProducts);
+    }
 },
+
 }
 </script>
 
