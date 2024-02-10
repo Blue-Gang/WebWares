@@ -60,6 +60,7 @@ export default createStore({
         titre: 'Vase éthnique en argile',
         description: 'Vase éthnique en argile avec motifs gravés à la main.',
         prix: 49.99,
+        stock: 30,
         moq: 20,
         categorieId: 4
       },
@@ -82,6 +83,7 @@ export default createStore({
           description: 'Lampe de table avec un design moderne et éclairage ajustable.',
           prix: 79.99,
           moq: 10,
+          stock: 100,
           categorieId: 2
         },
      
@@ -98,7 +100,6 @@ export default createStore({
     
         {
           id: 8,
-          image: 'deco-1.jpg',
           image: 'images/deco-1.jpg',
           titre: 'Vase éthnique en argile',
           description: 'Vase éthnique en argile avec motifs gravés à la main.',
@@ -253,9 +254,10 @@ export default createStore({
     //créé un tableau de commandes
     commande: [],
 
+  
 
     //créé un tableau de clients de 10 clients
-    clients: [
+    clients : [
       {
         id: 1,
         user: 2,
@@ -263,10 +265,11 @@ export default createStore({
         prenom: 'Jean',       
         adresse: '1 rue de la Paix',
         codePostal: '75001',
+        telephone: '0145879652',   
         ville: 'Paris',
         email: 'user@webwares.com',
         raisonSociale: 'Web Wares',
-        siret: '15854569585852',     
+        siret: '15854569585852',  
         role: 'user',        
       },  
       {
@@ -276,6 +279,7 @@ export default createStore({
         prenom: 'Paul',       
         adresse: '2 rue de la Paix',
         codePostal: '75001',
+        telephone: '0145879652',
         ville: 'Paris',
         email: 'user@webwares.com',
         raisonSociale: 'Web Wares',
@@ -289,6 +293,7 @@ export default createStore({
         prenom: 'Jean',       
         adresse: '2 rue du Github',
         codePostal: '75000',
+        telephone: '0145879652',
         ville: 'La Merte',
         email: 'user@webwares.com',
         raisonSociale: 'Web Wares',
@@ -302,6 +307,7 @@ export default createStore({
         prenom: 'Franck',       
         adresse: '1664 rue de la Biére',
         codePostal: '75001',
+        telephone: '0145879652',
         ville: 'Paris',
         email: 'user@webwares.com',
         raisonSociale: 'Web Wares',
@@ -315,6 +321,7 @@ export default createStore({
         prenom: 'Jason',       
         adresse: '15 rue Warthunder',
         codePostal: '56895',
+        telephone: '0145879652',
         ville: 'NoMANSLands',
         email: 'chars@decombat.com',
         raisonSociale: 'Amiral',
@@ -323,6 +330,7 @@ export default createStore({
       },
 
     ],
+    numeroCommande: 1,
 
     online: false,
 
@@ -330,8 +338,34 @@ export default createStore({
   },
   getters: {
     userCo: state => state.online,
+
+
+    getproduits(state){
+      let produits = localStorage.getItem('produits');
+      state.produits = produits ? JSON.parse(produits) : [];
+      return state.produits
+    },
+    getproduitPanier(state){
+      let produits = localStorage.getItem('produitPanier');
+      state.produits = produits ? JSON.parse(produits) : [];
+      return state.produitPanier
+    },
+    getcommande(state){
+      let produits = localStorage.getItem('commande');
+      state.produits = produits ? JSON.parse(produits) : [];
+      return state.commande
+    },
+    getclients(state){
+      let produits = localStorage.getItem('clients');
+      state.produits = produits ? JSON.parse(produits) : [];
+      return state.clients
+    },
   },
   mutations: {
+    //incrementé numero de commande
+    incrementCommande(state) {
+      state.numeroCommande++;
+    },
 
     mettreEnLigne(state, enLigne) {
       state.online = enLigne;
@@ -339,7 +373,7 @@ export default createStore({
 
 
     // ajouter un produit au pannier
-    addProduit(state, prod) {
+    addProduit( state, prod) {
      
     state.produitPanier.push(prod); 
 
@@ -365,11 +399,28 @@ export default createStore({
     transfertCommande(state) {
       state.commande = [...state.produitPanier];
       state.produitPanier = []; 
-      
     },
 
-   
     
+      // Mutation pour ajouter un produit
+      
+      
+      nouveauProduit(state, produits) {
+        state.produits.push(produits);
+        this.saveToLocalStorage()
+      },
+    
+      // Mutation pour modifier un produit
+      editProds(state, { index, updatedProduits }) {
+        state.produits[index] = updatedProduits;
+        this.saveToLocalStorage()
+      },
+    
+      // Mutation pour supprimer un produit
+      removeProduits(state, index) {
+        state.produits.splice(index, 1);
+        this.saveToLocalStorage()
+      }  
   },
 
 
@@ -385,3 +436,9 @@ export default createStore({
   modules: {
   }
 })
+
+
+
+
+
+
