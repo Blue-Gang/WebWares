@@ -1,9 +1,9 @@
 <template>
-      <div>
+      <div class="background">
         
         <section class="gestCategory">
           <h2> Gestion des categories</h2>
-          <button type="button" @click="openModalAddCategorie">Ajouter</button>
+          <button type="button" class="buttonAddCateg" @click="openModalAddCategorie">Ajouter</button>
           <!-- modal ajout -->
           <section>
             <div id="addModalCategory" class="modalAddCategory" v-if="modalAddCategory" v-cloak>
@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+
 
 export default {
   data(){
@@ -70,6 +70,7 @@ export default {
   },
 
   components: {
+
   },
 
   methods: {
@@ -77,12 +78,11 @@ export default {
       this.$store.commit('addCategorie', this.newCategoryName);  
       this.newCategoryName = '';
       this.modalAddCategory = false;
-     
+      this.$store.commit('saveCategoriesToLocalStorage');
     },
   
 
     openModalAddCategorie(){
-  
       this.modalAddCategory = true;
     },
 
@@ -114,9 +114,13 @@ export default {
   },
 
   computed: {
-    ...mapState(['categories']),
- 
+    categories() {
+      return this.$store.state.categories; 
+    }
 
+
+ 
+      },
       mutations: {
         addCategorie(state, newCategoryName){
           state.categories.push({name: newCategoryName});
@@ -124,7 +128,7 @@ export default {
         },
         deleteCategorie(state, index){
           state.categories.splice(index, 1);
-          this.$store.commit('saveToLocalStorage');
+          this.$store.commit('saveCategoriesToLocalStorage');
         },
         openModalCategory(state, index){
           state.index = index;
@@ -132,7 +136,7 @@ export default {
         },
         ModifCate(state, index){
           state.categories[state.index].name = state.categories[index].name;
-          this.$store.commit('saveToLocalStorage');
+          this.$store.commit('saveCategoriesToLocalStorage');
         },
         closeModalCategory(state){
           state.modal = false;
@@ -140,16 +144,14 @@ export default {
         closeModalAddCategorie(state){
           state.modalAddCategory = false;
         },
-        saveToLocalStorage(state){
-          localStorage.setItem('categories', JSON.stringify(state.categories));
+
+        saveCategoriesToLocalStorage(){
+          localStorage.setItem('categories', JSON.stringify(this.categories));
         },
-        }
-      },
-        created(){
-          this.$store.dispatch('loadFromlocalStorage');
-        },
-  }
- 
+
+        
+      }
+    }
   
 
 
@@ -158,6 +160,30 @@ export default {
 <style scoped>
 h2 {
   margin-top: 50px;
+}
+.buttonAddCateg {
+  background-color: #5e3c1a;
+  color: white;
+  border: solid 1px white;
+  border-radius: 10px;
+  font-size: 18px;
+  padding: 10px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.buttonAddCateg:hover {
+  background-color: #b98d68;
+  color: #5e3c1a;
+}
+.background {
+  background-color: #cca88c81;
+  padding: 20px;
+  margin-top: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 10px;
+  color: #5e3c1a;
 }
 .cardModifcategory{
   display: block;
@@ -178,17 +204,13 @@ h2 {
   margin-left : 20px ;
 }
 
-
-
 .TableauCard {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr ;
   align-items: center;
   justify-content: center;
   padding:50px ;
-
 }
-
 
 .cardAddCategory {
   display: block;
@@ -296,5 +318,20 @@ h2 {
   margin-top: 20px;
 }
 
+.btnModalModifCategory:hover{
+  background-color: #b98d68;
+  color: #5e3c1a;
+}
+
+input[type=text] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0; 
+  margin-left: 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 
 </style>

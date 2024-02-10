@@ -328,10 +328,19 @@ export default createStore({
     //creer une nouvelle catégorie
     newValue: {},
     newValueCategory: {},
+
   },
 
   getters: {
     userCo: state => state.online,
+    produits : state => state.produits,
+    produitPanier : state => state.produitPanier,
+    getcommande(state){
+      let produits = localStorage.getItem('commande');
+      state.produits = produits ? JSON.parse(produits) : [];
+      return state.commande
+    },
+    getcategories: state => state.categories, 
   },
   mutations: {
 
@@ -367,18 +376,20 @@ export default createStore({
 
     // ajouter une catégorie
 
-    addCategorie(state, newCategoryName) {
+    addCategorie(state, newCategoryName,) {
       if(newCategoryName) {
         let maxId = 0;
         state.categories.forEach((category) => {
             if (category.categories > maxId) {
                 maxId = category.categories;
+            
             }
         });
         state.categories.push({
             id: maxId + 1,
             name: newCategoryName
         });
+        
 
       }
 
@@ -401,20 +412,21 @@ export default createStore({
 
     // supprimer Catégorie
 
-    deleteCategorie(states, categories) {
+    deleteCategorie({commit},states, categories) {
       if(confirm('Voulez-vous supprimer cette catégorie ?')){
         states.categories.splice(categories, 1);
-        localStorage.removeItem('categories', categories); 
+        commit('saveCategoriesToLocalStorage');
       }
     },
 
     // modification Catégorie
 
-    modifCategorie(state) {
+    modifCategorie({commit},state) {
       if(this.newValueCategory.name) {
         state.categories.push(this.newValueCategory);
         this.newValueCategory = {};
         this.CloseModalCategory();
+        commit('saveCategoriesToLocalStorage');
       }
       else {
         alert('veuillez remplir tous les champs');
@@ -436,33 +448,53 @@ export default createStore({
 
   // local storage catégorie
 
-  saveToLocalStorage(state) {
-  localStorage.setItem('categories', JSON.stringify(state.categories));
+  saveCategoriesToLocalStorage() {
+    localStorage.setItem('categories', JSON.stringify(this.categories));
+
   },
 
+
+  // local storage produit
   saveProduitsToLocal() {
     localStorage.setItem('produits', JSON.stringify(this.produits));
 },
 
   actions: {
 
-    clientEnLigne(context, enLigne) {
-      context.commit('mettreEnLigne', enLigne);
-    },
+      clientEnLigne(context, enLigne) {
+        context.commit('mettreEnLigne', enLigne);
+      },
 
-    loadFromlocalStorage({commit}){
-      const savedCategories = localStorage.getItem('categories');
-      if(savedCategories){
-        commit('setCategories', JSON.parse(savedCategories));
-      }
-    }
+      addCategory({ commit }, state) {
+        if (state.newCategoryName.trim() !== '') {
+          commit('addCategory', state.newCategoryName);
+          commit('saveCategoriesToLocalStorage');
+          state.newCategoryName = '';
+          state.modalAddCategory = false;
+        } else {
+          alert('Veuillez entrer un nom de catégorie valide.');
+        }
+      },
+      deleteCategory({ commit}, index) {
+        if (confirm('Voulez-vous supprimer cette catégorie ?')) {
+          commit('deleteCategory', index);
+          commit('saveCategoriesToLocalStorage');
+        }
+      },
 
-  },
+
+
+      },
+
+
 
   modules: {
   },
 
   created(){
-    
+    const categories = localStorage.getItem('categories');
+    if (categories) {
+      this.state.categories = JSON.parse(categories);
+    }
   },
 })

@@ -45,19 +45,7 @@
         
       </div>
 
-      <!-- barre de recherche -->
-      <!-- <section>
-        <span class="barSearch">
-          <div>
-            <input type="text" v-model="querry" @input="listFilter" placeholder="Rechercher un produit">
-          </div>
-          <div class="listBarSearch">
-            <ul>
-                <li v-for="(produits, i) in filteredProducts" :key="i">{{ produits.titre }}</li>
-            </ul>
-          </div>
-        </span>
-      </section> -->
+
     </div>
       <div class="none">
             <div class="connect">
