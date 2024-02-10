@@ -65,7 +65,7 @@ export default {
       modal: false,
       index: 1,
       editCategory: -1,
-      newCategoryName: {},
+      newCategoryName: '',
     }
   },
 

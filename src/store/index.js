@@ -252,6 +252,7 @@ export default createStore({
 
     //créé un tableau de commandes
     commande: [],
+ 
 
 
     //créé un tableau de clients de 10 clients
@@ -335,6 +336,24 @@ export default createStore({
     userCo: state => state.online,
     produits : state => state.produits,
     produitPanier : state => state.produitPanier,
+
+    getproduits(state){
+      let produits = localStorage.getItem('produits');
+      state.produits = produits ? JSON.parse(produits) : [];
+      return state.produits
+    },
+    getproduitPanier(state){
+      let produits = localStorage.getItem('produitPanier');
+      state.produits = produits ? JSON.parse(produits) : [];
+      return state.produitPanier
+    },
+
+    getclients(state){
+      let produits = localStorage.getItem('clients');
+      state.produits = produits ? JSON.parse(produits) : [];
+      return state.clients
+    },    
+
     getcommande(state){
       let produits = localStorage.getItem('commande');
       state.produits = produits ? JSON.parse(produits) : [];
@@ -412,10 +431,10 @@ export default createStore({
 
     // supprimer Catégorie
 
-    deleteCategorie({commit},states, categories) {
+    deleteCategorie(states, categories) {
       if(confirm('Voulez-vous supprimer cette catégorie ?')){
         states.categories.splice(categories, 1);
-        commit('saveCategoriesToLocalStorage');
+
       }
     },
 
@@ -457,7 +476,27 @@ export default createStore({
   // local storage produit
   saveProduitsToLocal() {
     localStorage.setItem('produits', JSON.stringify(this.produits));
+
+    
 },
+
+nouveauProduit(state, produits) {
+  state.produits.push(produits);
+  this.saveToLocalStorage()
+},
+
+// Mutation pour modifier un produit
+editProds(state, { index, updatedProduits }) {
+  state.produits[index] = updatedProduits;
+  this.saveToLocalStorage()
+},
+
+removeProduits(state, index) {
+  state.produits.splice(index, 1);
+  this.saveToLocalStorage()
+}, 
+
+
 
   actions: {
 
