@@ -334,6 +334,10 @@ export default createStore({
 
     online: false,
 
+    //creer une nouvelle catégorie
+    newValue: {},
+    newValueCategory: {},
+
 
   },
   getters: {
@@ -371,21 +375,16 @@ export default createStore({
       state.online = enLigne;
     },
 
-
     // ajouter un produit au pannier
     addProduit( state, prod) {
      
     state.produitPanier.push(prod); 
-
-
   },
-
 
    removeProduit(state,produit){
       state.produitPanier = state.produitPanier.filter(prod=>
         produit.id !== prod.id
-        )
-      
+        )    
     },
 
     setProduitPanier(state, panier) {
@@ -400,11 +399,9 @@ export default createStore({
       state.commande = [...state.produitPanier];
       state.produitPanier = []; 
     },
-
-    
+ 
       // Mutation pour ajouter un produit
-      
-      
+           
       nouveauProduit(state, produits) {
         state.produits.push(produits);
         this.saveToLocalStorage()
@@ -420,7 +417,88 @@ export default createStore({
       removeProduits(state, index) {
         state.produits.splice(index, 1);
         this.saveToLocalStorage()
-      }  
+      }, 
+        // ajouter une catégorie
+      addCategorie(state, newCategoryName,) {
+        if(newCategoryName) {
+          let maxId = 0;
+          state.categories.forEach((category) => {
+              if (category.categories > maxId) {
+                  maxId = category.categories;
+              
+              }
+          });
+          state.categories.push({
+              id: maxId + 1,
+              name: newCategoryName
+          });
+        }
+        else {
+          alert('veuillez remplir tous les champs');
+        }
+      },
+      openModalAddCategorie(state) {
+        state.modalAddCategorie = true;
+     
+      },
+  
+      closeModalAddCategorie(state) {
+        state.modalAddCategorie = false;
+        state.editIndex = 0;
+        state.newValueCategory = {};
+      },
+  
+      // supprimer Catégorie
+  
+      deleteCategorie(states, categories) {
+        if(confirm('Voulez-vous supprimer cette catégorie ?')){
+          states.categories.splice(categories, 1);
+  
+        }
+      },
+  
+      // modification Catégorie
+  
+      modifCategorie({commit},state) {
+        if(this.newValueCategory.name) {
+          state.categories.push(this.newValueCategory);
+          this.newValueCategory = {};
+          this.CloseModalCategory();
+          commit('saveCategoriesToLocalStorage');
+        }
+        else {
+          alert('veuillez remplir tous les champs');
+        }
+      }, 
+  
+      openModalCategory(state, categorie) {
+        state.modal = true;
+        state.editIndex = categorie;
+        state.newValue = { ...state.categories[categorie] };
+        
+      },
+      closeModalCategory(state) {
+        state.modal = false;
+        state.editIndex = 0;
+        state.newValue = {};
+      },
+   
+  
+    // local storage catégorie
+  
+    saveCategoriesToLocalStorage() {
+      localStorage.setItem('categories', JSON.stringify(this.categories));
+  
+    },
+  
+  
+    // local storage produit
+    saveProduitsToLocal() {
+      localStorage.setItem('produits', JSON.stringify(this.produits));
+  
+      
+  },
+      
   },
 
 
@@ -429,13 +507,32 @@ export default createStore({
 
     clientEnLigne(context, enLigne) {
       context.commit('mettreEnLigne', enLigne);
-    }
+    },
+
+    addCategory({ commit }, state) {
+      if (state.newCategoryName.trim() !== '') {
+        commit('addCategory', state.newCategoryName);
+        commit('saveCategoriesToLocalStorage');
+        state.newCategoryName = '';
+        state.modalAddCategory = false;
+      } else {
+        alert('Veuillez entrer un nom de catégorie valide.');
+      }
+    },
+    deleteCategory({ commit}, index) {
+      if (confirm('Voulez-vous supprimer cette catégorie ?')) {
+        commit('deleteCategory', index);
+        commit('saveCategoriesToLocalStorage');
+      }
+    },
+
 
 
   },
   modules: {
   }
 })
+
 
 
 
