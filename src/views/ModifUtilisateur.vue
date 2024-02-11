@@ -48,9 +48,6 @@ export default {
     ...mapState(['clients']),
   },
 
-
-
-
 }
 </script>
 

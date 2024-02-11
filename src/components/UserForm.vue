@@ -93,8 +93,26 @@ import { mapState } from 'vuex';
 
 export default {
 
-  
- 
+  data() {
+    return {
+      siret: "",
+      cp: "",
+    };
+  },
+  methods: {
+    validate() {
+      if(this.siret.length !== 14 && isNaN(this.siret)) {
+        alert('Le numéro de SIRET doit contenir 14 chiffres.');
+        return;
+      }
+
+      if(this.cp.length !== 5 && isNaN(this.cp)) {
+        alert('Le code postal doit comporter 5 chiffres.');
+        return;
+      }
+
+    },
+  },
 
     props: {
         title: {
@@ -139,6 +157,7 @@ export default {
     },
 
   methods: {
+
     checkForm() {
 
       this.$store.dispatch('clientEnLigne', true);

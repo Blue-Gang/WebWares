@@ -1,19 +1,20 @@
 import { createStore } from 'vuex'
 
+
 export default createStore({
   state: {
     //création d'un tableau de categorie produit
     categories: [
-      { categories: 1, name: 'Canapé' },
-      { categories: 2, name: 'Vase' },
-      { categories: 3, name: 'Tapis' },
-      { categories: 4, name: 'Console murale' },
-      { categories: 5, name: 'Lampe' },
-      { categories: 6, name: 'Applique murale' },
-      { categories: 7, name: 'Lustre' },
-      { categories: 8, name: 'Table' },
-      { categories: 9, name: 'Table de chevet' },
-      { categories: 10, name:'Chaises' },      
+      { id: 1, name: 'Canapé' },
+      { id: 2, name: 'Vase' },
+      { id: 3, name: 'Tapis' },
+      { id: 4, name: 'Console murale' },
+      { id: 5, name: 'Lampe' },
+      { id: 6, name: 'Applique murale' },
+      { id: 7, name: 'Lustre' },
+      { id: 8, name: 'Table' },
+      { id: 9, name: 'Table de chevet' },
+      { id: 10, name:'Chaises' },      
     ],
 
     //création d'un tableau de produits
@@ -74,7 +75,7 @@ export default createStore({
           moq: 5,
           stock: 30,         
           categorieId: 1
-      },
+        },
 
         {
           id: 6,
@@ -100,7 +101,7 @@ export default createStore({
     
         {
           id: 8,
-          image: 'images/deco-1.jpg',
+          image: 'img/deco-1.jpg',
           titre: 'Vase éthnique en argile',
           description: 'Vase éthnique en argile avec motifs gravés à la main.',
           prix: 49.99,
@@ -254,7 +255,6 @@ export default createStore({
     //créé un tableau de commandes
     commande: [],
 
-  
 
     //créé un tableau de clients de 10 clients
     clients : [
@@ -333,12 +333,16 @@ export default createStore({
     numeroCommande: 1,
 
     online: false,
-
+    //creer une nouvelle catégorie
+    newValue: {},
+    newValueCategory: {},
 
   },
+
   getters: {
     userCo: state => state.online,
-
+    produits : state => state.produits,
+    produitPanier : state => state.produitPanier,
 
     getproduits(state){
       let produits = localStorage.getItem('produits');
@@ -350,16 +354,19 @@ export default createStore({
       state.produits = produits ? JSON.parse(produits) : [];
       return state.produitPanier
     },
+
+    getclients(state){
+      let produits = localStorage.getItem('clients');
+      state.produits = produits ? JSON.parse(produits) : [];
+      return state.clients
+    },    
+
     getcommande(state){
       let produits = localStorage.getItem('commande');
       state.produits = produits ? JSON.parse(produits) : [];
       return state.commande
     },
-    getclients(state){
-      let produits = localStorage.getItem('clients');
-      state.produits = produits ? JSON.parse(produits) : [];
-      return state.clients
-    },
+    getcategories: state => state.categories, 
   },
   mutations: {
     //incrementé numero de commande
@@ -373,11 +380,8 @@ export default createStore({
 
 
     // ajouter un produit au pannier
-    addProduit( state, prod) {
-     
+    addProduit(state, prod) {
     state.produitPanier.push(prod); 
-
-
   },
 
 
@@ -385,7 +389,6 @@ export default createStore({
       state.produitPanier = state.produitPanier.filter(prod=>
         produit.id !== prod.id
         )
-      
     },
 
     setProduitPanier(state, panier) {
@@ -398,47 +401,143 @@ export default createStore({
 
     transfertCommande(state) {
       state.commande = [...state.produitPanier];
-      state.produitPanier = []; 
+      state.produitPanier = [];  
     },
 
-    
-      // Mutation pour ajouter un produit
+    // ajouter une catégorie
+
+    addCategorie(state, newCategoryName,) {
+      if(newCategoryName) {
+        let maxId = 0;
+        state.categories.forEach((category) => {
+            if (category.categories > maxId) {
+                maxId = category.categories;
+            
+            }
+        });
+        state.categories.push({
+            id: maxId + 1,
+            name: newCategoryName
+        });
+        
+
+      }
+
+      else {
+        alert('veuillez remplir tous les champs');
+      }
+
+    },
+
+    openModalAddCategorie(state) {
+      state.modalAddCategorie = true;
+   
+    },
+
+    closeModalAddCategorie(state) {
+      state.modalAddCategorie = false;
+      state.editIndex = 0;
+      state.newValueCategory = {};
+    },
+
+    // supprimer Catégorie
+
+    deleteCategorie(states, categories) {
+      if(confirm('Voulez-vous supprimer cette catégorie ?')){
+        states.categories.splice(categories, 1);
+
+      }
+    },
+
+    // modification Catégorie
+
+    modifCategorie({commit},state) {
+      if(this.newValueCategory.name) {
+        state.categories.push(this.newValueCategory);
+        this.newValueCategory = {};
+        this.CloseModalCategory();
+        commit('saveCategoriesToLocalStorage');
+      }
+      else {
+        alert('veuillez remplir tous les champs');
+      }
+    }, 
+
+    openModalCategory(state, categorie) {
+      state.modal = true;
+      state.editIndex = categorie;
+      state.newValue = { ...state.categories[categorie] };
       
-      
-      nouveauProduit(state, produits) {
-        state.produits.push(produits);
-        this.saveToLocalStorage()
-      },
-    
-      // Mutation pour modifier un produit
-      editProds(state, { index, updatedProduits }) {
-        state.produits[index] = updatedProduits;
-        this.saveToLocalStorage()
-      },
-    
-      // Mutation pour supprimer un produit
-      removeProduits(state, index) {
-        state.produits.splice(index, 1);
-        this.saveToLocalStorage()
-      }  
+    },
+    closeModalCategory(state) {
+      state.modal = false;
+      state.editIndex = 0;
+      state.newValue = {};
+    },
   },
+
+  // local storage catégorie
+
+  saveCategoriesToLocalStorage() {
+    localStorage.setItem('categories', JSON.stringify(this.categories));
+
+  },
+
+
+  // local storage produit
+  saveProduitsToLocal() {
+    localStorage.setItem('produits', JSON.stringify(this.produits));
+
+    
+},
+
+nouveauProduit(state, produits) {
+  state.produits.push(produits);
+  this.saveToLocalStorage()
+},
+
+// Mutation pour modifier un produit
+editProds(state, { index, updatedProduits }) {
+  state.produits[index] = updatedProduits;
+  this.saveToLocalStorage()
+},
+
+removeProduits(state, index) {
+  state.produits.splice(index, 1);
+  this.saveToLocalStorage()
+}, 
 
 
 
   actions: {
 
-    clientEnLigne(context, enLigne) {
-      context.commit('mettreEnLigne', enLigne);
-    }
+      clientEnLigne(context, enLigne) {
+        context.commit('mettreEnLigne', enLigne);
+      },
+
+      addCategory({ commit }, state) {
+        if (state.newCategoryName.trim() !== '') {
+          commit('addCategory', state.newCategoryName);
+          commit('saveCategoriesToLocalStorage');
+          state.newCategoryName = '';
+          state.modalAddCategory = false;
+        } else {
+          alert('Veuillez entrer un nom de catégorie valide.');
+        }
+      },
+      deleteCategory({ commit}, index) {
+        if (confirm('Voulez-vous supprimer cette catégorie ?')) {
+          commit('deleteCategory', index);
+          commit('saveCategoriesToLocalStorage');
+        }
+      },
 
 
-  },
+
+      },
+
+
+
   modules: {
   }
 })
-
-
-
-
-
-
