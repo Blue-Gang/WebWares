@@ -7,7 +7,7 @@
             </div>
             <div class="sidemenu">
                 <div class="box">
-                    <router-link to="/home" class="cat"  >
+                    <router-link to="/HomeView" class="cat"  >
                         <img src="images/accueil.png" alt="">
                         <p>Accueil</p>
                     </router-link>
@@ -134,15 +134,25 @@ export default {
         },
     }
 }
-</script>
+</script >
 
-<style>
+<style scoped>
+
+* {
+  margin: 0;
+  padding: 0;
+    box-sizing: border-box;
+}
+
 .dashboard {
+    
+    margin-top:150px;
     display: flex;
     width: 100%;
-   height: 100%;
+   height: auto;
     color: white;
     font-size: 25px;
+    
 }
 .menusidebar {
     height: 100vh;
@@ -209,11 +219,14 @@ export default {
      background-color: #dec5b1;
 }
 .header .affichage {
-    height: 70vh;
-    width: 174vh;
+    justify-content: center;
+    display: flex;
+    height: auto;
+    width: 100%;
     border: 2px solid #5e3c1a;
     margin-top: 10px;
     margin-left: 10px;
+    background-color: #b98d68;
 }
 .header p {
     margin-top: 100px;
@@ -264,5 +277,8 @@ export default {
     background-color: #5e3c1a;
 }
 
+.affichage{
+    overflow: scroll;
+}
 
 </style>

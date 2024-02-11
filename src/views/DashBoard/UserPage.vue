@@ -122,7 +122,15 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 .dashboard {
     display: flex;
     width: max-content;
@@ -192,12 +200,15 @@ export default {
     height: 40px;
 }
 .header {
+    
     height: 100vh;
      width: 1600px;
      background-color: #dec5b1;
 }
 .header .affichage {
+    
     height: 70vh;
+
     width: 173vh;
     border: 2px solid #5e3c1a;
     margin-top: 15px;

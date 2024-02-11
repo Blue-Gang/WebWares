@@ -5,8 +5,18 @@ import PageContact from '../views/PageContact.vue'
 import LoginPage from '@/views/LoginPage.vue'
 
 import SignUp from '@/views/SignUp.vue'
-import PagePartenaire from '@/views/PagePartenaire.vue'
+import ModifUtilisateur from '@/views/ModifUtilisateur.vue'
+import ListeClients from '@/views/ListeClients.vue'
+
+                          // Catalogue
 import ProduitsView from '../views/ProduitsView.vue'
+import TapisView from '../views/TapisView.vue'
+import LampeView from '../views/LampeView.vue'
+import ChaiseView from '../views/ChaiseView.vue'
+import VaseVue from '../views/VaseVue.vue'
+import TableView from '../views/TableView.vue'
+
+import PagePartenaire from '@/views/PagePartenaire.vue'
 import PanierView from '../views/PanierView.vue'
 import CommResume from '../views/CommResume.vue'
                         // Footer
@@ -15,19 +25,17 @@ import PageCgu from '@/views/PageCgu.vue'
 import PolitiqueConf from '@/views/PolitiqueConf.vue'
 import PageCarriere from '@/views/PageCarriere.vue'
                         // DashBoard User & Admin
-import AdminPage from '@/views/DashBoard/AdminPage.vue'
-import AdminParametre from '@/views/DashBoard/AdminParametre.vue'
-import AdminProfile from '@/views/DashBoard/AdminProfile.vue'
-import UserPage from '@/views/DashBoard/UserPage.vue'
-import UserProfile from '@/views/DashBoard/UserProfile.vue'
-import UserParametre from '@/views/DashBoard/UserParametre.vue'
-import ParametreUser from '@/views/DashBoard/ParametreUser.vue'
-import ParametreProduit from '@/views/DashBoard/ParametreProduit.vue'
-import ParametreCat from '@/views/DashBoard/ParametreCat.vue'
-import AdminMsg from '@/views/DashBoard/AdminMsg.vue'
-import AdminCommande from '@/views/DashBoard/AdminCommande.vue'
-
-
+import AdminPage from '../views/DashBoard/AdminPage.vue'
+import AdminParametre from '../views/DashBoard/AdminParametre.vue'
+import AdminProfile from '../views/DashBoard/AdminProfile.vue'
+import UserPage from '../views/DashBoard/UserPage.vue'
+import UserProfile from '../views/DashBoard/UserProfile.vue'
+import UserParametre from '../views/DashBoard/UserParametre.vue'
+import ParametreUser from '../views/DashBoard/ParametreUser.vue'
+import ParametreProduit from '../views/DashBoard/ParametreProduit.vue'
+import ParametreCat from '../views/DashBoard/ParametreCat.vue'
+import AdminMsg from '../views/DashBoard/AdminMsg.vue'
+import AdminCommande from '../views/DashBoard/AdminCommande.vue'
 
 
 
@@ -61,22 +69,57 @@ const routes = [
     component: ProduitsView
   },
   {
-    path: '/panierview',
-    name: 'panier',
-    component: PanierView
-  },
-  {
-    path: '/commresume',
-    name: 'commresume',
-    component: CommResume
-   }
 
-  {
     path: '/signup',
     name: 'inscription',
     component: SignUp
   },
+  
   {
+    path: '/tapisview',
+    name: 'tapis',
+    component: TapisView
+  },
+  {
+    path:'/lampeview',
+    name:'lampe',
+    component: LampeView,
+  },
+  {
+    path:'/chaiseview',
+    name:'chaise',
+    component: ChaiseView,
+  },
+  {
+    path:'/vasevue',
+    name:'vase',
+    component: VaseVue,
+  },
+  {
+    path: '/tableview',
+    name: 'table',
+    component: TableView
+  },
+
+{
+    path: '/panierview',
+    name: 'panier',
+    component: PanierView
+  },
+
+  {
+    path: '/commresume',
+    name: 'commresume',
+    component: CommResume
+   },
+
+    {
+    path: '/signup',
+    name: 'inscription',
+    component: SignUp
+    },
+  {
+
 
     path: '/pagecgv',
     name: 'cgv',
@@ -95,7 +138,17 @@ const routes = [
 {
   path: '/politiqueconf',
   name: 'politiqueconf',
-  component: PolitiqueConf,
+  component: PolitiqueConf
+},
+{
+  path: '/modifutilisateur',
+  name: 'modifutilisateur',
+  component: ModifUtilisateur
+},
+{
+  path: '/listeclients',
+  name: 'listeclients',
+  component: ListeClients
 },
 {
   path: '/pagecarriere',
@@ -163,6 +216,8 @@ const routes = [
     },
   ],
 },
+
+
 
 ]
 

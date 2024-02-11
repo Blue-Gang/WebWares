@@ -23,29 +23,29 @@
     <div class="BarNav">
       <div class="navLink">
         <router-link to="/">Acceuil</router-link> 
-        <router-link to="/about">Catégories</router-link>  
+
+        <router-link to="/">
+          <select @change="navigate" class="dropCategorie">
+              <option>Catégories</option>
+              <option value="/vasevue">Vase</option>
+              <option value="/tapisview">Tapis</option>
+              <option value="/lampeview">Luminaire</option>
+              <option value="/tableview">Table</option>
+              <option value="/chaiseview">Chaise</option>
+          </select>
+        </router-link> 
         <router-link to="/aboutview">A Propos</router-link>
         <router-link to="/produitsview">Produits</router-link>
-        <router-link to="/panierview">Panier ({{ produitPanier.length }})</router-link>
-        <router-link to="/commresume">Commande </router-link>
+        <router-link to="panierview">Panier ({{ produitPanier.length }})</router-link>
         
+        
+
 
         
         
       </div>
-      <!-- barre de recherche -->
-      <!-- <section>
-        <span class="barSearch">
-          <div>
-            <input type="text" v-model="querry" @input="listFilter" placeholder="Rechercher un produit">
-          </div>
-          <div class="listBarSearch">
-            <ul>
-                <li v-for="(produits, i) in filteredProducts" :key="i">{{ produits.titre }}</li>
-            </ul>
-          </div>
-        </span>
-      </section> -->
+
+
     </div>
       <div class="none">
             <div class="connect">
@@ -54,14 +54,10 @@
             </div>
             <div class="Horsconnect">
               <select @change="navigate" class="dropdown" >
-                <option>Menu</option>
-
-
-                <option value="panierview"> Panier ({{ produitPanier.length }})</option>
-                <option value="vos achat"><router-link to="/commresume">vos achats</router-link></option>
-
-                <option value="@/view/AdminVue">Admin</option>
-
+                <option value="/HomeView">Menu</option>
+                <option value="/panierview"> Panier ({{ produitPanier.length }})</option>
+                <option value="/commresume">Commande</option>
+                <option value="/AdminPage">Admin</option>
                 <option value="logout">Déconnection</option>
               </select>
             </div>
@@ -79,22 +75,27 @@
             <div class="col">
                 <ul class="list-inline">
 
+
                     <li class="list"><a class="footA" href="/">Accueil</a></li>
                     <li class="list"><a class="footA" href="/aboutview">A propos</a></li>
                     <li class="list"><a class="footA" href="/pagecontact">Contact</a></li>
+
 
                 </ul>
             </div>                
             <div class="col">
                 <ul>
                     <li class="list"><a class="footA" href="#">Catégories</a></li>
+
                     <li class="list"><a class="footA" href="/produitsview">Produits</a></li>
+
                     <li class="list"><a class="footA" href="#">Marques</a></li>
                 </ul>
             </div>                                 
             <div class="col">
                 <ul class="list-inline">
                     <li class="list"><a class="footA" href="#">Connexion</a></li>
+
 
                     
                     <li class="list"><a class="footA" href="/PageCarriere">Carrières</a></li>
@@ -105,11 +106,13 @@
                    
                     <li class="list"><a class="footA" href="#">Carrières</a></li>
 
+
                     
                 </ul>
             </div> 
             <div class="col">
                 <ul>
+
 
                     <li class="list CGV "><a class="footA" href="/PageCgv">Conditions générales de ventes</a></li>
                     <li class="list CGV1"><a class="footA" href="/PageCgv">CGV</a></li>
@@ -117,6 +120,7 @@
                     <li class="list CGU1"><a class="footA" href="/PageCgu">CGU</a></li>
                     <li class="list PDC"><a class="footA" href="/PolitiqueConf">Politique de confidencialité</a></li>                   
                     <li class="list PDC1"><a class="footA" href="/PolitiqueConf">PDC</a></li>                   
+
 
                 </ul>
             </div>
@@ -127,11 +131,13 @@
 
 
 
+
                     <a href="https://www.facebook.com/"><img class="logoR" src="@/assets/FB.svg" alt="Logo FaceBook"/></a>                                      
                     <a href="https://www.linkedin.com/"><img class="logoR" src="@/assets/LKD.svg" alt="Logo Linkedin" /></a>               
                     <a href="https://twitter.com/"><img class="logoR" src="@/assets/TWT.svg" alt="Logo Twiter" /></a> 
                                 
                 </ul>
+
             </div>   
                     
       </div>
@@ -143,9 +149,8 @@
 
 <script>
 
+
 import { mapState } from 'vuex';
-
-
 
 export default{ 
 
@@ -156,11 +161,8 @@ export default{
   data(){
       return{
       querry: "",
-
-
       lang: "fr",
       menuDropdown:'Menu',
-
     }
   },
 
@@ -183,13 +185,9 @@ export default{
 
   computed: {
     filteredProducts(){
-
       return this.$store.state.products    
     },
-    
-    ...mapState(['produitPanier']),
-  
-
+    ...mapState(['produitPanier'], ['produits']),
   },
 }
 
@@ -213,9 +211,7 @@ export default{
 /* Header Jason */
 
 .principal { 
-
   position: absolute;
-
   margin-top: 50px ; 
   top: 0;
   left: 0; 
@@ -229,11 +225,7 @@ export default{
   display: inline-block;
   margin-top: 10px ;
   margin-left: 30px;
-
-
   font-size: 20px;
-
-
   color: #ffffff;
   text-decoration: none;
 }
@@ -263,7 +255,7 @@ export default{
 }
 
 .BarNav{
- display: flex;
+  display: flex;
   justify-content: center;
   margin-right: 120px ;
   margin-top: 30px ;
@@ -405,9 +397,7 @@ footer {
   z-index: 1;
   display: flex;
   justify-content: center;
-  
   background-color: #b98c68dc ;
-
   color: white;
   padding: 10px;
   text-align: center;
@@ -416,7 +406,6 @@ footer {
   width: 100%;
   height: 150px;
   padding-bottom: 20px;
-
   margin-top: 50px;
 
   
@@ -436,6 +425,7 @@ footer {
   width: 100%;
   height: 110px;
   padding-bottom: 20px;
+
   
 }}
 
@@ -456,6 +446,7 @@ footer {
   
 }}
   
+
 .col{
   display: flex;
   align-items: center;
@@ -516,6 +507,7 @@ footer {
   padding: 2px;
    
 }
+
 }
 
 @media screen and (min-width: 431px) and (max-width: 820px){
@@ -560,7 +552,11 @@ footer {
   font-style: italic;
   font-size: 15px;
   
+
 }
+
+
+
 
 @media screen and (max-width: 430px){
 .copyright{
@@ -578,7 +574,6 @@ footer {
   
 }
 }
-
 
 .logoR{
   width: 30px;
@@ -615,7 +610,9 @@ footer {
   height: 40px;
   margin: 0 10px;
 }
+
 }
+
 
 @media screen and (min-width: 430px) and (max-width: 820px){
 .logo{
@@ -823,9 +820,6 @@ footer {
 }
 }
 
-
-
-
 .copyright{
   color: #5E3C1A;
   font-style: italic;
@@ -865,6 +859,7 @@ footer {
   margin: 0 4px;
 }
 }
+
 @media screen and (min-width: 431px) and (max-width: 820px){
 .logoR{
   width: 25px;
@@ -887,6 +882,7 @@ footer {
   margin: 0 10px;
 }
 }
+
 @media screen and (min-width: 430px) and (max-width: 820px){
 .logo{
   width: 60px;
@@ -933,7 +929,6 @@ footer {
   display:none;
 }}
 
-
 @media screen and (max-width: 430px){
 .PDC{
   display:none;
@@ -943,24 +938,9 @@ footer {
   display:none;
 }}
 
-.dropdown{
-  display: block;
-  float: left;
-  margin-right: 10px;
-  margin-bottom: 30px ;
-  font-size: 20px;
-  font-weight: bold;
-  color: #ffffff;
-  background-color: #b98d68;
-  border-radius: 5px;
-  border: solid 2px white;
-  outline: none;
-  padding: 5px;
-}
 
-.dropdown a {
-  font-size: 20px;
-}
+/* Footer David */
+
 
 body{
 
@@ -970,4 +950,3 @@ body{
 
 
 </style>
-```
