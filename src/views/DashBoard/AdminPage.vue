@@ -7,7 +7,7 @@
             </div>
             <div class="sidemenu">
                 <div class="box">
-                    <router-link to="/home" class="cat"  >
+                    <router-link to="/HomeView" class="cat"  >
                         <img src="images/accueil.png" alt="">
                         <p>Accueil</p>
                     </router-link>
@@ -143,8 +143,6 @@ export default {
   padding: 0;
     box-sizing: border-box;
 }
-
-
 
 .dashboard {
     
@@ -282,4 +280,5 @@ export default {
 .affichage{
     overflow: scroll;
 }
+
 </style>

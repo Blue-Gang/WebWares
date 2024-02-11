@@ -2,7 +2,6 @@
   <div class="home">
 
 
-
     <!-- Bannière Cécile -->
 
     <div>
@@ -55,7 +54,7 @@
 
       <div class="card cardL">
         <div class="elements imgProd">
-          <img src="@/assets/deco-1.jpg" alt="Déco">
+          <img src="public/images/deco-1.jpg" alt="Déco">
         </div>
 
         <div class="elements nameP">
@@ -261,7 +260,6 @@
   </section>
 
 
-
   </div>
 </template>
 
@@ -289,11 +287,6 @@ export default {
         })
     },
 
-     // created() {
-    //   app.config.globalProperties.$on('clientEnLigne', (enLigne) => {
-    //     this.online = enLigne;
-    //   })
-    // }
 
 }
 
@@ -309,7 +302,7 @@ export default {
   height: 80px;
   display: block;
   text-align: center;
-  margin-top: 150px;
+  margin: 78px auto 0;
   
 }
 
@@ -471,6 +464,10 @@ section.promo{
   border-radius: 20px;
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
   transform-style: preserve-3d;
+}
+
+.box:hover {
+  background-color: #f1f1f1;
 }
 
 @media (max-width: 768px) {
@@ -747,7 +744,7 @@ section.promo{
 
 /* Mieux notés Cécile*/
 
-.mieuxNotes{
+/* .mieuxNotes{
   margin-top: 80px;
   background-color: blue;
 
@@ -760,6 +757,7 @@ section.promo{
   width: 100%;
   height: 500px;
   gap: 10px;
+  justify-content: space-around;
 }
 
 .containerMN .prodMN{
@@ -775,6 +773,26 @@ section.promo{
   box-shadow: 1px 5px 15px #1e0e3e;
   position: relative;
   overflow: hidden;
+
+  background: linear-gradient(
+    0deg,
+    rgba(2, 2, 46, 0.6755077030812324) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateY(100%);
+  transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
+  visibility: hidden;
+}
+
+.containerMN img{
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem 0.5rem 0;
+}
+
+.containerMN .prodMN h3{
+  box-shadow: 1px 3px 15px #472e16;
+  transform: translateY(-30px);
 }
 
 .containerMN .prodMN1 {
@@ -786,10 +804,92 @@ section.promo{
 }
 
 .containerMN .prodMN3 {
-  background: url("/public/images/mobilier-1.jpg") no-repeat 50% / cover;
+  background: url("@/assets/mobilier-1.jpg") no-repeat 50% / cover;
+} */
+
+
+.mieuxNotes{
+  margin-top: 80px;
+  /* background-color: blue; */
+
+
 }
 
+.containerMN{
+  /* background-color: yellow; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 400px;
+  gap: 10px;
+}
 
+.containerMN .prodMN{
+  /* background-color: red; */
+  flex: 0 0 120px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  box-shadow: 1px 5px 15px #472e16;
+  position: relative;
+  overflow: hidden;
+
+}
+ 
+.prodMN1 {
+  background: url(/public/images/tapis-2.jpg)
+  no-repeat 50% / cover;
+}
+
+.prodMN2 {
+  background: url(/public/images/deco-3.jpg)
+  no-repeat 50% / cover;
+}
+
+.prodMN3 {
+  background: url(/public/images/mobilier-1.jpg)
+  no-repeat 50% / cover;
+}
+
+.containerMN .prodMN .content{
+  font-size: 1.rem;
+  color: #472e16;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-end;
+  background: rgb(222, 197, 177);
+
+  transform: translateY(100%);
+  transition: opacity 0.5s ease-in-out;
+  transform: 0.5s 0.2s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.prodMN .content span{
+  display: block;
+  margin-top: 5px;
+  font-size: 1.2rem;
+}
+
+.prodMN:hover{
+  flex: 0 0 250px;
+  box-shadow: 1px 3px 15px #472e16;
+}
+
+.prodMN .content:hover{
+  opacity: 1;
+  transform: translateY(0%);
+  visibility: visible;
+  z-index: 1;
+}
+
+.prodMN .content h3:hover{
+  opacity: 1;
+}
 
 
 
@@ -826,7 +926,6 @@ section.promo{
 
 
 /* Contact Priscy */
-
 .container {
   display: flex;
   justify-content: space-between;
@@ -841,7 +940,6 @@ section.promo{
   margin-right: 8px;
  margin-bottom: 10px;
  cursor: pointer;
-
 }
 .container p {
   color: #472e16;
@@ -853,7 +951,6 @@ section.promo{
 .cont1 {
   margin-left: 150px;
   color: #472e16
-
 }
 .cont2 {
   display: flex;
@@ -873,7 +970,6 @@ section.promo{
   background-color: #cca88c;
   height: 200px;
 }
-
 
 button {
     background-color: #b98d68;
@@ -895,5 +991,8 @@ button:hover {
   background-color: #5e3c1a;
   color: #cca88c;
 }
+
+
+
 
 </style>

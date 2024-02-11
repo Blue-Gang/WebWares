@@ -15,22 +15,16 @@
             <div class="cardproduit" v-for="(prod,index) in filteredProducts" v-bind:key="index">
                 <tr class="cardinte">
                     <h2 class="titleprod">{{ prod.titre }}</h2>
-
-                    
-                    <img class="imgproduit" v-bind:src="prod.image">
+                    <img class="imgproduit" :src="prod.image">
                     <br>
-                   
                     <td class="description">{{ prod.description }}</td>
                     <br>
-                    <td>MOQ: {{ prod.moq }}</td>       
+                    <td>MOQ: {{ prod.moq }}</td>
                     <td class="prix">Prix: {{ prod.prix }} € HT</td>
-                    
-                    <Gbtn  @click="add(prod)" label="Ajouter au panier"/>
-                    
-                             
+                    <Gbtn @click="add(prod)" label="Ajouter au panier"/>
                 </tr>
             </div>
-        </div>   
+        </div>
     </div>
 </template>
 
@@ -56,7 +50,7 @@ export default {
                 this.$store.commit('incrementQuantite', produitExistant.quantites ++);                
                 } else {      
                 prod.quantites = prod.moq;
-                    this.$store.commit('addProduit', prod);
+                this.$store.commit('addProduit', prod);
                 }
                 this.saveCartToLocal();               
             },
@@ -64,9 +58,11 @@ export default {
                 localStorage.setItem('panier', JSON.stringify(this.produitPanier));
             }, 
             saveCommandeToLocal() {
-                localStorage.setItem('commande', JSON.stringify(this.commande));
-            },
-            listFilter() {
+                    localStorage.setItem('commande', JSON.stringify(this.commande));
+            }, 
+
+
+                listFilter() {
                 
                 if( this.querry.length > 0){
                     this.filteredProducts = this.produits.filter(prod => {
@@ -78,7 +74,8 @@ export default {
                 }
             },
         },
-               
+
+
         computed: {
            produitPanier() {
             return this.$store.getters.getproduitPanier;
@@ -91,8 +88,8 @@ export default {
         },
 
         created() {
-            const savedCart = localStorage.getItem('panier');
-            if (savedCart) {
+        let savedCart = localStorage.getItem('panier');
+        if (savedCart) {
             this.$store.commit('setProduitPanier', JSON.parse(savedCart));
         }
             let savedProducts = localStorage.getItem('produits');
@@ -117,14 +114,15 @@ export default {
     margin-top: 200px;
 }
 
+
 .barSearch {
-    
     display: flex;
     justify-content: center;
     align-self: center;
     margin-top: 50px;
     margin-bottom: 50px;
     margin-left: 0 auto;  
+    margin-left: 0 auto;
 }
 
 /* style card produits */
@@ -144,7 +142,6 @@ template {
     margin-top:50px;
     justify-content: center;
     margin-right: 8%;
-    
 }
 
 /* media queries */
@@ -161,7 +158,6 @@ template {
     .tableproduits {
         grid-template-columns: 250px;
         justify-content: center;
-        
     }
 }
 
@@ -170,7 +166,6 @@ template {
     flex-direction: column;
     align-items: center;
 }
-
 .cardproduit {
     display: flex;
     flex-direction: column;
@@ -188,7 +183,6 @@ template {
     width: 330px;
     height: 500px;
     overflow: hidden;
-
 }
 
 .cardproduit:hover {
@@ -212,7 +206,6 @@ template {
     margin-bottom: 10px;
     color: #472e16c6;
 }
-
 .titreproduit{
     text-align: center ;
     margin-top: 20px;
@@ -220,6 +213,5 @@ template {
     font-size: 40px;
     color: #472e16;
 }
-
 
 </style>
