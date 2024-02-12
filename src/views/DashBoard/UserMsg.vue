@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Mon profil</h2>
+    <h2>Mes messages</h2>
   </div>
 </template>
 

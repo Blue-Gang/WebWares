@@ -5,11 +5,9 @@ import PageContact from '../views/PageContact.vue'
 import LoginPage from '@/views/LoginPage.vue'
 
 import SignUp from '@/views/SignUp.vue'
-import ModifUtilisateur from '@/views/ModifUtilisateur.vue'
-import ListeClients from '@/views/ListeClients.vue'
-
                           // Catalogue
 import ProduitsView from '../views/ProduitsView.vue'
+import FicheProduit from '../views/FicheProduit.vue'
 import TapisView from '../views/TapisView.vue'
 import LampeView from '../views/LampeView.vue'
 import ChaiseView from '../views/ChaiseView.vue'
@@ -25,17 +23,18 @@ import PageCgu from '@/views/PageCgu.vue'
 import PolitiqueConf from '@/views/PolitiqueConf.vue'
 import PageCarriere from '@/views/PageCarriere.vue'
                         // DashBoard User & Admin
-import AdminPage from '../views/DashBoard/AdminPage.vue'
-import AdminParametre from '../views/DashBoard/AdminParametre.vue'
-import AdminProfile from '../views/DashBoard/AdminProfile.vue'
-import UserPage from '../views/DashBoard/UserPage.vue'
-import UserProfile from '../views/DashBoard/UserProfile.vue'
-import UserParametre from '../views/DashBoard/UserParametre.vue'
-import ParametreUser from '../views/DashBoard/ParametreUser.vue'
-import ParametreProduit from '../views/DashBoard/ParametreProduit.vue'
-import ParametreCat from '../views/DashBoard/ParametreCat.vue'
-import AdminMsg from '../views/DashBoard/AdminMsg.vue'
-import AdminCommande from '../views/DashBoard/AdminCommande.vue'
+import AdminPage from '@/views/DashBoard/AdminPage.vue'
+import AdminParametre from '@/views/DashBoard/AdminParametre.vue'
+import AdminProfile from '@/views/DashBoard/AdminProfile.vue'
+import UserPage from '@/views/DashBoard/UserPage.vue'
+import UserProfile from '@/views/DashBoard/UserProfile.vue'
+import UserParametre from '@/views/DashBoard/UserParametre.vue'
+import ParametreUser from '@/views/DashBoard/ParametreUser.vue'
+import ParametreProduit from '@/views/DashBoard/ParametreProduit.vue'
+import ParametreCat from '@/views/DashBoard/ParametreCat.vue'
+import AdminMsg from '@/views/DashBoard/AdminMsg.vue'
+import AdminCommande from '@/views/DashBoard/AdminCommande.vue'
+import UserMsg from '@/views/DashBoard/UserMsg.vue'
 
 
 
@@ -67,6 +66,11 @@ const routes = [
     path: '/produitsview',
     name: 'produits',
     component: ProduitsView
+  },
+  {
+    path: '/ficheproduit/:produitsId',
+    name: 'ficheproduit',
+    component: FicheProduit
   },
   {
 
@@ -106,18 +110,17 @@ const routes = [
     name: 'panier',
     component: PanierView
   },
-
   {
     path: '/commresume',
     name: 'commresume',
     component: CommResume
    },
 
-    {
+  {
     path: '/signup',
     name: 'inscription',
     component: SignUp
-    },
+  },
   {
 
 
@@ -139,16 +142,6 @@ const routes = [
   path: '/politiqueconf',
   name: 'politiqueconf',
   component: PolitiqueConf
-},
-{
-  path: '/modifutilisateur',
-  name: 'modifutilisateur',
-  component: ModifUtilisateur
-},
-{
-  path: '/listeclients',
-  name: 'listeclients',
-  component: ListeClients
 },
 {
   path: '/pagecarriere',
@@ -214,6 +207,16 @@ const routes = [
       name: 'parametre',
       component: UserParametre,
     },
+    {
+      path: '/usermsg',
+      name: 'usermessagerie',
+      component: UserMsg,
+    },
+    {
+    path: '/panierview',
+    name: 'panier',
+    component: PanierView,
+  },
   ],
 },
 

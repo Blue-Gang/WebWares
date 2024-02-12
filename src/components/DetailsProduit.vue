@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h2>Mon profil</h2>
+    <div>
+      <h1>Fiche Produit</h1>
+    </div>
   </div>
 </template>
 
@@ -10,8 +12,6 @@ export default {
 }
 </script>
 
-<style scoped>
-h2 {
-  margin-top: 20px;
-}
+<style>
+
 </style>

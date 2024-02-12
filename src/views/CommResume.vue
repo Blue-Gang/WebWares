@@ -1,87 +1,89 @@
 <template>
-  <div>
-    <h2>
-        Gestions des commandes
-    </h2>
-      <div class="pagepanier">    
-        <div   class="adresslivr" >
-          <div class="adrLiv" v-if="clients.length > 0" >
-            <div class="adresslivr2">              
-              <h3>Numero de commande : {{ numeroCommande }}</h3> <br>
-              <h2 class="nomPren">{{ clients[0].nom }} {{ clients[0].prenom }}</h2>
-              <span>Entreprise : {{ clients[0].raisonSociale }}</span>             
-            </div>
-          </div> 
-          <div>
-              <div class="panier" v-for="(prod, index) in commande" :key="index">                
-                    <h2 class="titreProd">{{ prod.titre }} : </h2>               
-                    <h2 class="titreProd" >{{ prod.quantites }}</h2>                         
-              </div>
-              <div class="recap">           
-                    <h3 class="prixHt">Total HT: {{ totalB() }} €</h3>
-                    <span class="prixTtc" >Total TTC: {{ totalBag() }} €</span>
-              </div>
-          </div>   
-          <div class="btnPrix">
-          <Gbtn label="Livré" />
-        </div>        
-        </div>   
-        </div>
-                  
+
+     
+    <div class="pagepanier">
+    <h1 class="resum">Résumé de votre commande</h1>
+    <thead class="panier" v-for="(prod, index) in commande" :key="index">
         
-  </div>
-  
-  
-</template>
+        <th class="cimg">
+            <img  class="imgpanier" v-bind:src="prod.image">
+        </th>
+        <th>
+            <h2>{{ prod.titre }}</h2>
+        </th>                                
+                <h2>{{ prod.quantites }}</h2>                              
+        <th>
+            <h2>{{ prod.prix }} € HT </h2>        
+            <span>{{ sousTotal(prod)  }} TTC</span>
+        </th>       
+    </thead>
+        <div class="recap">
+            <div>Total HT: {{ totalB() }} €</div>
+            <div>Total TTC: {{ totalBag() }} €</div>
+        </div>
+        <div class="adress">
+            <div v-for="(user,index) in clients" v-bind:key="index" class="adresslivr" >
+                <div v-if="clients.length === 1">
+                   <h2>Adresse de facturation</h2>
+                    <h2>{{ user.nom }} {{ user.prenom }}</h2>
+                    <span>Adresse : {{ user.adresse }}</span>
+                    <span>{{ user.cp }} {{ user.ville }}</span>
+                    <span>Entreprise : {{ user.raisonSociale }}</span>
+                    <span>Email : {{ user.email }}</span>
+                    <span>Numero de commande : {{ user.tel }}</span>
+                </div>
+            </div>
+            <div v-for="(user,index) in clients" v-bind:key="index" class="adresslivr" >
+                <div v-if="clients.length === 1">
+                   <h2>Adresse de livraison</h2>
+                    <h2>{{ user.nom }} {{ user.prenom }}</h2>
+                    <span>Adresse : {{ user.adresse }}</span>
+                    <span>{{ user.cp }} {{ user.ville }}</span>
+                    <span>Entreprise : {{ user.raisonSociale }}</span>
+                    <span>Email : {{ user.email }}</span>
+                    <span>Numero de commande : {{ user.tel }}</span>
+                </div>
+            </div>
+        </div>
+            <Gbtn label="Confirmer votre commande"  @click="validerCom"/>
+        </div>
+    
+</template> 
 
-<script scoped>
 
-import Gbtn from '@/components/ButtonGen.vue';
+<script>
+import { mapState } from 'vuex'
+import Gbtn from '@/components/ButtonGen.vue'
 export default {
 
     data() {
         return {
-            editIndex: -1,
             
-                       
+            clients: [1],
+            
         }
     },
-    components: {   
-      Gbtn,   
+
+    components: {
+        Gbtn
+        
     },
 
     computed: {
-        produitPanier() {
-            return this.$store.getters.getproduitPanier;
-        },
-        produits() {
-            return this.$store.getters.getproduits;
-        },
-        commande() {
-            return this.$store.getters.getcommande;
-        },
-        clients() {
-                return this.$store.getters.getclients;               
-        },
-        numeroCommande() {
-              return this.$store.state.numeroCommande;
-        },
-  },
+        ...mapState(['produits', 'commande', 'clients'])
+    },
     
     methods: {
         
         //validation de la commande
         validerCom() {
             this.$store.commit('validerCommande');
-            
-            this.saveCommandeToLocal()
-           /*  this.$store.commit('viderCommande'); */
-            this.modal = false;
-            this.index = -1;
+            this.$router.push('/commande');
+            this.saveCommandeToLocal
         
         },
         saveCommandeToLocal() {
-        localStorage.getItem('commande', JSON.stringify(this.commande));
+        localStorage.setItem('commande', JSON.stringify(this.commande));
         },
 
         totalB(){
@@ -107,21 +109,65 @@ export default {
           return sousTotalTTC.toFixed(2);
         },
     }
+    
+  
+
 }
 </script>
 
 <style scoped>
 
+.body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+.resum{
+    margin-bottom: 50px;
+    color: #472e16;
+}
+
+
+
+
+thead{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    margin-top: 5px;
+    margin-top: 200px;
+    flex: grid;
+    grid-column:250px 250px 250px 250px ;
+    background-color: #dec5b1;
+    border-radius: 10px;
+    
+  }
+
+thead:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+
   .pagepanier{
     display: flex;
     justify-content: center;
- 
+    
     margin-top: 200px;
     flex-direction: column;
     align-items: center;
+     
     border-radius: 10px;
     width: 100%;
     }
+
+  
+
+
+
 .panier{
     display: flex;
     justify-content: center;
@@ -129,9 +175,12 @@ export default {
     text-align: center;
     font-size: small;
     align-items: center;
-    margin: 1px;
-   
+    margin: 10px;
+    width: 80%;
+    height: 40%;
     margin-top: 5px;
+    flex: grid;
+    grid-column: 250px 250px 250px 250px ;
     color: #472e16;
     
   }
@@ -152,14 +201,6 @@ export default {
     border-radius: 10px;
   }
 
-  .titreProd{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0%;
-    font-size: 20px;
-    color: #472e16;
-  }
   .prixhttc{
     display: block;
     text-align: center;
@@ -172,14 +213,10 @@ export default {
     align-items: center;
   }
 
-  .adress{
-    display: flex;
-  }
 
   .adresslivr{
-    margin-left: 15px;
-    width: 60%;
-    height: auto;
+    width: 500px;
+    height: 250px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -187,66 +224,10 @@ export default {
     margin-top: 25px; 
     background-color: #dec5b1;
     border-radius: 10px;
-    font-size: 20px;
-  }
-  
-
-  .adressFac{
-    margin-top: -10px;
-    margin-bottom: 51px;
-    font-size: 25px;
-    color: #472e16;
   }
 
-.adrLiv{
-    display: flex;
-    flex-direction: column;
-    margin-left:15px;
-    margin-top: 15px;
-    color: #472e16;
-  }
   .adress{
     display: flex;
   }
-  .adressFac{
-    margin-top: -10px;
-    margin-bottom: 10px;
-    font-size: 25px;
-    color: #472e16;
-  }
-  .recap{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  
-  }
-
-.recap2{
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column-reverse;
-  
-}
-.btnPrix{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 50px;  
-}
-.nomPren {
-    margin-top: -30px;
-    padding: 9px;
-    margin-bottom: 2px;
-    font-size: 20px;
-}
-
-
-
-
 
 </style>

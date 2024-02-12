@@ -7,7 +7,7 @@
             </div>
             <div class="sidemenu">
                 <div class="box">
-                    <router-link to="/HomeView" class="cat"  >
+                    <router-link to="/" class="cat"  >
                         <img src="images/accueil.png" alt="">
                         <p>Accueil</p>
                     </router-link>
@@ -105,6 +105,11 @@
                 
             </div>
                 <div class="affichage">
+                    <!-- <h1>DashBoard Admin</h1>
+                    <br>
+                    <h2>Bienvenue </h2>
+                    <h2>Admin Franck Fort</h2> -->
+
                     <router-view></router-view>
                 </div>
                     
@@ -134,25 +139,17 @@ export default {
         },
     }
 }
-</script >
+</script>
 
 <style scoped>
-
-* {
-  margin: 0;
-  padding: 0;
-    box-sizing: border-box;
-}
-
 .dashboard {
-    
-    margin-top:150px;
+    margin-top: 150px;
     display: flex;
     width: 100%;
-   height: auto;
+   height: 100%;
     color: white;
     font-size: 25px;
-    
+
 }
 .menusidebar {
     height: 100vh;
@@ -213,52 +210,46 @@ export default {
     width: 40px;
     height: 40px;
 }
-.header {
-    height: 0vh;
-     width: 1600px;
-     background-color: #dec5b1;
-}
 .header .affichage {
-    justify-content: center;
-    display: flex;
-    height: auto;
-    width: 100%;
+    height: 70vh;
+    width: 174vh;
     border: 2px solid #5e3c1a;
-    margin-top: 10px;
-    margin-left: 10px;
-    background-color: #b98d68;
-}
-.header p {
-    margin-top: 100px;
+    margin-top: 0.625rem;
+    margin-left: 0.625rem;
 }
 .user {
     display: flex;
     position: relative;
     align-items: center;
     cursor: pointer;
-    font-size: 20px;
-    padding: 10px;
-    margin-right: 40px;
+    font-size: 1.25rem;
+    padding: 0.625rem;
+    margin-right: 2.5rem;
 }
 .user img {
-    width: 50px;
-    height: 50px;
-    margin-right: 15px;
+    width: 3.125rem;
+    height: 3.125rem;
+    margin-right: 0.9375rem;
 }
 .menuser{
     background-color: #dec5b1;
     color: #5e3c1a;
-    margin-right: 20px;
-    margin-top: 300px;
+    margin-right: 1.25rem;
+    margin-top: 18.75rem;
 }
 .menuser li{
+    display : flex;
+    align-items: center;
     list-style: none;
     cursor: pointer;
-    padding: 10px 20px;
-    margin-top: 10px;
+    padding: 0.625rem 1.25rem;
+    margin-top: 0.625rem;
+}
+.menuser li i {
+  margin: 0px !important;
 }
 .menuser li:hover {
-    background-color: #472e16;
+    background-color: ;
     color: #dec5b1;
 }
 .menuser a{
@@ -269,16 +260,23 @@ export default {
     background-color: #b98d68;
     color: white;
     border: none;
-    padding: 10px 10px;
-    margin-top: 20px;
+    padding: 0.625rem 0.625rem;
+    margin-top: 1.25rem;
     font-weight: bold;
 }
 .menuser button:hover {
     background-color: #5e3c1a;
 }
 
-.affichage{
+.affichage {
+    background-color: #dec5b1;
     overflow: scroll;
 }
+
+/* .affichage h1 {
+    margin-top: 40px;
+} */
+
+
 
 </style>
