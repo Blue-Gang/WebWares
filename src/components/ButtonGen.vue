@@ -44,7 +44,7 @@ button {
         margin-top: 20px;
         margin-bottom: 15px;
         padding: 5px;
-        margin-top: 50px;
+        margin-top: 30px;
         width: 150px;
         height: 40px;
         border-radius: 20px;

@@ -6,7 +6,7 @@
 
     <div>
       <div v-if="online" class="hautBanniere">
-        <h2 class="textHB">Hello online</h2>
+        <h2 class="textHB">Bonjour USER</h2>
       </div>
 
       <div v-if="!online" class="hautBanniere">
@@ -17,8 +17,8 @@
   <section class="banniere">
 
     <div v-if="online" class="txtB" >
-      <h3>Bonjour, ...</h3>
-      <p>Prêt à faire de nouvelles découvertes ?
+      <h3>Bonjour USER, vos produits favoris ont été mis à jour.</h3>
+      <p>Jetez un coup d'œil pour découvrir les nouveautés !
       </p>
       <button>Voir les produits</button>
     </div>
@@ -54,7 +54,7 @@
 
       <div class="card cardL">
         <div class="elements imgProd">
-          <img src="public/images/deco-1.jpg" alt="Déco">
+          <img src="@/assets/deco-1.jpg" alt="Déco">
         </div>
 
         <div class="elements nameP">
@@ -63,11 +63,13 @@
 
         <div class="elements descriptionP">
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima, excepturi. <br><br>
-            <strong></strong>
+            <strong v-if="online">49.99€</strong>
           </p>
         </div>
 
-    <button class="btnOnline" v-if="online">(manque router-link) Ajouter au panier</button>
+        <router-link to="/panierview" v-if="online">
+    <button class="btnOnline">Ajouter au panier</button>
+    </router-link>
         
       </div>
 
@@ -83,11 +85,13 @@
 
         <div class="elements descriptionP">
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima, excepturi. <br><br>
-            <strong>{prix}</strong>
+            <strong v-if="online">129.99€</strong>
           </p>
         </div>
 
-    <button class="btnOnline" v-if="online">(manque router-link) Ajouter au panier</button>
+        <router-link to="/panierview" v-if="online">
+    <button class="btnOnline">Ajouter au panier</button>
+    </router-link>
         
       </div>
 
@@ -103,11 +107,13 @@
 
         <div class="elements descriptionP">
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima, excepturi. <br><br>
-            <strong>{prix}</strong>
+            <strong v-if="online">299.99€</strong>
           </p>
         </div>
 
-    <button class="btnOnline" v-if="online">(manque router-link) Ajouter au panier</button>
+        <router-link to="/panierview" v-if="online">
+    <button class="btnOnline">Ajouter au panier</button>
+    </router-link>
         
       </div>
 
@@ -123,6 +129,9 @@
 
 <!-- Nouveaux produits Cécile -->
 
+<div class="mieuxNotesTitle">
+      <h2>Nouveautés</h2>
+    </div>
 
   <section class="newProd">
 
@@ -136,27 +145,23 @@
 
       <div class="cols">
         <div class="col">
-          <img src="{newProd1}">
+          <img src="@/assets/tapis-4.jpg">
           <div class="imgTNewP">
-            <h3>{newProd1}</h3>
           </div>
         </div>
 
         <div class="col">
-          <img src="{newProd2}">
+          <img src="@/assets/deco-2.jpg">
           <div class="imgTNewP">
-            <h3>{newProd2}</h3>
           </div>
         </div>
 
         <div class="col">
-          <img src="{newProd3}">
+          <img src="@/assets/luminaire-3.jpg">
           <div class="imgTNewP">
-            <h3>{newProd3}</h3>
           </div>
         </div>
       </div>
-
     </div>
 
 
@@ -170,45 +175,46 @@
 
 
 
-<!-- Mieux notés Cécile -->
+  <!-- Mieux notés Cécile -->
 
-<section class="mieuxNotes">
-
-<div>
-  <h2>Les mieux notés</h2>
-</div>
-
-<div class="containerMN">
-  <div class="prodMN prodMN1">
-    <div class="content">
-    <!-- <img src=""> -->
-    <h3>{Tapis2}</h3>
-    <span>Embellisez vos sols !</span>
+    <div class="mieuxNotesTitle">
+      <h2>Les mieux notés</h2>
     </div>
-  </div>
-</div>
 
-<div class="containerMN">
-  <div class="prodMN prodMN2">
-    <div class="content">
-    <!-- <img src=""> -->
-    <h3>{Vase deco-3}</h3>
-    <span>Donnez vie à vos fleurs.</span>
+  <section class="mieuxNotes">
+
+    
+    <div class="containerMN">
+      <div class="prodMN prodMN1">
+        <div class="content">
+        <!-- <img src=""> -->
+        <h3>{Tapis2}</h3>
+        <span>Embellisez vos sols !</span>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="containerMN">
-  <div class="prodMN prodMN3">
-    <div class="content">
-    <!-- <img src=""> -->
-    <h3>{Table basse 1}</h3>
-    <span>Rangement malin pour un sommeil paisible.</span>
+    <div class="containerMN">
+      <div class="prodMN prodMN2">
+        <div class="content">
+        <!-- <img src=""> -->
+        <h3>{Vase deco-3}</h3>
+        <span>Donnez vie à vos fleurs.</span>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-</section>
+    <div class="containerMN">
+      <div class="prodMN prodMN3">
+        <div class="content">
+        <!-- <img src=""> -->
+        <h3>{Table basse 1}</h3>
+        <span>Rangement malin pour un sommeil paisible.</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
 
 
 
@@ -218,6 +224,10 @@
 
 
   <!-- Devenir partenaire Priscy -->
+  <div class="mieuxNotesTitle">
+      <h2>Partenariats & Contact</h2>
+    </div>
+  
   <div class="partenaire">
         <div class="part1">
           <h1>Devenir partenaire</h1>
@@ -285,8 +295,19 @@ export default {
           max: 25,
           speed: 400
         })
+          VanillaTilt.init(document.querySelector(".cardL"), {
+          max: 25,
+          speed: 400
+        }),
+          VanillaTilt.init(document.querySelector(".cardC"), {
+          max: 25,
+          speed: 400
+        }),
+          VanillaTilt.init(document.querySelector(".cardR"), {
+          max: 25,
+          speed: 400
+        })
     },
-
 
 }
 
@@ -302,7 +323,7 @@ export default {
   height: 80px;
   display: block;
   text-align: center;
-  margin: 78px auto 0;
+margin-top: 150px;
   
 }
 
@@ -360,6 +381,7 @@ export default {
 }
 
 
+
 .banniere video{
   position: relative;
   height: 400px;
@@ -410,10 +432,6 @@ video{
   }
 }
 
-.box:hover {
-  background-color: #f1f1f1;
-}
-
 
 /* Promo Cécile */
 
@@ -425,7 +443,9 @@ section.promo{
 }
 
 .banPromo h4{
-  margin-top: 60px;
+  margin: 60px;
+  padding-top: 20px;
+  font-size: 40px;
 }
 section.promo{
   /* background-color: orange; */
@@ -448,7 +468,7 @@ section.promo{
   transform-style: preserve-3d;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 40px auto;
+  margin: 120px auto;
 
 }
 
@@ -465,11 +485,9 @@ section.promo{
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
   transform-style: preserve-3d;
 }
-
 .box:hover {
-  background-color: #f1f1f1;
+  background-color: transparent;
 }
-
 @media (max-width: 768px) {
   .box .card {
     width: 100%; /* Cartes prennent 100% de la largeur lorsqu'elles sont empilées */
@@ -649,9 +667,11 @@ section.promo{
 
 .cardR .btnOnline{
   margin-top: 340px;
+  margin-left: 25px;
 }
 .cardL .btnOnline{
   margin-top: 340px;
+  margin-left: 25px;
 }
 
 
@@ -665,13 +685,6 @@ section.promo{
   width: 150px;
   height: 150px;
 
-}
-
-.cardL .btnOnline{
-  margin-left: 25px;
-}
-.cardR .btnOnline{
-  margin-left: 25px;
 }
 
 
@@ -689,7 +702,7 @@ section.promo{
 .newProd{
   /* background-color: red; */
   height: 300px;
-  padding-top: 10px;
+  padding-top: 40px;
 }
 
 .newsP{
@@ -716,7 +729,7 @@ section.promo{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  height: 200px;
+  height: auto;
   margin: 20px auto;
 }
 
@@ -728,100 +741,34 @@ section.promo{
 
 .col img{
   width: 100%;
-  height: auto;
+  height: 100%;
+  cursor: pointer;
 }
-
-.imgTNewP{
-  margin-top: 180px;
-
-}
-
-
-
-
-
 
 
 /* Mieux notés Cécile*/
 
-/* .mieuxNotes{
-  margin-top: 80px;
-  background-color: blue;
-
-}
-
-.containerMN {  
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 500px;
-  gap: 10px;
-  justify-content: space-around;
-}
-
-.containerMN .prodMN{
-  font-size: 1.5rem;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  padding: 14;
-  flex: 0 0 120px;
-  border-radius: 0.5rem;
-  transition: 0.5s ease-in-out;
-  cursor: pointer;
-  box-shadow: 1px 5px 15px #1e0e3e;
-  position: relative;
-  overflow: hidden;
-
-  background: linear-gradient(
-    0deg,
-    rgba(2, 2, 46, 0.6755077030812324) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: translateY(100%);
-  transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
-  visibility: hidden;
-}
-
-.containerMN img{
-  width: 100%;
-  height: auto;
-  border-radius: 0.5rem 0.5rem 0;
-}
-
-.containerMN .prodMN h3{
-  box-shadow: 1px 3px 15px #472e16;
-  transform: translateY(-30px);
-}
-
-.containerMN .prodMN1 {
-  background: url("/public/images/tapis-2.jpg") no-repeat 50% / cover;
-}
-
-.containerMN .prodMN2 {
-  background: url("/public/images//deco-3.jpg") no-repeat 50% / cover;
-}
-
-.containerMN .prodMN3 {
-  background: url("@/assets/mobilier-1.jpg") no-repeat 50% / cover;
-} */
-
-
 .mieuxNotes{
-  margin-top: 80px;
-  /* background-color: blue; */
+  margin-top: 50px;
+  background-color: #cca88c;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 20px ;
+}
 
-
+.mieuxNotesTitle h2 {
+  margin-top: 180px;
+  font-size: 40px;
 }
 
 .containerMN{
   /* background-color: yellow; */
-  width: 100%;
+  /* width: 100%; */
+  /* margin: 40px auto; */
   display: flex;
   justify-content: center;
   height: 400px;
-  gap: 10px;
+  /* gap: 10px; */
 }
 
 .containerMN .prodMN{
@@ -839,6 +786,7 @@ section.promo{
 .prodMN1 {
   background: url(/public/images/tapis-2.jpg)
   no-repeat 50% / cover;
+  
 }
 
 .prodMN2 {
@@ -894,12 +842,11 @@ section.promo{
 
 
 
-
 /* Partenaire Priscy */
 .partenaire {
       display: flex;
       margin-top: 100px;
-      margin-bottom: 300px;
+      margin-bottom: 50px;
       justify-content: center;
       height: 300px;
       color: #472e16;
@@ -965,8 +912,8 @@ section.promo{
  
 }
 .contact {
-  margin-top: 300px;
   padding-top: 40px;
+  margin-bottom: 200px;
   background-color: #cca88c;
   height: 200px;
 }

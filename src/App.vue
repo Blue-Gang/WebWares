@@ -1,6 +1,7 @@
 <template>
   <nav class="secondary">
     <div class="secondaryTopPage">
+      <!-- Partie langue & contact -->
       <div class="lang">
 
           <select class="langChoice" v-model="lang" >
@@ -17,51 +18,91 @@
       </div>
     </div>
   </nav >
-
+<!-- Partie Navbar -->
   <nav class="principal">
-    <img class="logoWW" src="@/assets/5.png" alt="logo" width="200" height="100">
+    <a href="/">
+      <img class="logoWW" src="@/assets/5.png" alt="logo" width="200" height="100">
+    </a>
+
     <div class="BarNav">
       <div class="navLink">
-        <router-link to="/">Acceuil</router-link> 
+        <div class="btnmenu">
+          <router-link to="/">Acceuil</router-link> 
 
-        <router-link to="/">
-          <select @change="navigate" class="dropCategorie">
+          <router-link to="/">
+            <select @change="navigate" class="dropCategorie">
               <option>Catégories</option>
               <option value="/vasevue">Vase</option>
               <option value="/tapisview">Tapis</option>
               <option value="/lampeview">Luminaire</option>
               <option value="/tableview">Table</option>
-              <option value="/chaiseview">Chaise</option>
-          </select>
-        </router-link> 
-        <router-link to="/aboutview">A Propos</router-link>
-        <router-link to="/produitsview">Produits</router-link>
-        <router-link to="panierview">Panier ({{ produitPanier.length }})</router-link>
+              <option value="/chaiseview">Canapé</option>
+            </select>
+          </router-link> 
+  
+          <!-- <router-link to="/about">Catégories</router-link>   -->
+          <router-link to="/produitsview">Produits</router-link>
+          <router-link to="/aboutview">A Propos</router-link>
+          <!-- <router-link to="/panierview">Panier ({{ produitPanier.length }})</router-link> -->
+          <!-- <router-link to="/commresume">Commande </router-link> -->
         
         
 
+    <div class="headerR">
+      <div v-if="!online" class="ifOnline">
+        <router-link to="/Loginpage">Connection</router-link> 
+        <router-link to="/SignUp">Inscription </router-link>
+      </div>
+      <div v-if="online" class="horsLine">
+        <div class="headerUser">
+          <img src="/images/user.png">
 
-        
-        
+        </div>
+        <div class="headerPanier">
+          <a href="/panierview"><img src="/images/panier.png"></a>
+          <p>({{ produitPanier.lenght }})</p>
+        </div>
+      </div>
+    </div>
+    
+ </div>       
       </div>
 
-
+      <!-- barre de recherche -->
+      <!-- <section>
+        <span class="barSearch">
+          <div>
+            <input type="text" v-model="querry" @input="listFilter" placeholder="Rechercher un produit">
+          </div>
+          <div class="listBarSearch">
+            <ul>
+                <li v-for="(produits, i) in filteredProducts" :key="i">{{ produits.titre }}</li>
+            </ul>
+          </div>
+        </span>
+      </section> -->
     </div>
-      <div class="none">
-            <div class="connect">
+
+
+
+      <!-- <div class="none">
+            <div v-if="online" class="connect">
               <router-link to="/Loginpage">Connection</router-link> 
               <router-link to="/SignUp">Inscription </router-link>
             </div>
+
             <div class="Horsconnect">
               <select @change="navigate" class="dropdown" >
-                <option value="/HomeView">Menu</option>
-                <option value="/panierview"> Panier ({{ produitPanier.length }})</option>
-                <option value="/commresume">Commande</option>
+                <option>Menu</option>
+                <option value="panierview"> Panier ({{ produitPanier.length }})</option>
+                <option value="vos achat"><router-link to="/commresume">vos achats</router-link></option>
                 <option value="/AdminPage">Admin</option>
                 <option value="logout">Déconnection</option>
               </select>
+
             </div>
-      </div>
+        </div> -->
+
   </nav>
   <footer>
     <div class="foot">
@@ -74,13 +115,9 @@
             </div>           
             <div class="col">
                 <ul class="list-inline">
-
-
                     <li class="list"><a class="footA" href="/">Accueil</a></li>
                     <li class="list"><a class="footA" href="/aboutview">A propos</a></li>
                     <li class="list"><a class="footA" href="/pagecontact">Contact</a></li>
-
-
                 </ul>
             </div>                
             <div class="col">
@@ -94,48 +131,27 @@
             </div>                                 
             <div class="col">
                 <ul class="list-inline">
-                    <li class="list"><a class="footA" href="#">Connexion</a></li>
-
-
-                    
-                    <li class="list"><a class="footA" href="/PageCarriere">Carrières</a></li>
-
-
+                    <li class="list"><a class="footA" href="/loginpage">Connexion</a></li>
                     <li class="list"><a class="footA" href="/signup">S'inscrire</a></li>
-
-                   
-                    <li class="list"><a class="footA" href="#">Carrières</a></li>
-
-
-                    
+                    <li class="list"><a class="footA" href="/PageCarriere">Carrières</a></li>
                 </ul>
             </div> 
             <div class="col">
                 <ul>
-
-
                     <li class="list CGV "><a class="footA" href="/PageCgv">Conditions générales de ventes</a></li>
                     <li class="list CGV1"><a class="footA" href="/PageCgv">CGV</a></li>
                     <li class="list CGU"><a class="footA" href="/PageCgu">Conditions générales d'utilisations</a></li>
                     <li class="list CGU1"><a class="footA" href="/PageCgu">CGU</a></li>
-                    <li class="list PDC"><a class="footA" href="/PolitiqueConf">Politique de confidencialité</a></li>                   
-                    <li class="list PDC1"><a class="footA" href="/PolitiqueConf">PDC</a></li>                   
-
-
+                    <li class="list PDC"><a class="footA" href="/PolitiqueConf">Politique de confidencialité</a></li>
+                    <li class="list PDC1"><a class="footA" href="/PolitiqueConf">PDC</a></li>
                 </ul>
             </div>
             <div class="col">
                 <ul>
                     <p class="Follow">Suivez nous</p>
-
-
-
-
-
                     <a href="https://www.facebook.com/"><img class="logoR" src="@/assets/FB.svg" alt="Logo FaceBook"/></a>                                      
                     <a href="https://www.linkedin.com/"><img class="logoR" src="@/assets/LKD.svg" alt="Logo Linkedin" /></a>               
-                    <a href="https://twitter.com/"><img class="logoR" src="@/assets/TWT.svg" alt="Logo Twiter" /></a> 
-                                
+                    <a href="https://twitter.com/"><img class="logoR" src="@/assets/TWT.svg" alt="Logo Twiter" /></a>  
                 </ul>
 
             </div>   
@@ -148,8 +164,6 @@
 </template>
 
 <script>
-
-
 import { mapState } from 'vuex';
 
 export default{ 
@@ -161,42 +175,73 @@ export default{
   data(){
       return{
       querry: "",
+
+
       lang: "fr",
       menuDropdown:'Menu',
+
     }
   },
 
   methods:{
 
+    // ajout fichier Jason/David
+    iniatLocalStorage(){
+      console.log(localStorage.getItem('produits'));
+      if(localStorage.getItem('produits') === null || localStorage.getItem('produits') === 'undefined' || localStorage.getItem('produits').length === 0){
+        localStorage.setItem('produits', JSON.stringify(this.$store.state.produits));
+      }
+    },
+    // 
+  
+
     navigate(event){
       this.$router.push(event.target.value);
     },
 
-    listFilter(){
-      for(let i = 0; i < this.filteredProducts.length; i++){
-        if(this.filteredProducts[i].titre.toLowerCase().includes(this.querry.toLowerCase())){
-          this.filteredProducts[i].style.display = "block";
-        }else{
-          this.filteredProducts[i].style.display = "none";
-        }
-      }
-    }
+    // listFilter(){
+    //   for(let i = 0; i < this.filteredProducts.length; i++){
+    //     if(this.filteredProducts[i].titre.toLowerCase().includes(this.querry.toLowerCase())){
+    //       this.filteredProducts[i].style.display = "block";
+    //     }else{
+    //       this.filteredProducts[i].style.display = "none";
+    //     }
+    //   }
+    // }
   },
 
   computed: {
+
     filteredProducts(){
+
       return this.$store.state.products    
     },
+    
     ...mapState(['produitPanier'], ['produits']),
+
+    // computed: {
+    //   online() {
+    //     console.log(this.$store.state.online);
+    //     return this.$store.state.online;
+    //   }
+    // },
+
+    ...mapState(['online']),
+  
+
+
   },
+
+  mounted() {
+    this.iniatLocalStorage();
+  }
 }
 
 </script>
 
 <style>
 
-
-*{
+*, ::before, ::after{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -212,7 +257,7 @@ export default{
 
 .principal { 
   position: absolute;
-  margin-top: 50px ; 
+  margin-top: 50px;
   top: 0;
   left: 0; 
   z-index: 1;
@@ -221,7 +266,7 @@ export default{
   width: 100vw;
 }
 
-.principal a {
+.principal .btnmenu a {
   display: inline-block;
   margin-top: 10px ;
   margin-left: 30px;
@@ -230,7 +275,7 @@ export default{
   text-decoration: none;
 }
 
-.principal a.router-link-exact-active {
+.principal .btnmenu a.router-link-exact-active {
   color: #5e3c1a;
 }
 
@@ -255,7 +300,7 @@ export default{
 }
 
 .BarNav{
-  display: flex;
+ display: flex;
   justify-content: center;
   margin-right: 120px ;
   margin-top: 30px ;
@@ -267,7 +312,7 @@ export default{
 
 .navLink {
   float: right;
-  margin-right: 250px;
+  margin-right: -300px;
   font-size: 25px;
   
   color: #ffffff;
@@ -294,6 +339,7 @@ export default{
 }
 
 .none{
+
   display: block;
   float: right;
   margin-right: 40px;
@@ -344,7 +390,7 @@ export default{
 }
 
 .connect{
-display:none;
+/* display:none; */
   
 }
 
@@ -388,7 +434,72 @@ display:none;
   padding: 5px;
 }
 
-/* Header Jason */
+/* Header Jason responsive */
+
+/* Styles par défaut pour les écrans larges (PC) */
+.principal {
+  
+}
+
+/* Styles pour les tablettes */
+@media only screen and (max-width: 768px) {
+  .principal {
+   
+  }
+
+  .navLink {
+    float: none;
+    margin-right: 0;
+    font-size: 18px; 
+  }
+
+}
+
+/* Styles pour les téléphones */
+@media only screen and (max-width: 480px) {
+  .principal {
+   
+  }
+
+  .navLink {
+    float: none;
+    margin-right: 0;
+    font-size: 16px; 
+  }
+
+  
+}
+
+
+/* Header co et non co Cécile */
+
+.headerR{
+  float: right;
+  margin-left: 250px;
+  margin-top: 6px;
+  display: flex;
+}
+
+.headerR img{
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+
+}
+
+.horsLine{
+  margin-left: 40px;
+
+}
+
+.headerUser,
+.headerPanier{
+  display: inline-flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
 
 
 /* Footer David */
@@ -554,8 +665,6 @@ footer {
   
 
 }
-
-
 
 
 @media screen and (max-width: 430px){
@@ -859,7 +968,6 @@ footer {
   margin: 0 4px;
 }
 }
-
 @media screen and (min-width: 431px) and (max-width: 820px){
 .logoR{
   width: 25px;
@@ -889,6 +997,7 @@ footer {
   height: 60px;
   margin: 0 10px;
 }
+
 }
 
 
@@ -929,6 +1038,7 @@ footer {
   display:none;
 }}
 
+
 @media screen and (max-width: 430px){
 .PDC{
   display:none;
@@ -947,6 +1057,5 @@ body{
     background-color: white;
 
 }
-
 
 </style>

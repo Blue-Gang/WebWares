@@ -7,28 +7,28 @@
             </div>
             <div class="sidemenu">
                 <div class="box">
-                    <router-link to="/home" class="cat"  >
+                    <router-link to="/" class="cat"  >
                         <img src="images/accueil.png" alt="">
                         <p>Accueil</p>
                     </router-link>
                 </div>
 
                 <div class="box">
-                    <router-link to="/" class="cat"  >
+                    <router-link to="/UserProfile" class="cat"  >
                         <img src="images/profil.png" alt="">
                         <p>Mon profil</p>
                     </router-link>
                 </div>
 
                 <div class="box">
-                    <router-link to="/" class="cat"  >
+                    <router-link to="/UserMsg" class="cat"  >
                         <img src="images/email.png" alt="">
                         <p>Ma messagerie</p>
                     </router-link>
                 </div>
 
                 <div class="box">
-                    <router-link to="/" class="cat"  >
+                    <router-link to="/panierview" class="cat"  >
                         <img src="images/panier.png" alt="">
                         <p>Mon panier</p>
                     </router-link>
@@ -123,15 +123,8 @@ export default {
 </script>
 
 <style scoped>
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
 .dashboard {
+    margin-top: 150px;
     display: flex;
     width: max-content;
    height: max-content;
@@ -200,15 +193,12 @@ export default {
     height: 40px;
 }
 .header {
-    
     height: 100vh;
      width: 1600px;
      background-color: #dec5b1;
 }
 .header .affichage {
-    
     height: 70vh;
-
     width: 173vh;
     border: 2px solid #5e3c1a;
     margin-top: 15px;

@@ -124,13 +124,10 @@
 
   .formulairecontact{
     display: flex;
-    margin-top: 80px;
-    margin-bottom: 80px;
-    margin-left: -50px;
-    padding-left: 100px;
-    padding-right: 100px;
+    margin: 80px auto;
     flex-grow: 1;
     width: 50%;
+    margin-bottom: 250px;
   }
 
   .formulairecontact img{
@@ -144,9 +141,9 @@
         color: #5e3c1a;
         border: none;
         border-radius: 5px;
-        margin-top: 20px;
         padding: 5px;
         margin-top: 30px;
+        margin-bottom: 10px;
         width: 150px;
         height: 40px;
         border-radius: 20px;
@@ -166,6 +163,19 @@
   .container img {
     display: none;
   }
+  .formulairecontact {
+    margin-left: 30px;
+  }
 }
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+  .container img {
+    display: none;
+  }
+  .formulairecontact {
+    margin-left: 80px;
+  }
+
+} 
   
   </style>
